@@ -1,4 +1,3 @@
-
 :root{
     --bg-color: #0D0D0D;
     --yellow: #F5E65B;
@@ -6,20 +5,19 @@
     --light: #FFFACE;
     --gradient: linear-gradient(15deg, rgba(245,230,91,1) 0%, rgba(59,29,168,1) 100%);
 }
+
+
 #hero{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-
 }
 
-
 header{
-    padding: 1rem 0;
-    width: 90%;
+    padding: 2rem 0;
+    width: 80%;
     display: grid;
     grid-template-columns: 200px 400px 200px;
     gap: 2rem;
@@ -30,9 +28,7 @@ header{
 nav{
     display: flex;
     justify-content: center;
-    align-items: center;
-    
-    
+    align-items: center; 
 }
 
 nav ul{
@@ -41,9 +37,8 @@ nav ul{
     justify-content: space-around;
     align-items: center;
     font-weight: 200;
-    
-
 }
+
 a{
     text-decoration: none;
     color: var(--light);
@@ -52,38 +47,47 @@ a{
 
 .login-button{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    
 }
 
 .login-button button{
+    width: 50%;
     background-color: transparent;
+    color: var(--yellow);
+    font-weight: 400;
+    font-size: .8rem;
+    letter-spacing: 1px;
+
     display: flex;
     justify-content: center;
     align-items: center;
     gap: .5rem;
-    color: var(--light);
-    border-radius: 10px;
-    border: 1px solid var(--yellow);
-    width: 50%;
-    padding: .5rem;
-    color: var(--yellow);
 
+    border-radius: 5px;
+    border: 1px solid var(--yellow);
+    padding: .2rem 1rem;
 }
+
+.login-button button:hover{
+    color: var(--bg-color);
+    background-color: var(--yellow);
+    border: none;
+}
+
 .hero-content{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    height: 600px;
+    width: 80%;
+    height: 450px;
 }
 
 .hero-content img{
     width: 110%;
-    top: 5%;
     position: absolute;
-    left: 20%;
+    top: 10%;
+    left: 25%;
     z-index: -1;
 }
 
@@ -95,28 +99,47 @@ a{
     align-items: left;
     gap: 1rem;
 }
+
 .hero-text h1{
-    line-height: 75px;
-    font-size: 4rem;
+    line-height: 60px;
+    font-size: 3rem;
     color: var(--light);
     font-weight: 200;
-
 }
+
 .hero-text span{
     color: var(--yellow);
     font-weight: 400;
 }
-.hero-content button{
-    align-items: center;
+
+.hero-text button{
+    width: 35%;
+    background-color: var(--purple);
+    color: var(--light);
+    font-weight: 300;
+
     display: flex;
     justify-content: center;
-    padding: .4rem 0;
-    background-color: aquamarine;
-    width: 25%;
-    border-radius: 8px;
-    background-color: var(--purple);
-    gap: 5px;
-    color: white;
+    align-items: center;
+    gap: .5rem;
 
+    padding: .4rem 1rem;
+    border-radius: 5px;
+
+    transition: .3s ease;
+}
+
+.hero-text button:hover{
+    background-color: #4c29c9;
+    width: 40%;
+}
+
+.hero-text button i{
+    transition: .3s ease;
+    transform: rotate(0deg);
+}
+
+.hero-text button:hover i{
+    transform: rotate(360deg);
 }
 
