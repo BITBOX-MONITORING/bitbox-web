@@ -1,0 +1,122 @@
+
+:root{
+    --bg-color: #0D0D0D;
+    --yellow: #F5E65B;
+    --purple: #3B1DA8;
+    --light: #FFFACE;
+    --gradient: linear-gradient(15deg, rgba(245,230,91,1) 0%, rgba(59,29,168,1) 100%);
+}
+#hero{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+}
+
+
+header{
+    padding: 1rem 0;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 200px 400px 200px;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+nav ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 200;
+    
+
+}
+a{
+    text-decoration: none;
+    color: var(--light);
+    text-transform: lowercase;
+}
+
+.login-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.login-button button{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    color: var(--light);
+    border-radius: 10px;
+    border: 1px solid var(--yellow);
+    width: 50%;
+    padding: .5rem;
+    color: var(--yellow);
+
+}
+.hero-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 600px;
+}
+
+.hero-content img{
+    width: 110%;
+    top: 5%;
+    position: absolute;
+    left: 20%;
+    z-index: -1;
+}
+
+.hero-text{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap: 1rem;
+}
+.hero-text h1{
+    line-height: 75px;
+    font-size: 4rem;
+    color: var(--light);
+    font-weight: 200;
+
+}
+.hero-text span{
+    color: var(--yellow);
+    font-weight: 400;
+}
+.hero-content button{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: .4rem 0;
+    background-color: aquamarine;
+    width: 25%;
+    border-radius: 8px;
+    background-color: var(--purple);
+    gap: 5px;
+    color: white;
+
+}
+

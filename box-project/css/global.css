@@ -21,6 +21,8 @@
 
 body {
     font-family: Kanit, sans-serif;
+	background-color: var(--bg-color);
+	overflow-x: hidden;
 }
 
 /* HTML5 display-role reset for older browsers */
