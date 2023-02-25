@@ -4,6 +4,8 @@
     --purple: #3B1DA8;
     --light: #FFFACE;
     --gradient: linear-gradient(15deg, rgba(245,230,91,1) 0%, rgba(59,29,168,1) 100%);
+    --card-gradient: linear-gradient(15deg, rgba(245,230,91,0.35) 0%, rgba(59,29,168,0.35) 100%);
+    --card-hover-gradient: linear-gradient(90deg, rgba(245,230,91,0.6) 0%, rgba(59,29,168,0.6) 100%);
 }
 
 
@@ -81,6 +83,7 @@ a{
     align-items: center;
     width: 80%;
     height: 450px;
+    margin-bottom: 5rem;
 }
 
 .hero-content img{
@@ -143,3 +146,93 @@ a{
     transform: rotate(360deg);
 }
 
+.vantagens {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title{
+    background: linear-gradient(15deg, rgba(245,230,91,0.2) 0%, rgba(59,29,168,0.2) 100%);
+    backdrop-filter: blur(4px);
+    padding: 0.3rem 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 2rem;
+    border-radius: 5px;
+    font-weight: 200;
+    color: var(--light);
+}
+
+.box-cards {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4.2rem;
+
+}
+
+.card{
+    background: var(--card-gradient);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 1rem 1rem 1rem;
+    transition: .2s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -o-transition: .2s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    background: var(--card-hover-gradient);
+    box-shadow: 0 0 50px #f5e65bac;
+}
+
+.card img {
+    position: relative;
+    bottom: 5rem;
+}
+
+.card p {
+    color: white;
+    font-weight: 200;
+    line-height: 25px;
+    font-size: 1.2rem;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 501px;
+}
+
+.card-content img {
+    position: relative;
+    top: 3.5rem;
+    width: 120px;
+    z-index: 1;
+    transition: .2s ease;
+}
+
+.card-content:hover img {
+    width: 150px;
+ 
+}
+
+.card-content:hover .card {
+    background: var(--card-hover-gradient);
+    box-shadow: 0 0 50px #f5e65bac;
+}
