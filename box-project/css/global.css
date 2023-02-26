@@ -17,6 +17,7 @@
 	font: inherit;
 	vertical-align: baseline;
     font-family: Kanit, sans-serif;
+	user-select: none;
 }
 
 body {

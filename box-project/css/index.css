@@ -1,15 +1,17 @@
-:root{
+/* Raiz do projeto - Atribuição de variáveis */
+:root {
     --bg-color: #0D0D0D;
     --yellow: #F5E65B;
     --purple: #3B1DA8;
     --light: #FFFACE;
-    --gradient: linear-gradient(15deg, rgba(245,230,91,1) 0%, rgba(59,29,168,1) 100%);
-    --card-gradient: linear-gradient(15deg, rgba(245,230,91,0.35) 0%, rgba(59,29,168,0.35) 100%);
-    --card-hover-gradient: linear-gradient(90deg, rgba(245,230,91,0.6) 0%, rgba(59,29,168,0.6) 100%);
+    --gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
+    --card-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);;
+    --card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
 }
 
+/* --- Hero - Sessão inicial do site --- */
 
-#hero{
+#hero {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -17,7 +19,7 @@
     flex-direction: column;
 }
 
-header{
+header {
     padding: 2rem 0;
     width: 80%;
     display: grid;
@@ -27,13 +29,13 @@ header{
     align-items: center;
 }
 
-nav{
+nav {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
-nav ul{
+nav ul {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -41,19 +43,19 @@ nav ul{
     font-weight: 200;
 }
 
-a{
+a {
     text-decoration: none;
     color: var(--light);
     text-transform: lowercase;
 }
 
-.login-button{
+.login-button {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.login-button button{
+.login-button button {
     width: 50%;
     background-color: transparent;
     color: var(--yellow);
@@ -71,13 +73,13 @@ a{
     padding: .2rem 1rem;
 }
 
-.login-button button:hover{
+.login-button button:hover {
     color: var(--bg-color);
     background-color: var(--yellow);
     border: none;
 }
 
-.hero-content{
+.hero-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -86,15 +88,30 @@ a{
     margin-bottom: 5rem;
 }
 
-.hero-content img{
+.hero-content img {
     width: 110%;
     position: absolute;
-    top: 10%;
-    left: 25%;
+    top: 5%;
+    left: 15%;
     z-index: -1;
+    animation: move 10s infinite ease-in-out;
 }
 
-.hero-text{
+@keyframes move {
+    0%{
+        transform: translateY(20px);
+    }
+
+    50%{
+        transform: translateY(0);
+    }
+
+    100%{
+        transform: translateY(20px);
+    }
+}
+
+.hero-text {
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -103,19 +120,20 @@ a{
     gap: 1rem;
 }
 
-.hero-text h1{
+.hero-text h1 {
     line-height: 60px;
     font-size: 3rem;
     color: var(--light);
     font-weight: 200;
 }
 
-.hero-text span{
+.hero-text span {
     color: var(--yellow);
     font-weight: 400;
+    transition: .3 ease;
 }
 
-.hero-text button{
+.hero-text button {
     width: 35%;
     background-color: var(--purple);
     color: var(--light);
@@ -129,110 +147,143 @@ a{
     padding: .4rem 1rem;
     border-radius: 5px;
 
-    transition: .3s ease;
+    transition: .2s ease;
 }
 
-.hero-text button:hover{
-    background-color: #4c29c9;
-    width: 40%;
-}
-
-.hero-text button i{
+.hero-text button i {
     transition: .3s ease;
     transform: rotate(0deg);
 }
 
-.hero-text button:hover i{
+.hero-text button:hover {
+    background-color: var(--yellow);
+    color: var(--bg-color);
+    width: 40%;
+}
+
+.hero-text button:hover i {
     transform: rotate(360deg);
 }
 
-.vantagens {
+/* ---- Vantagens -------*/
+
+.benefits-content {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 5rem;
 }
 
-.title{
-    background: linear-gradient(15deg, rgba(245,230,91,0.2) 0%, rgba(59,29,168,0.2) 100%);
-    backdrop-filter: blur(4px);
+.title {
+    background: linear-gradient(15deg, rgba(245, 230, 91, 0.1) 0%, rgba(59, 29, 168, 0.1) 100%);
+    color: var(--light);
+    backdrop-filter: blur(5px);
     padding: 0.3rem 1.4rem;
+
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+    font-weight: 200;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 2rem;
     border-radius: 5px;
-    font-weight: 200;
-    color: var(--light);
 }
 
 .box-cards {
     width: 80%;
+    height: 500px;
+
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 4.2rem;
+    gap: 4rem;
 
+    position: relative;
+    bottom: 20px;
 }
 
-.card{
-    background: var(--card-gradient);
-    backdrop-filter: blur(4px);
-    border-radius: 10px;
+.card-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 5rem 1rem 1rem 1rem;
+
+    cursor: pointer;
+
+    border-radius: 1000px;
+    height: 380px;
+}
+
+.card-content img {
+    width: 120px;
+    filter: saturate(0);
+
+    position: relative;
+    top: 3.5rem;
+    z-index: 1;
+
+    transition: .3s ease;
+}
+
+.card-content:hover img {
+    filter: saturate(1);
+    width: 130px;
+}      
+
+.card-content:hover .card::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: var(--gradient);
+    filter: blur(30px);
+    opacity: var(0.5);
+    transition: opacity 1s ease;
+    border-radius: inherit;
+}
+
+.card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.card {
+    background: var(--card-gradient);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    height: 120px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 5rem 2rem 3rem 2rem;
     transition: .2s ease;
     -webkit-transition: .2s ease;
     -moz-transition: .2s ease;
     -o-transition: .2s ease;
-    cursor: pointer;
-}
-
-.card:hover {
-    background: var(--card-hover-gradient);
-    box-shadow: 0 0 50px #f5e65bac;
-}
-
-.card img {
-    position: relative;
-    bottom: 5rem;
 }
 
 .card p {
     color: white;
     font-weight: 200;
     line-height: 25px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
-.card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 501px;
-}
-
-.card-content img {
-    position: relative;
-    top: 3.5rem;
-    width: 120px;
-    z-index: 1;
-    transition: .2s ease;
-}
-
-.card-content:hover img {
-    width: 150px;
- 
-}
-
-.card-content:hover .card {
-    background: var(--card-hover-gradient);
-    box-shadow: 0 0 50px #f5e65bac;
-}
+/* --- Equipe --- */
