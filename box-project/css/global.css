@@ -8,6 +8,17 @@
     --gradient: linear-gradient(15deg, rgba(245,230,91,1) 0%, rgba(59,29,168,1) 100%);
 }
 
+::-webkit-scrollbar{
+	background-color: #2d2c2c;
+	width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #F5E65B;
+	border-radius: 10px;
+}
+
+
 * {
 	margin: 0;
 	padding: 0;
