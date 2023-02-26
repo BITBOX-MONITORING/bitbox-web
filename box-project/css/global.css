@@ -1,64 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600&display=swap');
 
-:root{
-    --bg-color: #0D0D0D;
-    --yellow: #F5E65B;
-    --purple: #3B1DA8;
-    --light: #FFFACE;
-    --gradient: linear-gradient(15deg, rgba(245,230,91,1) 0%, rgba(59,29,168,1) 100%);
+:root {
+	--bg-color: #0D0D0D;
+	--yellow: #F5E65B;
+	--purple: #3B1DA8;
+	--light: #FFFACE;
+	--gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
 	background-color: #2d2c2c;
-	width: 10px;
+	width: 5px;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
 	background-color: #F5E65B;
-	border-radius: 10px;
+	border-radius: 1px;
 }
-
 
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
-    outline: 0;
+	outline: 0;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-    font-family: Kanit, sans-serif;
+	font-family: Kanit, sans-serif;
 	user-select: none;
 }
 
 body {
-    font-family: Kanit, sans-serif;
+	font-family: Kanit, sans-serif;
 	background-color: var(--bg-color);
 	overflow-x: hidden;
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
 
-button{
+button {
 	cursor: pointer;
 	transition: .2s ease;
 }
 
-ol, ul {
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
