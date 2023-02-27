@@ -6,11 +6,18 @@
   --light: #ffface;
   --gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
   --smooth-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);
-  --card-hover-gradient: linear-gradient(15deg,rgba(245, 230, 91, 0.6) 0%,rgba(59, 29, 168, 0.6) 100%);
+  --card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
   --bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
 }
 
 /* --- Hero - Sessão inicial do site --- */
+
+
+main {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
 
 #hero {
   width: 100%;
@@ -89,31 +96,38 @@ a {
   margin-bottom: 5rem;
 }
 
-.hero-content img {
-  width: 1200px;
-  position: absolute;
-  top: 5%;
-  left: 25%;
+.hero-img{
+  width: 50%;
   z-index: -1;
+
+  display: grid;
+  place-content: right;
+}
+
+.hero-img img {
+  width: 1200px;
+  position: relative;
+  top: 15%;
+  right: 25%;
+  
   animation: move 10s infinite ease-in-out;
 }
 
 @keyframes move {
   0% {
-    transform: translateY(20px);
+  transform: translateY(20px);
   }
 
   50% {
-    transform: translateY(0);
+  transform: translateY(0);
   }
 
   100% {
-    transform: translateY(20px);
+  transform: translateY(20px);
   }
 }
 
 .hero-text {
-  width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -170,7 +184,7 @@ a {
 
 .benefits-content {
   width: 100%;
-  height: 500px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -206,6 +220,7 @@ a {
 
   position: relative;
   bottom: 20px;
+  transition: .2s ease;
 }
 
 .card-content {
@@ -265,11 +280,11 @@ a {
   background: var(--smooth-gradient);
   backdrop-filter: blur(20px);
   border-radius: 10px;
-  height: 120px;
+  min-height: 130px;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
   padding: 5rem 2rem 3rem 2rem;
@@ -323,15 +338,15 @@ a {
 
 @keyframes side-move {
   0% {
-    transform: translateX(-10px);
+  transform: translateX(-10px);
   }
 
   50% {
-    transform: translateX(0);
+  transform: translateX(0);
   }
 
   100% {
-    transform: translateX(-10px);
+  transform: translateX(-10px);
   }
 }
 
@@ -357,7 +372,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin-bottom: 5rem;
 }
 
 .service-content {
@@ -403,11 +418,10 @@ a {
   background-color: var(--yellow);
 }
 
-.btn-services:hover{
+.btn-services:hover {
   width: 50%;
   background-color: var(--purple);
   color: var(--light);
 }
-
 
 /* --- Equipe --- */
