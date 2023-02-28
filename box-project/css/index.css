@@ -357,7 +357,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin-bottom: 5rem;
 }
 
 .service-content {
@@ -411,3 +411,102 @@ a {
 
 
 /* --- Equipe --- */
+#team{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  margin-bottom: 5rem;
+}
+
+.team-container{
+  width: 80%;
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  place-content: center;
+  gap: 8rem;
+}
+
+.member{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 5px 40px 5px 5px;
+  height: 320px;
+  background-color: #3b1da8;
+  overflow: hidden;
+  position: relative;  
+}
+.top{
+  bottom: 70px;
+}
+
+.bottom{
+  top: 70px;
+}
+
+.member:hover .member-info{
+  height: 80px;
+  opacity: 1;
+}
+
+.member img{
+  border-radius: 5px 40px 5px 5px;
+  width: 300px;
+  height: 320px;
+  object-fit: cover;
+  object-position: 0 -100px;
+  transform: scale(2);
+
+}
+
+.member-info{
+  position: absolute;
+  background-color: #0d0d0d72;
+  backdrop-filter: blur(15px);
+  color: var(--light);
+  width: 300px;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  opacity: 0;
+  overflow: hidden;
+  transition: .5s ease;
+  
+}
+
+.member-info .social{
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--bg-color);
+  padding: .5rem;
+  border-radius: 5px 5px 0 0;
+  font-size: 1.2rem;
+  
+}
+.social i{
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.social i:hover{
+  color: #f8e969;
+  transform: rotate(360deg);
+}
+
+.member-info h2{
+  font-size: 1.5rem;
+  font-weight: 200;
+
+}
+
+.member-info b{
+  font-weight: 400;
+}
