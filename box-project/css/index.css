@@ -12,6 +12,12 @@
 
 /* --- Hero - Sessão inicial do site --- */
 
+main{
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
 #hero {
   width: 100%;
   display: flex;
@@ -89,12 +95,16 @@ a {
   margin-bottom: 5rem;
 }
 
-.hero-content img {
-  width: 1200px;
-  position: absolute;
-  top: 5%;
-  left: 25%;
+.hero-img{
+  width: 50%;
   z-index: -1;
+}
+
+.hero-img img {
+  width: 1200px;
+  position: relative;
+  top: 8rem;
+  right: 20rem;
   animation: move 10s infinite ease-in-out;
 }
 
@@ -417,16 +427,16 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10rem;
+  gap: 5rem;
   margin-bottom: 5rem;
 }
 
 .team-container{
   width: 80%;
   display: grid;
-  grid-template-columns: 300px 300px 300px;
+  grid-template-columns: 220px 220px 220px;
   place-content: center;
-  gap: 8rem;
+  gap: 5rem;
 }
 
 .member{
@@ -434,32 +444,19 @@ a {
   justify-content: center;
   align-items: flex-end;
   border-radius: 5px 40px 5px 5px;
-  height: 320px;
+  height: 210px;
   background-color: #3b1da8;
   overflow: hidden;
   position: relative;  
-}
-.top{
-  bottom: 70px;
-}
-
-.bottom{
-  top: 70px;
-}
-
-.member:hover .member-info{
-  height: 80px;
-  opacity: 1;
 }
 
 .member img{
   border-radius: 5px 40px 5px 5px;
   width: 300px;
-  height: 320px;
+  height: 210px;
   object-fit: cover;
   object-position: 0 -100px;
   transform: scale(2);
-
 }
 
 .member-info{
@@ -473,11 +470,15 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
+  padding-top: .5rem;
   opacity: 0;
   overflow: hidden;
-  transition: .5s ease;
-  
+  transition: .3s ease;
+}
+
+.member:hover .member-info{
+  height: 70px;
+  opacity: 1;
 }
 
 .member-info .social{
@@ -502,11 +503,10 @@ a {
 }
 
 .member-info h2{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 200;
-
 }
 
 .member-info b{
-  font-weight: 500;
+  font-weight: 400;
 }
