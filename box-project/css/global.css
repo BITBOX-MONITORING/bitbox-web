@@ -28,6 +28,7 @@
 	vertical-align: baseline;
 	font-family: Kanit, sans-serif;
 	user-select: none;
+	scroll-behavior: smooth;
 }
 
 body {
