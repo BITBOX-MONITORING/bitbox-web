@@ -23,12 +23,21 @@
 	padding: 0;
 	border: 0;
 	outline: 0;
+
+	list-style: none;
+	text-decoration: none;
+
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
 	font-family: Kanit, sans-serif;
+
 	user-select: none;
 	scroll-behavior: smooth;
+}
+
+a {
+	transition: .2s ease;
 }
 
 body {

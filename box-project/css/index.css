@@ -6,13 +6,13 @@
   --light: #ffface;
   --gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
   --smooth-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);
-  --card-hover-gradient: linear-gradient(15deg,rgba(245, 230, 91, 0.6) 0%,rgba(59, 29, 168, 0.6) 100%);
+  --card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
   --bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
 }
 
 /* --- Hero - Sessão inicial do site --- */
 
-main{
+main {
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
@@ -95,7 +95,7 @@ a {
   margin-bottom: 5rem;
 }
 
-.hero-img{
+.hero-img {
   width: 50%;
   z-index: -1;
 }
@@ -297,7 +297,7 @@ a {
 }
 
 /* --- Atuaçao ---*/
-#atuacao {
+#working {
   width: 100%;
   height: 500px;
   display: flex;
@@ -307,7 +307,7 @@ a {
 
 }
 
-#atuacao .bar {
+#working .bar {
   background: var(--bar-gradient);
   height: 400px;
   border-radius: 100px;
@@ -374,13 +374,14 @@ a {
   width: 80%;
   height: 300px;
   background: var(--smooth-gradient);
+  border: 1px solid rgba(128, 128, 128, 0.4);
   border-radius: 10px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 4rem;
   padding: 2rem 0rem;
-  border: 1px solid rgba(128, 128, 128, 0.484);
 }
 
 .services-info {
@@ -413,7 +414,7 @@ a {
   background-color: var(--yellow);
 }
 
-.btn-services:hover{
+.btn-services:hover {
   width: 50%;
   background-color: var(--purple);
   color: var(--light);
@@ -421,17 +422,17 @@ a {
 
 
 /* --- Equipe --- */
-#team{
+#team {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 }
 
-.team-container{
+.team-container {
   width: 80%;
   display: grid;
   grid-template-columns: 220px 220px 220px;
@@ -439,7 +440,7 @@ a {
   gap: 5rem;
 }
 
-.member{
+.member {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -447,10 +448,10 @@ a {
   height: 210px;
   background-color: #3b1da8;
   overflow: hidden;
-  position: relative;  
+  position: relative;
 }
 
-.member img{
+.member img {
   border-radius: 5px 40px 5px 5px;
   width: 300px;
   height: 210px;
@@ -459,7 +460,7 @@ a {
   transform: scale(2);
 }
 
-.member-info{
+.member-info {
   position: absolute;
   background-color: #0d0d0d72;
   backdrop-filter: blur(15px);
@@ -476,12 +477,12 @@ a {
   transition: .3s ease;
 }
 
-.member:hover .member-info{
+.member:hover .member-info {
   height: 70px;
   opacity: 1;
 }
 
-.member-info .social{
+.member-info .social {
   width: 40%;
   display: flex;
   justify-content: space-around;
@@ -490,23 +491,119 @@ a {
   padding: .5rem;
   border-radius: 5px 5px 0 0;
   font-size: 1.2rem;
-  
+
 }
-.social i{
+
+.social i {
   cursor: pointer;
   transition: .2s ease;
 }
 
-.social i:hover{
+.social i:hover {
   color: #f8e969;
   transform: rotate(360deg);
 }
 
-.member-info h2{
+.member-info h2 {
   font-size: 1.2rem;
   font-weight: 200;
 }
 
-.member-info b{
+.member-info b {
   font-weight: 400;
 }
+
+/* --- Footer --- */
+
+footer {
+  width: 100%;
+  background: var(--smooth-gradient);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 5rem 0;
+}
+
+.topics-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5rem;
+}
+
+.topics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.topics h2 {
+  color: #ADADAD;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: .5px;
+}
+
+.topics .topic {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+
+  font-weight: 200;
+}
+
+.topics .topic li a:hover{
+  color: #f5e65b;
+}
+
+.topics .social {
+  background: var(--smooth-gradient);
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-radius: 10px;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topics .social img{
+  width: 20px;
+  opacity: .8;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.topics .social img:hover{
+  opacity: 1;
+}
+
+.copyright{
+  width: 100%;
+  border-top: 1px solid gray;
+  color: #ADADAD;
+  font-weight: 200;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright .content{
+  padding: 2rem 0;
+}
+
