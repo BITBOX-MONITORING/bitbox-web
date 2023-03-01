@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600&display=swap');
 
-:root {
-	--bg-color: #0D0D0D;
-	--yellow: #F5E65B;
-	--purple: #3B1DA8;
-	--light: #FFFACE;
-	--gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
-}
-
 ::-webkit-scrollbar {
 	background-color: #2d2c2c;
 	width: 5px;
@@ -16,6 +8,11 @@
 ::-webkit-scrollbar-thumb {
 	background-color: #F5E65B;
 	border-radius: 1px;
+}
+
+.blur-effects{
+	width:  100%
+
 }
 
 * {
