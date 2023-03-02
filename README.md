@@ -42,10 +42,10 @@ backend codado em Java.
     <tbody>
         <tr>
             <td>01</td>
-            <td><a href="01">Site Institucional</a></td>
+            <td><a href="https://github.com/helloWorldRuan/box-project/tree/main/box-project">Site Institucional</a></td>
             <td>15/03/23</td>
             <td align="center">
-                <a href="https://github.com/helloWorldRuan/box-project/tree/main/box-project"><img width="300px" src="https://repository-images.githubusercontent.com/606528493/03a75bf7-30fd-456a-9f62-df2eb9028b26" /></a>
+                <a href="public"><img width="300px" src="https://repository-images.githubusercontent.com/606528493/03a75bf7-30fd-456a-9f62-df2eb9028b26" /></a>
             </td>
         </tr>
 
