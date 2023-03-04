@@ -1,0 +1,112 @@
+:root {
+    --bg-color: #0d0d0d;
+    --yellow: #f5e65b;
+    --purple: #3b1da8;
+    --light: #ffface;
+    --gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
+    --smooth-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);
+    --card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
+    --bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
+  }
+
+.logo-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5rem;
+}
+
+.logo-container img{
+    width: 150px;
+}
+
+.form-container{
+    max-width: 500px;
+    min-width: 200px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 5rem 0;
+    gap: 2rem;
+    
+}
+
+.text-container{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 35px;
+    
+}
+
+.text-container h5{
+    text-transform: uppercase;
+    color: #ADADAD;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.text-container h1{
+    color: var(--light);
+    font-size: 2.5rem;
+    font-weight: 100;
+}
+
+.text-container p{
+    color: #767676;
+    font-weight: 200;
+}
+
+.text-container span{
+    color: #fffacea1;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.text-container span:hover{
+    color: #FFFACE;
+}
+
+.form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+input,
+button {
+    background-color: rgb(63, 63, 63, .2);
+    border: 1px solid #3F3F3F;
+    border-radius: 5px;
+    padding: 1rem;
+    font-weight: 200;
+    color: var(--light);
+}
+
+button{
+    background-color: #f5e65b5e;
+    backdrop-filter: blur(10px);
+    color: var(--light);
+    border: 0;
+}
+
+button:hover{
+    background-color: #f5e65b;
+    color: var(--bg-color);
+}
+
+.input-line{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+}
+

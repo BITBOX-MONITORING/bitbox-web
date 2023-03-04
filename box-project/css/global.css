@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600&display=swap');
 
+:root {
+	--bg-color: #0d0d0d;
+	--yellow: #f5e65b;
+	--purple: #3b1da8;
+	--light: #ffface;
+	--gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
+	--smooth-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);
+	--card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
+	--bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
+  }
+
 ::-webkit-scrollbar {
 	background-color: #2d2c2c;
 	width: 5px;
