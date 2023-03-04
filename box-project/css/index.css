@@ -54,6 +54,24 @@ a {
   text-decoration: none;
   color: var(--light);
   text-transform: lowercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 50px;
+}
+
+.topic-bar {
+    width: 0;
+    height: 2px;
+    border-radius: 100px;
+    background: var(--gradient);
+    transition: .2s ease;
+}
+
+a:hover .topic-bar{
+    width: 70%;
+    height: 2px;
 }
 
 .login-button {

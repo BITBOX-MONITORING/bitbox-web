@@ -9,6 +9,10 @@
     --bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
   }
 
+body {
+    overflow: hidden;
+}
+
 .logo-container{
     width: 100%;
     display: flex;
