@@ -22,10 +22,51 @@
 }
 
 .blur-effects{
-	width:  100%
+	width:  100%;
+	position: absolute;
+	z-index: -1000;
 
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	background-color: #F5E65B;
 }
 
+.side{
+	width: 50%;
+	background-color: #471414;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 20rem;
+}
+
+.blur{
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+}
+
+.blur.yellow{
+	background-color: var(--yellow);
+}
+
+.blur.purple{
+	background-color: var(--purple);
+}
+
+.side.left .blur:nth-child(1){
+	position: relative;
+	right: 2rem;
+	bottom: 2rem;
+}
+
+
+
+
+/* Limpando CSS */
 * {
 	margin: 0;
 	padding: 0;
@@ -54,7 +95,6 @@ body {
 	overflow-x: hidden;
 }
 
-/* HTML5 display-role reset for older browsers */
 article,
 aside,
 details,

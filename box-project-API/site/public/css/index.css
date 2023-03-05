@@ -54,11 +54,12 @@ a {
   text-decoration: none;
   color: var(--light);
   text-transform: lowercase;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: 50px;
+  gap: .2rem;
 }
 
 .topic-bar {
@@ -66,12 +67,17 @@ a {
     height: 2px;
     border-radius: 100px;
     background: var(--gradient);
+    opacity: .5;
     transition: .2s ease;
 }
 
 a:hover .topic-bar{
     width: 70%;
     height: 2px;
+}
+
+a:hover{
+  color: #fff59f;
 }
 
 .login-button {
