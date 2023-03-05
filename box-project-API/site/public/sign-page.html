@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/sign.css">
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/sign.css">
 
-    <script src="https://unpkg.com/phosphor-icons"></script>
-    <script src="js/sign.js"></script>
-    <title>Cadastro</title>
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="js/sign.js"></script>
+  <title>Cadastro</title>
 </head>
+
 <body>
 
-    <main>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="./assets/logo.png" alt="">
-            </a>
-        </div>
-    
-        <div class="form-container">
-            <div class="text-container">
-                <h5>comece agora</h5>
-                <h1>Crie uma conta</h1>
-                <p>Já tem conta? Faça <span>login.</span></p>
-            </div>
+  <main>
+    <div class="blur-effects">
+      <div class="side left">
+        <div class="blur yellow"></div>
+      </div>
+      <div class="side right">
+        <div class="blur purple"></div>
+      </div>
+    </div>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="./assets/logo.png" alt="">
+      </a>
+    </div>
 
-            <div class="form">
-                <div class="input-line">
-                    <input type="text" placeholder="Nome" id="in_name">
-                    <input type="text" placeholder="Cargo" id="in_office">
-                </div>
+    <div class="form-container">
+      <div class="text-container">
+        <h5>comece agora</h5>
+        <h1>Crie uma conta</h1>
+        <p>Já tem conta? Faça <span>login.</span></p>
+      </div>
 
-                <input type="text" placeholder="E-mail" id="in_email">
-                <input type="text" placeholder="Senha" id="in_password">
-                <button onclick="signUp()">CADASTRAR</button>
-            </div>
+      <div class="form">
+        <div class="input-line">
+          <input type="text" id="in_name">
+          <input type="text" id="in_office">
         </div>
 
-        <div class="progress">
-            <div class="ball"></div>
-            <div class="ball"></div>
-            <div class="ball"></div>
+        <div class="input-field">
+          <input required type="text" id="in_email">
+          <label for="in_email">email</label>
+          <div class="icon">
+            <i class="ph-envelope-simple"></i>
+          </div>
         </div>
-    </main>
+
+        <div class="input-field">
+          <input required type="password" id="in_password">
+          <label for="in_email">senha</label>
+          <div class="icon">
+            <i class="ph-eye"></i>
+          </div>
+        </div>
+        
+        <button onclick="signUp()">CADASTRAR</button>
+      </div>
+    </div>
+
+    <div class="progress">
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+    </div>
+  </main>
 
 </body>
+
 </html>
 
 <script>
 
-    
+
 
 </script>
