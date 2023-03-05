@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link rel="stylesheet" href=".//css/global.css" />
+    <link rel="stylesheet" href=".//css/cadastro.css">
+    <script src="./js/funcoes.js"></script>
+    <title>Cadastro</title>
+</head>
+<body>
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="./assets/logo.png" alt="">
+        </a>
+    </div>
+
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="text-container">
+            <h5>comece agora</h5>
+            <h1>Crie uma conta</h1>
+            <p>Já tem conta? Faça <span>login.</span></p>
+        </div>
+        <div class="form">
+            <div class="input-line">
+                <input type="text" id="in_nome">
+                <input type="text" id="in_cargo">
+            </div>
+            <input type="text" id="in_email">
+            <input type="text" id="in_senha">
+            <button onclick="cadastrar()">CADASTRAR</button>
+            <div id="div_aguardar" class="loading-div">
+                
+            </div>
+            <div id="div_erros_login">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function cadastrar() {
+        aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = in_nome.value;
+        var cargoVar = in_cargo.value;
+        var emailVar = in_email.value;
+        var senhaVar = in_senha.value;
+
+        if (nomeVar == "" || cargoVar == "" || emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Preencha todos os campos corretamente!)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                cargoServer: cargoVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
