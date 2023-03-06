@@ -42,7 +42,7 @@ body {
 }
 
 .form-container {
-    max-width: 400px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +59,6 @@ body {
     justify-content: center;
     flex-direction: column;
     line-height: 35px;
-
 }
 
 .text-container h5 {
@@ -102,9 +101,8 @@ body {
 
 .input-field{
     position: relative;
-
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
 }
 
 .icon{
@@ -123,6 +121,13 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
+    transition: .1s ease;
+}
+
+#pass_eye:hover{
+    cursor: pointer;
+    background-color: #adadad0c;
+
 }
 
 label{
@@ -180,8 +185,8 @@ button:hover {
 .input-line {
     width: 100%;
     display: grid;
-    grid-template-columns: 45% 51%;
-    gap: 4%;
+    grid-template-columns: 45% 52%;
+    gap: 3%;
 }
 
 .progress{

@@ -25,6 +25,7 @@
         <div class="blur purple"></div>
       </div>
     </div>
+    
     <div class="logo-container">
       <a href="index.html">
         <img src="./assets/logo.png" alt="">
@@ -40,10 +41,28 @@
 
       <div class="form">
         <div class="input-line">
-          <input type="text" id="in_name">
-          <input type="text" id="in_office">
+
+          <!-- Nome input -->
+          <div class="input-field">
+            <input required type="text" id="in_email">
+            <label for="in_email">nome</label>
+            <div class="icon">
+              <i class="ph-user"></i>
+            </div>
+          </div>
+
+          <!-- Cargo input -->
+          <div class="input-field">
+            <input required type="text" id="in_email">
+            <label for="in_email">cargo</label>
+            <div class="icon">
+              <i class="ph-briefcase"></i>
+            </div>
+
+          </div>
         </div>
 
+        <!-- Email input -->
         <div class="input-field">
           <input required type="text" id="in_email">
           <label for="in_email">email</label>
@@ -52,14 +71,15 @@
           </div>
         </div>
 
+        <!-- Senha input -->
         <div class="input-field">
           <input required type="password" id="in_password">
           <label for="in_email">senha</label>
-          <div class="icon">
-            <i class="ph-eye"></i>
+          <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
+            <i class="ph-eye" id="ph-eye"></i>
           </div>
         </div>
-        
+
         <button onclick="signUp()">CADASTRAR</button>
       </div>
     </div>
@@ -75,8 +95,3 @@
 
 </html>
 
-<script>
-
-
-
-</script>

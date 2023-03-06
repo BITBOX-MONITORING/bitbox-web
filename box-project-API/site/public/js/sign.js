@@ -1,3 +1,4 @@
+// Enviando dados para o banco
 function signUp (){
 
     //JSON para guardar dados do usuário
@@ -44,6 +45,30 @@ function signUp (){
       });
     
       return false;    
+}
+
+// Função para alternar visisbilidade da senha
+let state = false
+function togglePassVisibility() {
+
+  const pass = document.getElementById("in_password")
+  
+  // Aqui capturamos o ícone do olhinho  -----------  Aqui trocamos sua classe para o olhinho fechado
+  const eyeIcon = document.getElementById("ph-eye").classList.toggle('ph-eye-slash')
+
+  // Quando o estado for verdadeiro, a senha continua oculta
+  // Logo o estado se torna falso.
+  if (state) {
+    pass.setAttribute('type', 'password')
+    state = false
+
+  // Quando o estado for falso, a senha se torna visível
+  // Logo o estado se torna verdadeiro.
+  } else {
+    pass.setAttribute('type', 'text')
+    state = true
+  }
+
 }
 
 // 🏗 Implementação fututra

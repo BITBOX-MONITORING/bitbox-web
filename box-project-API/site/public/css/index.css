@@ -241,7 +241,7 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 5rem;
 }
 
 .title {
@@ -277,19 +277,21 @@ a:hover {
 .card-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+
+  position: relative;
 
   border-radius: 1000px;
   height: 380px;
 }
 
 .card-content img {
-  width: 120px;
+  height: 120px;
   filter: saturate(0);
 
-  position: relative;
-  top: 3.5rem;
+  position: absolute;
+  top: 0;
   z-index: 1;
 
   transition: 0.3s ease;
@@ -297,10 +299,14 @@ a:hover {
 
 .card-content:hover img {
   filter: saturate(1);
-  width: 130px;
+  height: 130px;
 }
 
-.card-content:hover .card::before {
+.card-content:hover .card{
+  transform: translateY(10px);
+}
+
+.card::before {
   content: "";
   z-index: -1;
   position: absolute;
@@ -310,9 +316,13 @@ a:hover {
   left: 0;
   background: var(--gradient);
   filter: blur(30px);
-  opacity: var(0.5);
-  transition: opacity 1s ease;
+  opacity: 0;
   border-radius: inherit;
+  transition: .2s ease;
+}
+
+.card-content:hover .card::before {
+  opacity: .8;
 }
 
 .card::after {
@@ -331,18 +341,18 @@ a:hover {
   background: var(--smooth-gradient);
   backdrop-filter: blur(20px);
   border-radius: 10px;
-  height: 120px;
+  height: 150px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
-  padding: 5rem 2rem 3rem 2rem;
-  transition: 0.2s ease;
-  -webkit-transition: 0.2s ease;
-  -moz-transition: 0.2s ease;
-  -o-transition: 0.2s ease;
+  padding: 5rem 2rem 2rem 2rem;
+  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
 }
 
 .card p {
