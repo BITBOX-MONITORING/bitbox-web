@@ -6,3 +6,5 @@ window.addEventListener('scroll', function(){
 function redirectToLogin() {
     window.location.href = "sign-page.html"
 }
+
+

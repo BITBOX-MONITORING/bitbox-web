@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/index.css" />
 
   <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
   <script src="js/index.js"></script>
   <title>Bitscan</title>
 </head>
@@ -57,14 +58,14 @@
 
       <div class="hero-content">
         <div class="hero-text">
-          <h1>
+          <h1 class="revealGeneral">
             A segurança da sua <br />
             máquina é nossa <br />
             <span> responsabilidade.</span>
           </h1>
 
-          <a href="#working">
-            <button class="btn">
+          <a href="#working" >
+            <button class="btn revealGeneral">
               <i class="ph-rocket-launch"></i>
               Saiba mais
               <div class="fill"></div>
@@ -72,16 +73,16 @@
           </a>
         </div>
 
-        <div class="hero-img">
+        <div class="hero-img revealGeneral">
           <img src="./assets/cpu_hero.png" alt="" />
         </div>
       </div>
 
       <div class="benefits-content">
-        <div class="title">Vantagens</div>
+        <div class="title revealGeneral">Vantagens</div>
 
         <div class="box-cards">
-          <div class="card-content">
+          <div class="card-content revealCard">
             <img src="./assets/benefits-eficiencia.png" alt="" />
             <div class="card">
               <p>
@@ -92,7 +93,7 @@
             </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-content revealCard">
             <img src="./assets/benefits-custos.png" alt="" />
             <div class="card">
               <p>
@@ -102,7 +103,7 @@
             </div>
           </div>
 
-          <div class="card-content">
+          <div class="card-content revealCard">
             <img src="./assets/benefits-acertividade.png" alt="" />
             <div class="card">
               <p>
@@ -122,8 +123,8 @@
         <img src="./assets/dev-in-computer.png" alt="desenvolvedor" />
       </div>
       <div class="info">
-        <div class="title">Atuação</div>
-        <p>
+        <div class="title revealGeneral">Atuação</div>
+        <p class="revealGeneral">
           Agimos monitorando sua máquina para identificar problemas em potencial e evitar interrupções não planejadas,
           além de oferecer serviços adicionais, como monitoramento remoto e manutenção preditiva.
         </p>
@@ -151,9 +152,9 @@
     </section>
     
     <section id="team">
-      <div class="title">Equipe</div>
+      <div class="title revealHero">Equipe</div>
       <div class="team-container">
-        <div class="member">
+        <div class="member revealCard">
           <img src="./assets/modelo.jpg" alt="">
           <div class="member-info">
             <h2>Livia <b>Loiola</b></h2>
@@ -165,7 +166,7 @@
           </div>
 
         </div>
-        <div class="member">
+        <div class="member revealCard">
           <img src="./assets/member_Ruan.jpg" alt="">
           <div class="member-info">
             <h2>Ruan <b>Rodrigues</b></h2>
@@ -182,7 +183,7 @@
             </div>
           </div>
         </div>
-        <div class="member">
+        <div class="member revealCard">
           <img src="./assets/modelo.jpg" alt="">
           <div class="member-info">
             <h2>Matheus <b>Lessa</b></h2>
@@ -193,7 +194,7 @@
             </div>
           </div>
         </div>
-        <div class="member">
+        <div class="member revealCard">
           <img src="./assets/modelo.jpg" alt="">
           <div class="member-info">
             <h2>Thiago <b>Pequeno</b></h2>
@@ -204,7 +205,7 @@
             </div>
           </div>
         </div>
-        <div class="member">
+        <div class="member revealCard">
           <img src="./assets/modelo.jpg" alt="">
           <div class="member-info">
             <h2>Samuel <b>Mariano</b></h2>
@@ -215,7 +216,7 @@
             </div>
           </div>
         </div>
-        <div class="member">
+        <div class="member revealCard">
           <img src="./assets/modelo.jpg" alt="">
           <div class="member-info">
             <h2>Victor <b>Agusto</b></h2>
@@ -284,3 +285,26 @@
 </body>
 
 </html>
+
+<script>
+
+  // Guardando todos os elementos dentro de um vetor
+  const revealGeneral = document.querySelectorAll('.revealGeneral')
+  const revealCard = document.querySelectorAll('.revealCard')
+
+  // Animação geral
+  ScrollReveal().reveal(revealGeneral, {
+    duration: 1000,
+    distance: '5rem',
+    opacity: 0,
+  })
+
+  // Animação dos cards (Vantagens e equipe)
+  ScrollReveal().reveal(revealCard, {
+    duration: 1500,
+    distance: '10rem',
+    opacity: 0,
+    interval: 200
+  })
+
+</script>
