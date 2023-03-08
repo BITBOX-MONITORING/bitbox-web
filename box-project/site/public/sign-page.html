@@ -25,73 +25,107 @@
         <div class="blur purple"></div>
       </div>
     </div>
-    
+
     <div class="logo-container">
       <a href="index.html">
         <img src="./assets/logo.png" alt="">
       </a>
     </div>
 
-    <div class="form-container">
-      <div class="text-container">
-        <h5>comece agora</h5>
-        <h1>Crie uma conta</h1>
-        <p>Já tem conta? Faça <span>login.</span></p>
-      </div>
+    <div class="forms-content">
+      <div class="form-container login">
+        <div class="text-container">
+          <h1>Bem vindo</h1>
+          <p>Ainda não é cadastrado? crie sua <span onclick="mudarFormulario()">conta</span></p>
+        </div>
 
-      <div class="form">
-        <div class="input-line">
+        <div class="form">
+         
 
-          <!-- Nome input -->
+          <!-- Email input -->
           <div class="input-field">
             <input required type="text" id="in_email">
-            <label for="in_email">nome</label>
+            <label for="in_email">email</label>
             <div class="icon">
-              <i class="ph-user"></i>
+              <i class="ph-envelope-simple"></i>
             </div>
           </div>
 
-          <!-- Cargo input -->
+          <!-- Senha input -->
           <div class="input-field">
-            <input required type="text" id="in_email">
-            <label for="in_email">cargo</label>
-            <div class="icon">
-              <i class="ph-briefcase"></i>
+            <input required type="password" id="in_password">
+            <label for="in_email">senha</label>
+            <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
+              <i class="ph-eye" id="ph-eye"></i>
+            </div>
+          </div>
+
+          <button onclick="signUp()">ENTRAR</button>
+        </div>
+      </div>
+
+      <div class="form-container cadastro">
+        <div class="text-container">
+          <h5>comece agora</h5>
+          <h1>Crie uma conta</h1>
+          <p>Já tem conta? Faça <span>login.</span></p>
+        </div>
+
+        <div class="form">
+          <div class="input-line">
+
+            <!-- Nome input -->
+            <div class="input-field">
+              <input required type="text" id="in_email">
+              <label for="in_email">nome</label>
+              <div class="icon">
+                <i class="ph-user"></i>
+              </div>
             </div>
 
-          </div>
-        </div>
+            <!-- Cargo input -->
+            <div class="input-field">
+              <input required type="text" id="in_email">
+              <label for="in_email">cargo</label>
+              <div class="icon">
+                <i class="ph-briefcase"></i>
+              </div>
 
-        <!-- Email input -->
-        <div class="input-field">
-          <input required type="text" id="in_email">
-          <label for="in_email">email</label>
-          <div class="icon">
-            <i class="ph-envelope-simple"></i>
+            </div>
           </div>
-        </div>
 
-        <!-- Senha input -->
-        <div class="input-field">
-          <input required type="password" id="in_password">
-          <label for="in_email">senha</label>
-          <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
-            <i class="ph-eye" id="ph-eye"></i>
+          <!-- Email input -->
+          <div class="input-field">
+            <input required type="text" id="in_email">
+            <label for="in_email">email</label>
+            <div class="icon">
+              <i class="ph-envelope-simple"></i>
+            </div>
           </div>
-        </div>
 
-        <button onclick="signUp()">CADASTRAR</button>
+          <!-- Senha input -->
+          <div class="input-field">
+            <input required type="password" id="in_password">
+            <label for="in_email">senha</label>
+            <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
+              <i class="ph-eye" id="ph-eye"></i>
+            </div>
+          </div>
+
+          <button onclick="signUp()">CADASTRAR</button>
+        </div>
       </div>
     </div>
+   
 
-    <div class="progress">
+
+    <!-- <div class="progress">
       <div class="ball"></div>
       <div class="ball"></div>
       <div class="ball"></div>
-    </div>
+    </div> -->
   </main>
 
 </body>
 
 </html>
-
