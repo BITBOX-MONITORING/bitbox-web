@@ -1,4 +1,9 @@
-// Enviando dados para o banco
+// Função de login
+function signIn() {
+
+}
+
+// Função de cadastro
 let loginEmail
 let loginPass
 
@@ -95,8 +100,12 @@ function togglePassVisibility() {
 
   const pass = document.getElementById("in_password")
 
-  // Aqui capturamos o ícone do olhinho  -----------  Aqui trocamos sua classe para o olhinho fechado
-  const eyeIcon = document.getElementById("ph-eye").classList.toggle('ph-eye-slash')
+  // Aqui capturamos os ícones de olhinho
+  const eyeIcon = document.querySelectorAll(".ph-eye")
+  // Trocando a classe de ambos
+  for (let i = 0; i < eyeIcon.length; i++) {
+    eyeIcon[i].classList.toggle('ph-eye-slash')
+  }
 
   // Quando o estado for verdadeiro, a senha continua oculta
   // Logo o estado se torna falso.

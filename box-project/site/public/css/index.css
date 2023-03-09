@@ -99,7 +99,7 @@ a {
   height: 2px;
   border-radius: 100px;
   background: var(--gradient);
-  opacity: .5;
+  opacity: .8;
   transition: .2s ease;
 }
 
