@@ -32,19 +32,19 @@
       </a>
     </div>
 
-    <div class="forms-content">
-      <div class="form-container login">
+    <div class="form-container">
+      <div class="form-content login">
         <div class="text-container">
+          <h5>oi sumido</h5>
           <h1>Bem vindo</h1>
-          <p>Ainda não é cadastrado? crie sua <span onclick="mudarFormulario()">conta</span></p>
+          <p>Ainda não é cadastrado? Crie sua <span onclick="toggleFormVisibility()">conta</span></p>
         </div>
 
         <div class="form">
-         
 
           <!-- Email input -->
           <div class="input-field">
-            <input required type="text" id="in_email">
+            <input required type="text" id="in_email_login">
             <label for="in_email">email</label>
             <div class="icon">
               <i class="ph-envelope-simple"></i>
@@ -53,7 +53,7 @@
 
           <!-- Senha input -->
           <div class="input-field">
-            <input required type="password" id="in_password">
+            <input required type="password" id="in_password_login">
             <label for="in_email">senha</label>
             <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
               <i class="ph-eye" id="ph-eye"></i>
@@ -64,11 +64,11 @@
         </div>
       </div>
 
-      <div class="form-container cadastro">
+      <div class="form-content cadastro">
         <div class="text-container">
           <h5>comece agora</h5>
           <h1>Crie uma conta</h1>
-          <p>Já tem conta? Faça <span>login.</span></p>
+          <p>Já tem conta? Faça <span onclick="toggleFormVisibility()">login.</span></p>
         </div>
 
         <div class="form">
@@ -76,7 +76,7 @@
 
             <!-- Nome input -->
             <div class="input-field">
-              <input required type="text" id="in_name">
+              <input required type="text" id="in_name" maxlength="25">
               <label for="in_name">nome</label>
               <div class="icon">
                 <i class="ph-user"></i>
@@ -116,7 +116,7 @@
         </div>
       </div>
     </div>
-   
+
 
 
     <!-- <div class="progress">

@@ -1,4 +1,7 @@
 // Enviando dados para o banco
+let loginEmail
+let loginPass
+
 function signUp() {
 
   //JSON para guardar dados do usuário
@@ -9,6 +12,8 @@ function signUp() {
     passServer: in_password.value
   }
 
+  console.log(userBox);
+
   // Ao negar o atributo do JSON, conferimos se ele está vazio ou não
   let isInvalid = !userBox.nameServer ||
     !userBox.officeServer ||
@@ -17,6 +22,13 @@ function signUp() {
 
   if (isInvalid) {
     alert("⚠ Campos não preenchidos corretamente!")
+
+  } else {
+    loginEmail = userBox.emailServer
+    loginPass = userBox.passServer
+
+    localStorage.setItem("email", loginEmail)
+    localStorage.setItem("senha", loginPass)
   }
 
   fetch("/usuarios/cadastrar", {
@@ -34,7 +46,7 @@ function signUp() {
     if (resposta.ok) {
 
       setTimeout(() => {
-        window.location = "login.html";
+        window.location = "sign.html";
       }, "2000")
 
     } else {
@@ -47,36 +59,38 @@ function signUp() {
   return false;
 }
 
-let estado = false;
-function mudarFormulario() {
+// Função para alternar visibilidade entre formulários de login e cadastro
+let formState = false;
+function toggleFormVisibility() {
+  const formLogin = document.querySelector(".login")
+  const formCadastro = document.querySelector(".cadastro")
 
-  const loginform = document.querySelector(".login")
-  const cadastroform = document.querySelector(".cadastro")
+  // Setando estilizações de visibilidade
+  const styleVisibleForm = "z-index: 1; opacity: 1; animation: fadeIn 1s ease"
+  const styleInvisibleForm = "z-index: -1; opacity: 0; animation: none"
 
+  if (!formState) {
+    formLogin.style = styleInvisibleForm
+    formCadastro.style = styleVisibleForm
 
-  if (estado) {
-
-    loginform.style = "opacity:0; z-index:-1;"
-    cadastroform.style = "opacity:1;  animation: fadeIn .8s ease ; z-index:1;"
-    estado=false;
-    console.log("if")
-
+    formState = true;
   }
+
   else {
+    // Retorna dados do cadastro automaticamente
+    // in_email_login.value = localStorage.getItem("email")
+    // in_password_login.value = localStorage.getItem("senha")
 
-    cadastroform.style = "opacity:0;  animation: fadeIn .8s ease ; z-index:-1;"
-    loginform.style = "opacity:1; z-index:1;"
-    estado=true;
-    console.log("ELSE");
+    formCadastro.style = styleInvisibleForm
+    formLogin.style = styleVisibleForm
+
+    formState = false;
   }
-
-
-
 
 }
 
 // Função para alternar visisbilidade da senha
-let state = false
+let passState = false
 function togglePassVisibility() {
 
   const pass = document.getElementById("in_password")
@@ -86,20 +100,18 @@ function togglePassVisibility() {
 
   // Quando o estado for verdadeiro, a senha continua oculta
   // Logo o estado se torna falso.
-  if (state) {
+  if (passState) {
     pass.setAttribute('type', 'password')
-    state = false
+    passState = false
 
     // Quando o estado for falso, a senha se torna visível
     // Logo o estado se torna verdadeiro.
   } else {
     pass.setAttribute('type', 'text')
-    state = true
+    passState = true
   }
 
 }
-
-
 
 // 🏗 Implementação fututra
 function emManutençãokkkk() {
