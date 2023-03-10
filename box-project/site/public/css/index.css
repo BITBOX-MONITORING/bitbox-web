@@ -31,12 +31,11 @@ main {
 
 header {
   width: 80%;
-  max-width: 1200px;
-  background: #a8a61d00;
+  background: #a8a61dfa;
 
   display: grid;
   grid-template-columns: 200px 400px 200px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 8rem;
 
@@ -62,6 +61,10 @@ header.sticky {
 
 header.sticky .container-logo img {
   width: 100px;
+}
+
+.container-logo{
+  background-color: #3b1da8 ;
 }
 
 .container-logo img {

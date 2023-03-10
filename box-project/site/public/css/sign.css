@@ -21,7 +21,6 @@ main {
   justify-content: flex-start;
   align-items: center;
   gap: 3rem;
-  padding: 3rem 0;
 }
 
 body {
@@ -35,6 +34,8 @@ body {
   align-items: center;
   justify-content: center;
   transition: .2s ease;
+  padding-top: 3rem;
+
 }
 
 .logo-container img {

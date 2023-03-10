@@ -98,7 +98,8 @@ function toggleFormVisibility() {
 let passState = false
 function togglePassVisibility() {
 
-  const pass = document.getElementById("in_password")
+  const passSignUp = document.getElementById("in_password")
+  const passSignIn = document.getElementById("in_password_login")
 
   // Aqui capturamos os ícones de olhinho
   const eyeIcon = document.querySelectorAll(".ph-eye")
@@ -110,13 +111,15 @@ function togglePassVisibility() {
   // Quando o estado for verdadeiro, a senha continua oculta
   // Logo o estado se torna falso.
   if (passState) {
-    pass.setAttribute('type', 'password')
+    passSignUp.setAttribute('type', 'password')
+    passSignIn.setAttribute('type', 'password')
     passState = false
 
     // Quando o estado for falso, a senha se torna visível
     // Logo o estado se torna verdadeiro.
   } else {
-    pass.setAttribute('type', 'text')
+    passSignUp.setAttribute('type', 'text')
+    passSignIn.setAttribute('type', 'text')
     passState = true
   }
 
