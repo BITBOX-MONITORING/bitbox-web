@@ -28,17 +28,15 @@ main {
   flex-direction: column;
 }
 
-
 header {
   width: 80%;
   display: grid;
-  grid-template-columns: 200px 400px 200px;
+  grid-template-columns: 25% 40% 25%;
   justify-content: space-between;
   align-items: center;
-  gap: 8rem;
+  gap: 5%;
 
   transition: .5s ease;
-  
 }
 
 header.sticky {
@@ -61,10 +59,14 @@ header.sticky .container-logo img {
   width: 100px;
 }
 
+.container-logo{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 
 .container-logo img {
-  width: 100%;
-  
+  width: 60%;
 }
 
 nav {
@@ -149,9 +151,7 @@ a:hover {
   
   margin-bottom: 5rem;
   transition: .2s;
- 
 }
-
 
 .hero-img {
   width: 50%;
@@ -161,8 +161,6 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  
 }
 
 .hero-img img {
@@ -196,6 +194,7 @@ a:hover {
 }
 
 .hero-text h1 {
+  width: 90%;
   line-height: 110%;
   font-size: 3rem;
   color: var(--light);
@@ -234,50 +233,48 @@ a:hover {
   background-color: var(--yellow);
   color: var(--bg-color);
   width: 40%;
-  
 }
 
 .btn:hover i {
   transform: rotate(360deg);
 }
 
-#menu{
+#small-login{
   display: none;
+  background-color: #adadad15;
+  color: #f5e65b;
+
+  width: 12px;
+  height: 10px;
+  padding: 8px;
+
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+#small-login:hover{
+  background-color: var(--yellow);
+  color: var(--bg-color);
 }
 
 
 @media screen and (max-width: 720px){
   header{
     margin-bottom: 2rem;
-    background-color: #ADADAD;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .container-menu{
-    background-color: #0d0d0d;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  header.sticky{
+    display: none;
   }
 
-  .topic-menu{
-    width: 300px;
-    padding: 2rem;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #3b1da8;
-  }
-
+ 
   .container-logo img{
     width: 80px;
   }
-  
   
   .hero-content{
     flex-direction: column-reverse;
@@ -288,11 +285,12 @@ a:hover {
   .hero-text{
     text-align: center;
     align-items: center;
-    min-width: 80%;
+    width: 90%;
   }
 
   .hero-text h1{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    width: 100%;
   }
 
   .hero-img{
@@ -305,11 +303,12 @@ a:hover {
   }
 
   .btn{
-    width: 100px;
-    font-size: .5rem;
-  }
-  .btn:hover{
     width: 120px;
+    font-size: .7rem;
+  }
+
+  .btn:hover{
+    width: 130px;
   }
 
   nav, 
@@ -317,8 +316,10 @@ a:hover {
     display: none;
   }
 
-  #menu{
+  #small-login{
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 }
@@ -432,6 +433,7 @@ a:hover {
   backdrop-filter: blur(20px);
   border-radius: 10px;
   height: 150px;
+  max-height: 200px;
 
   display: flex;
   flex-direction: column;
@@ -448,8 +450,45 @@ a:hover {
 .card p {
   color: white;
   font-weight: 200;
-  line-height: 25px;
-  font-size: 1rem;
+  line-height: 150%;
+  font-size: 100%;
+}
+
+@media screen and (max-width: 720px) {
+  .title{
+    font-size: 1rem;
+  }
+
+  .box-cards{
+    overflow-y: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+
+    grid-template-columns: 250px 250px 250px;
+  }
+  
+  .card-content{
+    scroll-snap-align: center;
+  }
+
+  .card-content img{
+    height: 100px;
+    top: 1rem;
+  }
+
+  .card-content:hover img{
+    height: 110px;
+  }
+
+  .card{
+    height: 180px;
+  }
+
+  .card p {
+    text-align: center;
+    font-size: 1rem;
+  }
+
 }
 
 /* --- Atuaçao ---*/
@@ -461,7 +500,6 @@ a:hover {
   align-items: center;
   margin-bottom: 5rem;
   padding: 5rem 0 2rem 0;
-
 }
 
 #working .bar {
@@ -469,6 +507,13 @@ a:hover {
   height: 400px;
   border-radius: 100px;
   padding: 0.3rem;
+}
+
+.container-working{
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container-img {
@@ -482,7 +527,7 @@ a:hover {
 }
 
 .container-img img {
-  width: 400px;
+  width: 140%;
   position: relative;
   top: 1px;
   animation: side-move 5s infinite ease-in-out;
@@ -503,7 +548,7 @@ a:hover {
 }
 
 .info {
-  width: 35%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -515,6 +560,33 @@ a:hover {
   color: var(--light);
   font-size: 1.5rem;
   font-weight: 200;
+}
+
+@media screen and (max-width: 720px) {
+  .container-working{
+    width: 80%;
+    flex-direction: column-reverse;
+    gap: 5rem;
+  }
+
+  .container-img{
+    height: 100px;
+    width: 100%;
+  }
+
+  .container-img img{
+    width: 150px;
+  }
+
+  .info{
+    text-align: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .info p{
+    font-size: 1rem;
+  }
 }
 
 /* --- Services --- */
@@ -774,3 +846,10 @@ footer {
 .copyright .content {
   padding: 2rem 0;
 }
+
+@media screen and (max-width: 720px) {
+  .title{
+    font-size: 1rem;
+  }
+}
+
