@@ -50,13 +50,17 @@ header.sticky {
   justify-content: space-around;
   gap: 4rem;
 
-  padding: 1rem 0;
+  height: 80px;
   border-radius: 0 0 5px 5px;
 
 }
 
 header.sticky .container-logo img {
   width: 100px;
+}
+
+header.sticky .login-button button {
+  width: 50%;
 }
 
 .container-logo{
@@ -66,7 +70,7 @@ header.sticky .container-logo img {
 }
 
 .container-logo img {
-  width: 60%;
+  width: 50%;
 }
 
 nav {
@@ -120,7 +124,7 @@ a:hover {
 }
 
 .login-button button {
-  width: 50%;
+  width: 40%;
   background-color: transparent;
   color: var(--yellow);
   font-weight: 400;
@@ -601,7 +605,7 @@ a:hover {
 
 .service-content {
   width: 80%;
-  height: 300px;
+  height: 350px;
   background: var(--smooth-gradient);
   border: 1px solid rgba(128, 128, 128, 0.4);
   border-radius: 10px;
@@ -614,23 +618,26 @@ a:hover {
 }
 
 .services-info {
+  width: 50%;
+  height: 100%;
+  padding: 2rem 0 2rem 3rem;
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
   gap: 1rem;
-  width: 40%;
 }
 
 .services-info p {
   color: var(--light);
   font-size: 1.2rem;
   font-weight: 200;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
-.service-content img {
-  width: 500px;
+.service-content #dash-img {
+  height: 500px;
 }
 
 .services-info img {
@@ -638,13 +645,13 @@ a:hover {
 }
 
 .btn-services {
-  width: 45%;
+  width: 50%;
   color: var(--bg-color);
   background-color: var(--yellow);
 }
 
 .btn-services:hover {
-  width: 50%;
+  width: 55%;
   background-color: var(--purple);
   color: var(--light);
 }
@@ -772,6 +779,10 @@ footer {
   align-items: flex-start;
   gap: 2rem;
   padding: 5rem 0;
+}
+
+.content img{
+  width: 150px;
 }
 
 .topics-content {
