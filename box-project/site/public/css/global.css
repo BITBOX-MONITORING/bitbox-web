@@ -1,115 +1,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600&display=swap');
 
 :root {
-	--bg-color: #0d0d0d;
-	--yellow: #f5e65b;
-	--purple: #3b1da8;
-	--light: #ffface;
-	--gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
-	--smooth-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);
-	--card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
-	--bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
-  }
+  --bg-color: #0d0d0d;
+  --yellow: #f5e65b;
+  --purple: #3b1da8;
+  --light: #ffface;
+  --gradient: linear-gradient(15deg, rgba(245, 230, 91, 1) 0%, rgba(59, 29, 168, 1) 100%);
+  --smooth-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);
+  --card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
+  --bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
+}
 
-  ::-webkit-scrollbar {
-	background-color: #2d2c2c;
-	width: 5px;
+::-webkit-scrollbar {
+  background-color: #2d2c2c;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #F5E65B;
-	border-radius: 1px;
+  background-color: #F5E65B;
+  border-radius: 1px;
 }
 
-.blur-effects{
-	width: 100%;
-	max-width: 1920px;
-	position: absolute;
-	z-index: -1000;
+main {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: hidden;
+}
 
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	overflow: hidden;
+.blur-effects {
+  width: 100%;
+  max-width: 1920px;
+  position: absolute;
+  z-index: -1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: hidden;
 
 }
 
-.side{
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	gap: 50rem;
+.side {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 50rem;
 }
 
-.blur{
-	position: relative;
-	opacity: .5;
-	width: 400px;
-	height: 400px;
-	border-radius: 50%;
-	filter: blur(200px);
+.blur {
+  position: relative;
+  opacity: .5;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(200px);
 }
 
-.blur.yellow{
-	background-color: var(--yellow);
+.blur.yellow {
+  background-color: var(--yellow);
 }
 
-.blur.purple{
-	background-color: var(--purple);
+.blur.purple {
+  background-color: var(--purple);
 }
 
-.side.right{
-	padding-top: 40rem;
+.side.right {
+  padding-top: 40rem;
 }
 
 .side.left .blur:nth-child(1),
 .side.left .blur:nth-child(2),
-.side.left .blur:nth-child(3){
-	right: 10rem;
-	bottom: 10rem;
+.side.left .blur:nth-child(3) {
+  right: 10rem;
+  bottom: 10rem;
 }
-
-
 
 .side.right .blur:nth-child(1),
 .side.right .blur:nth-child(2),
-.side.right .blur:nth-child(3){
-	position: relative;
-	bottom: 10rem;
-	left: 10rem;
+.side.right .blur:nth-child(3) {
+  position: relative;
+  bottom: 10rem;
+  left: 10rem;
 }
 
 
-
+@media screen and (max-width: 720px) {
+  .blur {
+    width: 200px;
+    height: 200px;
+  }
+}
 
 /* Limpando CSS */
 * {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
 
-	list-style: none;
-	text-decoration: none;
+  list-style: none;
+  text-decoration: none;
 
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-	font-family: Kanit, sans-serif;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: Kanit, sans-serif;
 
-	user-select: none;
-	scroll-behavior: smooth;
+  user-select: none;
+  scroll-behavior: smooth;
 }
 
 a {
-	transition: .2s ease;
+  transition: .2s ease;
 }
 
 body {
-	font-family: Kanit, sans-serif;
-	background-color: var(--bg-color);
-	overflow-x: hidden;
+  font-family: Kanit, sans-serif;
+  background-color: var(--bg-color);
+  overflow-x: hidden;
 }
 
 article,
@@ -123,33 +133,33 @@ hgroup,
 menu,
 nav,
 section {
-	display: block;
+  display: block;
 }
 
 button {
-	cursor: pointer;
-	transition: .2s ease;
+  cursor: pointer;
+  transition: .2s ease;
 }
 
 ol,
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-	quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
