@@ -182,7 +182,7 @@ button {
   outline: 1px solid #a0a0a07a;
   border-radius: 5px;
   padding: .8rem .8rem .3rem .8rem;
-  transition: .1s ease;
+  transition: .5s ease;
 }
 
 input:focus {

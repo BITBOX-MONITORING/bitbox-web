@@ -1,6 +1,46 @@
 // Função de login
 function signIn() {
+}
 
+// Verificar se email possui caracteres "@" e "."
+function validateEmail() {
+  let email = in_email.value
+  let inputEmail = document.getElementById('in_email')
+
+  for (let i = 0; i < 2; i++) {
+    let validEmail = ["@", "."]
+
+    if (email.length > 1 && email.indexOf(validEmail[i]) < 0 && email.length < 10) {
+      inputEmail.style = "outline: 1px solid #df2222"
+    }
+    else {
+      inputEmail.style = "outline: 1px solid #a0a0a07a"
+    }
+
+    console.log(email.length);
+  }
+}
+
+// Validação de senha
+function validatePass() {
+  let pass = in_password.value
+  let inputPass = document.getElementById('in_password')
+
+  // regex - Expressão regular - identifica padrões dentro da string
+  let hasUpper = /[A-Z]/.test(pass)
+  let hasNumber = /[0-9]/.test(pass);
+  let hasSpecialChar = /[^a-zA-Z0-9]/g.test(pass)
+
+  let noSpace = pass.replace(/\s/g, "")
+
+  let validPass = hasUpper && hasNumber && hasSpecialChar && pass.length >= 8;
+
+  if (!validPass) {
+    inputPass.style = "outline: 1px solid #df2222"
+  }
+  else{
+    inputPass.style = "outline: 1px solid #a0a0a07a"
+  }
 }
 
 // Função de cadastro

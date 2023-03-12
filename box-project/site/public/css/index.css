@@ -8,7 +8,6 @@
   --smooth-gradient: linear-gradient(37.5deg, rgba(205, 194, 91, 0.2) 0%, rgba(59, 29, 168, 0.2) 100%);
   --card-hover-gradient: linear-gradient(15deg, rgba(245, 230, 91, 0.6) 0%, rgba(59, 29, 168, 0.6) 100%);
   --bar-gradient: linear-gradient(71.38deg, rgba(74, 48, 147, 0.5) 0%, rgba(245, 230, 91, 0.5) 147.42%);
-
 }
 
 /* --- Hero - Sessão inicial do site --- */
@@ -229,7 +228,7 @@ a:hover {
 .btn:hover {
   background-color: var(--yellow);
   color: var(--bg-color);
-  width: 40%;
+  width: 220px;
 }
 
 .btn:hover i {
@@ -638,7 +637,7 @@ a:hover {
 }
 
 .services-info img {
-  width: 50%;
+  width: 35%;
 }
 
 .btn-services {

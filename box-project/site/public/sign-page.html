@@ -96,7 +96,7 @@
 
           <!-- Email input -->
           <div class="input-field">
-            <input required type="text" id="in_email">
+            <input required type="text" id="in_email" onkeyup="validateEmail()">
             <label for="in_email">email</label>
             <div class="icon">
               <i class="ph-envelope-simple"></i>
@@ -105,8 +105,8 @@
 
           <!-- Senha input -->
           <div class="input-field">
-            <input required type="password" id="in_password">
-            <label for="in_password">senha</label>
+            <input required type="password" id="in_password" onkeyup="validatePass()">
+            <label for="in_password" >senha</label>
             <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
               <i class="ph-eye" id="ph-eye"></i>
             </div>
