@@ -49,11 +49,10 @@ Projeto tem parte do backend estruturado em Java
             <td align="center">
                 <a href="https://github.com/helloWorldRuan/bitbox/tree/main/bitbox-site">
                     <img width="300px"
-                        src="https://repository-images.githubusercontent.com/606528493/03a75bf7-30fd-456a-9f62-df2eb9028b26" />
+                        src="https://repository-images.githubusercontent.com/606528493/a1b67fcb-d85e-4b3a-9558-6e13746dad14" />
                     </a>
             </td>
         </tr>
-
         <tr>
             <td align="center">02</td>
             <td align="center">
@@ -67,6 +66,5 @@ Projeto tem parte do backend estruturado em Java
                     </a>
             </td>
         </tr>
-
     </tbody>
 </table>
