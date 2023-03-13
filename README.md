@@ -62,7 +62,7 @@ Projeto tem parte do backend estruturado em Java
             <td align="center">
                 <a href="https://github.com/helloWorldRuan/bitbox/tree/main/projetos-java">
                     <img width="300px"
-                        src="https://www.linkpicture.com/q/java_preview.png" />
+                        src="https://fv2-3.failiem.lv/thumb_show.php?i=qbg6hehj2&view" />
                     </a>
             </td>
         </tr>
