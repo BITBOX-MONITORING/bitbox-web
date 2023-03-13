@@ -8,12 +8,13 @@ function validateEmail() {
   let inputEmail = document.getElementById('in_email')
 
   for (let i = 0; i < 2; i++) {
-    let validEmail = ["@", "."]
+    let validEmail =  email.indexOf("@") < 0 || email.indexOf(".") < 0 || email.length < 10 
 
-    if (email.length > 1 && email.indexOf(validEmail[i]) < 0 && email.length < 10) {
+    if(validEmail) {
       inputEmail.style = "outline: 1px solid #df2222"
     }
-    else {
+
+    if(email.length == 0 || !validEmail) {
       inputEmail.style = "outline: 1px solid #a0a0a07a"
     }
 
@@ -33,12 +34,15 @@ function validatePass() {
 
   let noSpace = pass.replace(/\s/g, "")
 
-  let validPass = hasUpper && hasNumber && hasSpecialChar && pass.length >= 8;
+  let validPass = hasUpper && hasNumber && hasSpecialChar && pass.length > 1 && pass.length >= 8;
+
+  console.log(validPass)
 
   if (!validPass) {
     inputPass.style = "outline: 1px solid #df2222"
   }
-  else{
+  
+  if(pass.length == 0 || validPass){
     inputPass.style = "outline: 1px solid #a0a0a07a"
   }
 }
