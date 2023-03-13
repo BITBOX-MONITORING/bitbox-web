@@ -62,7 +62,7 @@ header.sticky .login-button button {
 }
 
 .container-logo img {
-  width: 50%;
+  width: 45%;
 }
 
 nav {
@@ -392,6 +392,10 @@ a:hover {
   transform: translateY(10px);
 }
 
+.card-content:hover .card h1{
+  color: white;
+}
+
 .card::before {
   content: "";
   z-index: -1;
@@ -427,19 +431,28 @@ a:hover {
   background: var(--smooth-gradient);
   backdrop-filter: blur(20px);
   border-radius: 10px;
-  height: 150px;
+  height: 160px;
   max-height: 200px;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  gap: .5rem;
 
   padding: 5rem 2rem 2rem 2rem;
   transition: 0.3s ease;
   -webkit-transition: 0.3s ease;
   -moz-transition: 0.3s ease;
   -o-transition: 0.3s ease;
+}
+
+.card h1 {
+  font-size: 1rem;
+  color: #ADADAD;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: .2s ease;
 }
 
 .card p {
@@ -468,7 +481,7 @@ a:hover {
 
   .card-content img {
     height: 100px;
-    top: 1rem;
+    top: 0;
   }
 
   .card-content:hover img {
@@ -477,11 +490,14 @@ a:hover {
 
   .card {
     height: 180px;
+    align-items: center;
+    height: 200px;
+    padding: 2rem 1rem 0 1rem;
   }
 
   .card p {
     text-align: center;
-    font-size: 1rem;
+    font-size: .9rem;
   }
 
 }
@@ -637,13 +653,14 @@ a:hover {
 }
 
 .services-info img {
-  width: 35%;
+  width: 30%;
 }
 
 .btn-services {
   min-width: 50%;
   color: var(--bg-color);
   background-color: var(--yellow);
+  transition: .2s ease;
 }
 
 .btn-services:hover {
@@ -815,15 +832,15 @@ a:hover {
     height: 45px;
   }
 
-  .member-info h2{
+  .member-info h2 {
     font-size: .8rem;
   }
 
-  .member-info .social{
+  .member-info .social {
     width: 30%;
   }
 
-  .member-info .social i{
+  .member-info .social i {
     font-size: .8rem;
   }
 }
@@ -877,9 +894,10 @@ footer {
 
 .topics .topic {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: .5rem;
 
   font-weight: 200;
 }
@@ -931,35 +949,36 @@ footer {
     font-size: 1rem;
   }
 
-  .content{
+  .content {
     align-items: center;
     padding: 2rem 0;
     width: 90%;
   }
 
-  .content #logo{
+  .content #logo {
     width: 100px;
   }
 
-  .topics-content{
+  .topics-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .topics{
+  .topics {
     align-items: center;
     gap: .5rem;
   }
- 
-  .topics .topic{
+
+  .topics .topic {
+    align-items: center;
     justify-content: center;
   }
 
-  .topics .social{
+  .topics .social {
     padding: .8rem;
   }
 
-  .copyright{
+  .copyright {
     font-size: .8rem;
     justify-content: center;
     text-align: center;
