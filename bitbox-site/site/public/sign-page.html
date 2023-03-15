@@ -42,6 +42,8 @@
 
         <div class="form">
 
+
+
           <!-- Email input -->
           <div class="input-field">
             <input required type="text" id="in_email_login">
@@ -105,7 +107,7 @@
 
           <!-- Senha input -->
           <div class="input-field">
-            <input required type="password" id="in_password" onkeyup="validatePass()">
+            <input required type="password" id="in_password" onkeyup="validatePass()" onkeydown="mostrarCriterioSenha()">
             <label for="in_password" >senha</label>
             <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
               <i class="ph-eye" id="ph-eye"></i>
@@ -113,6 +115,13 @@
           </div>
 
           <button onclick="signUp()">CADASTRAR</button>
+
+          <div class="pass-info">
+              <div class="criterio">
+                <div class="bar-progress"></div>
+                <h2>Caractere maiúsculo</h2>
+              </div>
+          </div>
         </div>
       </div>
     </div>

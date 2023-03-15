@@ -8,13 +8,13 @@ function validateEmail() {
   let inputEmail = document.getElementById('in_email')
 
   for (let i = 0; i < 2; i++) {
-    let validEmail =  email.indexOf("@") < 0 || email.indexOf(".") < 0 || email.length < 10 
+    let validEmail = email.indexOf("@") < 0 || email.indexOf(".") < 0 || email.length < 10
 
-    if(validEmail) {
+    if (validEmail) {
       inputEmail.style = "outline: 1px solid #df2222"
     }
 
-    if(email.length == 0 || !validEmail) {
+    if (email.length == 0 || !validEmail) {
       inputEmail.style = "outline: 1px solid #a0a0a07a"
     }
 
@@ -27,12 +27,27 @@ function validatePass() {
   let pass = in_password.value
   let inputPass = document.getElementById('in_password')
 
+  var senha = in_password.value
+  var divSenha = document.querySelector('.pass-info')
+  var barProgress = document.querySelectorAll(".bar-progress")
+
+  if (senha.length > 0) {
+    divSenha.style = "opacity: 1"
+
+  } else{
+    divSenha.style = "opacity: 0"
+  }
+
   // regex - Expressão regular - identifica padrões dentro da string
   let hasUpper = /[A-Z]/.test(pass)
   let hasNumber = /[0-9]/.test(pass);
   let hasSpecialChar = /[^a-zA-Z0-9]/g.test(pass)
 
   let noSpace = pass.replace(/\s/g, "")
+
+  if (hasUpper){
+    barProgress[0].style = "width: 30px; background-color: #aaa"
+  }
 
   let validPass = hasUpper && hasNumber && hasSpecialChar && pass.length > 1 && pass.length >= 8;
 
@@ -41,8 +56,8 @@ function validatePass() {
   if (!validPass) {
     inputPass.style = "outline: 1px solid #df2222"
   }
-  
-  if(pass.length == 0 || validPass){
+
+  if (pass.length == 0 || validPass) {
     inputPass.style = "outline: 1px solid #a0a0a07a"
   }
 }
@@ -168,6 +183,10 @@ function togglePassVisibility() {
   }
 
 }
+
+
+
+
 
 // 🏗 Implementação fututra
 function emManutençãokkkk() {
