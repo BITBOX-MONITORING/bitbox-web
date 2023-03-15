@@ -6,17 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png">
+  <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+
   <link rel="stylesheet" href="css/global.css" />
   <link rel="stylesheet" href="css/sign.css">
 
   <script src="https://unpkg.com/phosphor-icons"></script>
   <script src="js/sign.js"></script>
-  <title>Cadastro</title>
+
+  <title>Acesso</title>
 </head>
 
 <body>
 
   <main>
+
     <div class="blur-effects">
       <div class="side left">
         <div class="blur yellow"></div>
@@ -107,8 +114,8 @@
 
           <!-- Senha input -->
           <div class="input-field">
-            <input required type="password" id="in_password" onkeyup="validatePass()" onkeydown="mostrarCriterioSenha()">
-            <label for="in_password" >senha</label>
+            <input required type="password" id="in_password" onkeyup="validatePass()">
+            <label for="in_password">senha</label>
             <div class="icon" id="pass_eye" onclick="togglePassVisibility()">
               <i class="ph-eye" id="ph-eye"></i>
             </div>
@@ -116,22 +123,44 @@
 
           <button onclick="signUp()">CADASTRAR</button>
 
-          <div class="pass-info">
-              <div class="criterio">
-                <div class="bar-progress"></div>
+          <div class="pass-parameter">
+            <p>Senha deve ter no mínimo 8 caracteres</p>
+
+            <div class="container">
+              <div class="parameter">
+                <div class="box-progress">
+                  <div class="bar-progress"></div>
+                </div>
                 <h2>Caractere maiúsculo</h2>
               </div>
+
+              <div class="parameter">
+                <div class="box-progress">
+                  <div class="bar-progress"></div>
+                </div>
+                <h2>Caractere minúsculo</h2>
+              </div>
+
+              <div class="parameter">
+                <div class="box-progress">
+                  <div class="bar-progress"></div>
+                </div>
+                <h2>Caractere numérico</h2>
+              </div>
+
+              <div class="parameter">
+                <div class="box-progress">
+                  <div class="bar-progress"></div>
+                </div>
+                <h2>Caractere especial</h2>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
 
-
-    <!-- <div class="progress">
-      <div class="ball"></div>
-      <div class="ball"></div>
-      <div class="ball"></div>
-    </div> -->
   </main>
 
 </body>

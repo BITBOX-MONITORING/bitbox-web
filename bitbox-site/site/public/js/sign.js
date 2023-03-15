@@ -24,42 +24,52 @@ function validateEmail() {
 
 // Validação de senha
 function validatePass() {
-  let pass = in_password.value
-  let inputPass = document.getElementById('in_password')
 
-  var senha = in_password.value
-  var divSenha = document.querySelector('.pass-info')
-  var barProgress = document.querySelectorAll(".bar-progress")
+  // Ignorando teclas de controle
+  const ignoreKeys = ["CapsLock", "Tab"]
 
-  if (senha.length > 0) {
-    divSenha.style = "opacity: 1"
-
-  } else{
-    divSenha.style = "opacity: 0"
+  if (ignoreKeys.includes(event.key)) {
+    return
   }
 
-  // regex - Expressão regular - identifica padrões dentro da string
-  let hasUpper = /[A-Z]/.test(pass)
-  let hasNumber = /[0-9]/.test(pass);
-  let hasSpecialChar = /[^a-zA-Z0-9]/g.test(pass)
+  const pass = in_password.value
+  const inputPass = document.getElementById('in_password')
+  const divSenha = document.querySelector('.pass-parameter')
 
-  let noSpace = pass.replace(/\s/g, "")
+  // Regex (Expressão regular) - identifica padrões dentro da string
+  const hasLower = /[a-z]/.test(pass)
+  const hasUpper = /[A-Z]/.test(pass)
+  const hasNumber = /[0-9]/.test(pass);
+  const hasSpecialChar = /[^a-zA-Z0-9]/g.test(pass)
+  const noSpace = pass.replace(/\s/g, "")
 
-  if (hasUpper){
-    barProgress[0].style = "width: 30px; background-color: #aaa"
-  }
+  updateBarProgress(hasUpper, 0)
+  updateBarProgress(hasLower, 1)
+  updateBarProgress(hasNumber, 2)
+  updateBarProgress(hasSpecialChar, 3)
 
-  let validPass = hasUpper && hasNumber && hasSpecialChar && pass.length > 1 && pass.length >= 8;
-
-  console.log(validPass)
+  const validPass = hasLower && hasUpper && hasNumber && hasSpecialChar && pass.length >= 8;
 
   if (!validPass) {
     inputPass.style = "outline: 1px solid #df2222"
+    divSenha.style = "opacity: 1; width: 335px; z-index: 1"
   }
 
   if (pass.length == 0 || validPass) {
     inputPass.style = "outline: 1px solid #a0a0a07a"
+    divSenha.style = "opacity: 0; width: 0; background-color: #5bf575; z-index: -1"
   }
+}
+
+// Função para confirmar caracteres exigidos na senha
+function updateBarProgress(isValid, index) {
+  const barProgress = document.querySelectorAll(".bar-progress")
+  const validStyle = "width: 30px; background-color: #5bf575"
+  const invalidStyle = "width: 5px; background-color: #df2222"
+
+  const bar = barProgress[index]
+  const style = isValid ? validStyle : invalidStyle
+  bar.style = style
 }
 
 // Função de cadastro
@@ -110,7 +120,7 @@ function signUp() {
     if (resposta.ok) {
 
       setTimeout(() => {
-        window.location = "sign.html";
+        window.location = "sign-page.html";
       }, "2000")
 
     } else {
@@ -183,9 +193,6 @@ function togglePassVisibility() {
   }
 
 }
-
-
-
 
 
 // 🏗 Implementação fututra

@@ -205,46 +205,67 @@ button:hover {
   font-weight: 400;
 }
 
-.pass-info{
-  background-color: var(--bg-color);
+.pass-parameter{
+  background-color: #3a3a3a48;
   color: var(--light);
-  font-weight: 200;
+  border: 1px solid #adadad25;
+  backdrop-filter: blur(10px);
+  height: 100px;
+  z-index: -1;
+  overflow: hidden;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-weight: 200;
+  font-size: .8rem;
+
+  display: grid;
+  place-items: center;
   gap: 1rem;
 
   position: absolute;
-  right: -25rem;
+  top: 5rem;
 
   padding: 2rem;
   border-radius: 5px;
-
   opacity: 0;
-  transition: 1s ease;
+  transition: .5s ease;
 }
 
-.criterio{
+.pass-parameter p{
+  font-size: .7rem;
+}
+
+.pass-parameter .container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+
+.parameter{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem;
+}
+
+.box-progress{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  color: #5bf575;
 }
 
 .bar-progress {
-  width: 10px;
-  height: 10px;
+  background: #df2222;
+  width: 5px;
+  height: 5px;
   border-radius: 50px;
-  border: 1px solid gray;
   cursor: pointer;
   transition: .2s ease;
 } 
 
-
 @media screen and (max-width: 720px) {
-
   .form-content,
   .logo-container {
     max-width: 70%;
@@ -253,5 +274,14 @@ button:hover {
   .input-line {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .pass-parameter{
+    max-width: 80%;
+    height: 150px;
+  }
+
+  .pass-parameter .container{
+    grid-template-columns: 1fr;
   }
 }
