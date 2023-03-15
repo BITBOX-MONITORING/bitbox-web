@@ -657,7 +657,7 @@ a:hover {
 }
 
 .btn-services {
-  min-width: 50%;
+  width: 50%;
   color: var(--bg-color);
   background-color: var(--yellow);
   transition: .2s ease;
