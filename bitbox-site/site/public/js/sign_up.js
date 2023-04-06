@@ -1,7 +1,3 @@
-// Função de login
-function signIn() {
-}
-
 // Verificar se email possui caracteres "@" e "."
 function validateEmail() {
   let email = in_email.value
@@ -79,58 +75,55 @@ let loginPass
 function signUp() {
 
   //JSON para guardar dados do usuário
-  let userBox = {
+  const User = {
     nameServer: in_name.value,
     officeServer: in_office.value,
     emailServer: in_email.value,
     passServer: in_password.value
   }
 
-  console.log(userBox);
-
   // Ao negar o atributo do JSON, conferimos se ele está vazio ou não
-  let isInvalid = !userBox.nameServer ||
-    !userBox.officeServer ||
-    !userBox.emailServer ||
-    !userBox.passServer
+  let isInvalid = !User.nameServer ||
+    !User.officeServer ||
+    !User.emailServer ||
+    !User.passServer
 
   if (isInvalid) {
     alert("⚠ Campos não preenchidos corretamente!")
 
   } else {
-    loginEmail = userBox.emailServer
-    loginPass = userBox.passServer
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
 
-    localStorage.setItem("email", loginEmail)
-    localStorage.setItem("senha", loginPass)
+      // Aqui passamos somente o JSON criado lá em cima
+      body: JSON.stringify(User)
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        alert("Cadastro realizado com sucesso!")
+
+        sessionStorage.setItem('EMAIL', User.emailServer)
+
+        console.log(sessionStorage.getItem("EMAIL"));
+
+        setTimeout(() => {
+          window.location = "sign-page.html";
+        }, "2000")
+
+      } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+
+    return false;
   }
-
-  fetch("/usuarios/cadastrar", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-
-    // Aqui passamos somente o JSON criado lá em cima
-    body: JSON.stringify(userBox)
-  }).then(function (resposta) {
-
-    console.log("resposta: ", resposta);
-
-    if (resposta.ok) {
-
-      setTimeout(() => {
-        window.location = "sign-page.html";
-      }, "2000")
-
-    } else {
-      throw ("Houve um erro ao tentar realizar o cadastro!");
-    }
-  }).catch(function (resposta) {
-    console.log(`#ERRO: ${resposta}`);
-  });
-
-  return false;
 }
 
 // Função para alternar visibilidade entre formulários de login e cadastro
@@ -193,31 +186,6 @@ function togglePassVisibility() {
   }
 
 }
-
-
-// 🏗 Implementação fututra
-function emManutençãokkkk() {
-  const ball = document.querySelectorAll(".ball")
-  console.log(ball);
-
-  var i = 0
-  function toggleBall() {
-
-    for (j = 0; j < ball.length; j++) {
-      ball[j].style = ""
-    }
-
-    if (i > 2) {
-      i = 0;
-    }
-
-    ball[i].style = "width: 30px; background: var(--smooth-gradient)"
-    i++
-
-    console.log(i);
-  }
-}
-
 
 
 
