@@ -108,6 +108,7 @@ function signUp() {
         alert("Cadastro realizado com sucesso!")
 
         sessionStorage.setItem('EMAIL', User.emailServer)
+        sessionStorage.setItem('SENHA',User.passServer)
 
         console.log(sessionStorage.getItem("EMAIL"));
 

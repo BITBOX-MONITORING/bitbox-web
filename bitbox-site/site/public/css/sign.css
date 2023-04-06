@@ -222,7 +222,8 @@ button:hover {
   gap: 1rem;
 
   position: absolute;
-  top: 5rem;
+  top: 4em;
+  left: 27rem;
 
   padding: 2rem;
   border-radius: 5px;
