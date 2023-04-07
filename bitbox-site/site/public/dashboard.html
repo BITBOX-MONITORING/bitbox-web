@@ -17,12 +17,17 @@
   <script src="https://unpkg.com/phosphor-icons"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
   <title>Bitdash</title>
 </head>
 
 <body>
 
   <main>
+
+
     <div class="blur-effects">
       <div class="side left">
         <div class="blur yellow"></div>
@@ -105,9 +110,29 @@
             </div>
 
           </div>
-          <div class="insights grid2"></div>
-          <div class="insights grid3"></div>
-          <div class="insights grid4"></div>
+
+          <div class="insights grid2" style="height: 13rem">
+
+            <div id="dashboard-1" style="width: 90%;">
+              <canvas id="myChart" style="width: 100%;"></canvas>
+            </div>
+
+          </div>
+          <div class="insights grid3" style="height: 13rem;">
+            <div id="dashboard-2" style="width: 90%;">
+              <canvas id="myChart-2" style="width: 100%;"></canvas>
+            </div>
+          </div>
+
+          <!-- FALTA ARRUMAR ESSA DASH  -->
+          <div class="insights grid4">
+        
+            
+            <div id="dashboard-3" style="width: 50%; position: absolute; bottom: 0.05;" >
+              <canvas id="myChart-3" ></canvas>
+            </div>
+          
+          </div>
           <div class="insights grid5"></div>
         </div>
       </div>
@@ -117,3 +142,114 @@
 </body>
 
 </html>
+<script>
+
+  // PRIMEIRA DASHBOARD ESTATICA
+// TEM QUE ALTERAR OS NOMES NAO SEI O QUE VAI SER ESSA DASH
+  const ctx = document.getElementById('myChart').getContext('2d');
+  var gradient1 = ctx.createLinearGradient(90, 0, 0, 90);
+  gradient1.addColorStop(0, '#F5E65B'); // cor inicial do gradiente
+  gradient1.addColorStop(1, '#3B1DA8'); // cor final do gradiente
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['RAM', 'CPU', 'DISCO', 'REDE'],
+      datasets: [{
+        label: "memoria utilizada",
+        data: [12, 19, 3, 5],
+        backgroundColor: gradient1,
+        borderWidth: 1
+        
+        
+      }]
+    },
+    options: {
+      scales: {
+
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+  //   var myChart = new Chart(ctx, {
+  //     type: 'bar',
+  //     data: {
+  //         labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+  //         datasets: [{
+  //             label: 'Vendas',
+  //             data: [12, 19, 3, 5, 2, 3],
+  //             backgroundColor: 'rgba(255, 99, 132, 0.2)', // Define a cor de fundo
+  //             borderColor: 'rgba(255, 99, 132, 1)', // Define a cor da borda
+  //             borderWidth: 1
+  //         }]
+  //     },
+  //     options: {
+  //         // Configurações
+  //     }
+  // });
+
+
+
+// SEGUNDA  DASHBOARD ESTATICA
+
+// ESSE GRADIENT É PRA DEIXAR COM DEGRADE A DASHBOARD COM AS CORES DO SITE
+  const ctx2 = document.getElementById('myChart-2').getContext('2d');
+  var gradient = ctx2.createLinearGradient(90, 0, 0, 90);
+  gradient.addColorStop(0, '#F5E65B'); // cor inicial do gradiente
+  gradient.addColorStop(1, '#3B1DA8'); // cor final do gradiente
+  new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['RAM', 'CPU', 'DISCO', 'REDE'],
+      datasets: [{
+        label: "memoria utilizada",
+        data: [12, 19, 3, 5],
+        backgroundColor: gradient,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+
+// const config =  { 
+//   tipy :  'doughnut' , 
+//   data : data , 
+// } ;
+
+
+// DASH  DE BARRA
+const ctx3 = document.getElementById('myChart-3').getContext('2d');
+  var gradient3 = ctx3.createLinearGradient(90, 0, 0, 90);
+  gradient3.addColorStop(0, '#F5E65B'); // cor inicial do gradiente
+  gradient3.addColorStop(1, '#3B1DA8'); // cor final do gradiente
+  new Chart(ctx3, {
+    type: 'bar',
+    data: {
+      labels: ['RAM', 'CPU', 'DISCO', 'REDE'],
+      datasets: [{
+        label: "memoria utilizada",
+        data: [12, 19, 3, 5],
+        backgroundColor: gradient3,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
