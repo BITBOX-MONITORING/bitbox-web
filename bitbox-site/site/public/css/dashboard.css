@@ -12,8 +12,8 @@
 
 body {
     overflow: hidden;
-     
-  
+
+
 }
 
 main {
@@ -241,4 +241,26 @@ main {
     border-radius: 5px;
 
     padding: 1rem;
+}
+
+.opened_tabs {
+    margin-top: 45px;
+    background-color: rgba(36, 41, 41, 0.662);
+    border-radius: 5px;
+
+
+}
+
+.title_tabs {
+   font-size: 50p;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.tabs {
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 45px;
 }
