@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/devices.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <title>Bitdash</title>
+</head>
+
+<body>
+
+    <main>
+        <div class="blur-effects">
+            <div class="side left">
+                <div class="blur yellow"></div>
+            </div>
+            <div class="side right">
+                <div class="blur purple"></div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="box theme-mode">
+                <div class="item">
+                    <i class="ph-fill ph-sun"></i>
+                </div>
+            </div>
+            <div class="box items">
+                <div class="item">
+                    <a href="dashboard.html">
+                        <i class="ph-fill ph-chart-line"></i>
+                    </a>
+                    <h5>DASHBOARD</h5>
+
+                </div>
+                <div class="item">
+                    <a href="devices.html">
+                        <i class="ph-fill ph-laptop"></i>
+                    </a>
+                    <h5>MÁQUINAS</h5>
+                </div>
+            </div>
+            <div class="box logout">
+                <div class="item">
+                    <i class="ph ph-sign-out"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-chart">
+            <div class="container">
+                <div class="container-profile">
+                    <div class="item">
+                        <div class="notification-span"></div>
+                        <i class="ph ph-bell-ringing"></i>
+                    </div>
+
+                    <div class="profile">
+                        <img src="" alt="">
+                        <div class="info-profile">
+                            <h2>Cassandra Silva</h2>
+                            <span>ENGENHEIRO NOC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-devices" id="grid_devices">
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

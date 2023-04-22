@@ -50,7 +50,9 @@
 
         </div>
         <div class="item">
-          <i class="ph-fill ph-laptop"></i>
+          <a href="devices.html">
+            <i class="ph-fill ph-laptop"></i>
+          </a>
           <h5>MÁQUINAS</h5>
         </div>
       </div>
@@ -81,73 +83,46 @@
         <div class="grid-wrapper">
           <div class="insights grid1">
 
-            <div class="kpi">
-              <div class="title">
-                <i class="ph-duotone ph-lightning on"></i>
-                <span> MÁQUINAS ATIVAS</span>
+            <div class="content">
+              <div class="kpi">
+                <div class="title">
+                  <i class="ph-duotone ph-lightning on"></i>
+                  <span> MÁQUINAS ATIVAS</span>
+                </div>
+                <h1 class="on">45</h1>
               </div>
-              <h1 class="on">45</h1>
-            </div>
 
-            <div class="wall"></div>
+              <div class="wall"></div>
 
-            <div class="kpi">
-              <div class="title">
-                <i class="ph-duotone ph-x-circle off"></i>
-                <span>MÁQUINAS INATIVAS</span>
+              <div class="kpi">
+                <div class="title">
+                  <i class="ph-duotone ph-x-circle off"></i>
+                  <span>MÁQUINAS INATIVAS</span>
+                </div>
+                <h1 class="off">11</h1>
               </div>
-              <h1 class="off">11</h1>
-            </div>
 
-            <div class="wall"></div>
+              <div class="wall"></div>
 
-            <div class="kpi">
-              <div class="title">
-                <i class="ph-duotone ph-warning called"></i>
-                <span>CHAMADOS</span>
+              <div class="kpi">
+                <div class="title">
+                  <i class="ph-duotone ph-warning called"></i>
+                  <span>CHAMADOS</span>
+                </div>
+                <h1 class="called">5</h1>
               </div>
-              <h1 class="called">5</h1>
             </div>
 
           </div>
 
-          <div class="insights grid2" style="height: 13rem">
-
-            <div id="dashboard-1" style="width: 90%;">
-              <canvas id="myChart" style="width: 100%;"></canvas>
-            </div>
-
-          </div>
-          <div class="insights grid3" style="height: 13rem;">
-            <div id="dashboard-2" style="width: 90%;">
-              <canvas id="myChart-2" style="width: 100%;"></canvas>
-            </div>
+          <div class="insights grid3">
+            <h1 class="title">Status das máquinas</h1>
+            <canvas id="myChart-2"></canvas>
           </div>
 
-          <!-- FALTA ARRUMAR ESSA DASH  -->
           <div class="insights grid4">
-        
-            
-            <div id="dashboard-3" style="width: 50%; position: absolute; bottom: 0.05;" >
-              <canvas id="myChart-3" ></canvas>
-            </div>
-          
-          </div>
-          <div class="insights grid5" >
-            <div class="opened_tabs">
-              <span class="title_tabs">Abas abertas</span>
-              <span class="tabs">15</span>
-            </div>
-            <div class="opened_tabs">
-              <span class="title_tabs">Janelas abertas</span>
-              <span class="tabs">2</span>
-            </div>
-            <div class="opened_tabs">
-              <span class="title_tabs">Consumo de ram</span>
-              <span class="tabs">15 mb</span>
-            </div>
-
-
+            <h1 class="title">Velocidade de Download e Upload</h1>
+            <canvas id="myChart-3" width="1000px"></canvas>
           </div>
         </div>
       </div>
@@ -158,98 +133,42 @@
 
 </html>
 <script>
-
-  // PRIMEIRA DASHBOARD ESTATICA
-// TEM QUE ALTERAR OS NOMES NAO SEI O QUE VAI SER ESSA DASH
-  const ctx = document.getElementById('myChart').getContext('2d');
-  var gradient1 = ctx.createLinearGradient(90, 0, 0, 90);
-  gradient1.addColorStop(0, '#F5E65B'); // cor inicial do gradiente
-  gradient1.addColorStop(1, '#3B1DA8'); // cor final do gradiente
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['RAM', 'CPU', 'DISCO', 'REDE'],
-      datasets: [{
-        label: "memoria utilizada",
-        data: [12, 19, 3, 5],
-        backgroundColor: gradient1,
-        borderWidth: 1
-        
-        
-      }]
-    },
-    options: {
-      scales: {
-
-        
-      }
-    }
-  });
-
-
-  //   var myChart = new Chart(ctx, {
-  //     type: 'bar',
-  //     data: {
-  //         labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
-  //         datasets: [{
-  //             label: 'Vendas',
-  //             data: [12, 19, 3, 5, 2, 3],
-  //             backgroundColor: 'rgba(255, 99, 132, 0.2)', // Define a cor de fundo
-  //             borderColor: 'rgba(255, 99, 132, 1)', // Define a cor da borda
-  //             borderWidth: 1
-  //         }]
-  //     },
-  //     options: {
-  //         // Configurações
-  //     }
-  // });
-
-
-
-// SEGUNDA  DASHBOARD ESTATICA
-
-// ESSE GRADIENT É PRA DEIXAR COM DEGRADE A DASHBOARD COM AS CORES DO SITE
   const ctx2 = document.getElementById('myChart-2').getContext('2d');
-  var gradient = ctx2.createLinearGradient(90, 0, 0, 90);
-  gradient.addColorStop(0, '#F5E65B'); // cor inicial do gradiente
-  gradient.addColorStop(1, '#3B1DA8'); // cor final do gradiente
   new Chart(ctx2, {
     type: 'pie',
     data: {
-      labels: ['RAM', 'CPU', 'DISCO', 'REDE'],
+      labels: ['Ok', 'Alerta', 'Crítico'],
       datasets: [{
         label: "memoria utilizada",
-        data: [12, 19, 3, 5],
-        backgroundColor: gradient,
+        data: [12, 19, 3,],
+        backgroundColor: ["#42BB42", "#DACC51", "#B8424C"],
         borderWidth: 1
       }]
     },
     options: {
-      
+
     }
   });
 
 
+  const ctx3 = document.getElementById('myChart-3').getContext('2d');
 
-// const config =  { 
-//   tipy :  'doughnut' , 
-//   data : data , 
-// } ;
-
-
-// DASH  DE BARRA
-const ctx3 = document.getElementById('myChart-3').getContext('2d');
-  var gradient3 = ctx3.createLinearGradient(90, 0, 0, 90);
-  gradient3.addColorStop(0, '#F5E65B'); // cor inicial do gradiente
-  gradient3.addColorStop(1, '#3B1DA8'); // cor final do gradiente
   new Chart(ctx3, {
-    type: 'bar',
+    type: 'line',
     data: {
-      labels: ['RAM', 'CPU', 'DISCO', 'REDE'],
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00',],
       datasets: [{
-        label: "memoria utilizada",
-        data: [12, 19, 3, 5],
-        backgroundColor: gradient3,
+        label: "Download",
+        data: [555, 457, 522, 268, 420, 589],
+        backgroundColor: ['#751BDB'],
+        borderColor: ["#751BDB"],
+        borderWidth: 1
+      },
+      {
+        label: "Upload",
+        data: [268, 400, 265, 212, 320, 326],
+        backgroundColor: ['#DACC51'],
+        borderColor: ["#DACC51"],
         borderWidth: 1
       }]
     },
