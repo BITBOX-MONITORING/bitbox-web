@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: "BOX-005-215322", type: "DESKTOP", name: "ACER HILUX", status: "alert" },
     { id: "BOX-006-215123", type: "NOTEBOOK", name: "LENOVO THINKPAD", status: "danger" },
     { id: "BOX-006-215123", type: "NOTEBOOK", name: "LENOVO THINKPAD", status: "danger" },
+   
   ];
 
   devices.sort(function (a, b) {

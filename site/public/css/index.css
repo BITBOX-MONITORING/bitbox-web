@@ -251,6 +251,7 @@ a:hover {
 
 #small-login:hover {
   background-color: var(--yellow);
+  width: 40px;
   color: var(--bg-color);
 }
 
@@ -984,4 +985,30 @@ footer {
     justify-content: center;
     text-align: center;
   }
+}
+/* .empresas{
+  width: 100%;
+  display: grid;
+  border: #0D0D0D;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  
+} */
+.topics .empresa img{
+  width: 25px;
+  opacity: .8;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.topics .empresa {
+  background: var(--smooth-gradient);
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  border-radius: 10px;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
