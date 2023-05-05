@@ -1,17 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const devices = [
-    { id: "BOX-001-215489", type: "NOTEBOOK", name: "MAC ULTRA PRO", status: "alert" },
-    { id: "BOX-002-219874", type: "DESKTOP", name: "CCE ULTRAPRO", status: "ok" },
-    { id: "BOX-003-215544", type: "NOTEBOOK", name: "LENOVO THINKPAD", status: "danger" },
-    { id: "BOX-003-215544", type: "NOTEBOOK", name: "LENOVO THINKPAD", status: "danger" },
-    { id: "BOX-003-215544", type: "NOTEBOOK", name: "LENOVO THINKPAD", status: "danger" },
-    { id: "BOX-004-215456", type: "DESKTOP", name: "ACER HILUX", status: "ok" },
-    { id: "BOX-005-215322", type: "DESKTOP", name: "ACER HILUX", status: "alert" },
-    { id: "BOX-006-215123", type: "NOTEBOOK", name: "LENOVO THINKPAD", status: "danger" },
-    { id: "BOX-006-215123", type: "NOTEBOOK", name: "LENOVO THINKPAD", status: "danger" },
-   
-  ];
+const devices = [
+  { id: "BD0987", type: "LINUX", name: "UBUNTU 22.2", user: "Elma Maria", status: "alert" },
+  { id: "BD0987", type: "WINDOWS", name: "WINDOWS 10", user: "Josimar Mar", status: "ok" },
+  { id: "BD0987", type: "LINUX", name: "UBUNTU 22.2", user: "Epaminondas Lúcio", status: "danger" },
+  { id: "BD0987", type: "LINUX", name: "UBUNTU 22.2", user: "Catarina Marica", status: "danger" },
+  { id: "BD0987", type: "LINUX", name: "UBUNTU 22.2", user: "Thiago Gomes", status: "danger" },
+  { id: "BD0987", type: "WINDOWS", name: "WINDOWS 10", user: "Fernananda Caramico", status: "ok" },
+  { id: "BD0987", type: "WINDOWS", name: "WINDOWS 10", user: "Paulo Mimoso", status: "alert" },
+  { id: "BD0987", type: "LINUX", name: "UBUNTU 22.2", user: "Giuseppe Casseca", status: "danger" },
+  { id: "BD0987", type: "LINUX", name: "UBUNTU 22.2", user: "Simas Turbo", status: "danger" },
 
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  
   devices.sort(function (a, b) {
     if (a.status === "danger" && b.status !== "danger") {
       return -1;
@@ -34,22 +35,42 @@ document.addEventListener("DOMContentLoaded", () => {
     danger: "#d13a47",
   };
 
-  for (const device of devices) {
-    const imgDevice = device.type === "NOTEBOOK" ? "assets/notebook.png" : "assets/desktop.png";
+  for (const [index ,device] of devices.entries()) {
+    const imgDevice = device.type === "LINUX" ? "assets/device-linux.png" : "assets/device-windows.png";
     const colorStatus = statusColors[device.status];
-
+  
     grid_devices.innerHTML += `
-    <div class="card">
+    <div class="card" onclick="openDeviceModal(${index})">
         <div class="img-device">
         <img src="${imgDevice}" alt="">
         </div>
-
+  
         <div class="info">
         <span>${device.id}</span>
         <h1>${device.name}</h1>
+        <h3>${device.user}</h3>
         </div>
-
+  
         <div class="status" style="background-color:${colorStatus}"></div>
     </div>`;
   }
+  
 });
+
+const style = {
+  opened: "display: grid; opacity: 1; width: 1000px; height: 600px;",
+  closed: "display: none; opacity: 0; width: 0; height: 0;",
+}
+
+function openDeviceModal(index) {
+  const device = devices[index] 
+  
+  const modal = document.querySelector(".device-info")
+  modal.style = style.opened
+}
+
+function closeDeviceModal(){
+  const modal = document.querySelector(".device-info")
+
+  modal.style = style.closed
+}
