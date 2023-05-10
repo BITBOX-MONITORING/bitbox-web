@@ -79,25 +79,28 @@
         </div>
 
         <div class="form">
-          <div class="input-line">
-
-            <!-- Nome input -->
-            <div class="input-field">
-              <input required type="text" id="in_name" maxlength="25">
-              <label for="in_name">nome</label>
-              <div class="icon">
-                <i class="ph-user"></i>
-              </div>
+          <!-- Nome input -->
+          <div class="input-field">
+            <input required type="text" id="in_name" maxlength="25">
+            <label for="in_name">nome</label>
+            <div class="icon">
+              <i class="ph-user"></i>
             </div>
+          </div>
 
+          <div class="input-line grid-office">
             <!-- Cargo input -->
             <div class="input-field">
-              <input required type="text" id="in_office">
-              <label for="in_office">cargo</label>
-              <div class="icon">
+              
+              <select id="sl_office" onchange="showCodeInput(this)">
+                <option value="">Cargo</option>
+                <option value="Engenheiro NOC">Engenheiro NOC</option>
+                <option value="Suporte">Suporte</option>
+              </select>
+
+              <div class="icon office-icon">
                 <i class="ph-briefcase"></i>
               </div>
-
             </div>
           </div>
 

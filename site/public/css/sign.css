@@ -51,7 +51,7 @@ body {
 
 .form-content {
   position: absolute;
-  width: 400px;
+  width: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,6 +59,10 @@ body {
   margin: 0 auto;
   gap: 2rem;
   transition: .5s ease;
+}
+
+.login{
+  width: 300px;
 }
 
 @keyframes fadeIn {
@@ -119,7 +123,7 @@ body {
 .input-line {
   width: 100%;
   display: grid;
-  grid-template-columns: 47% 50%;
+  grid-template-columns: 1fr;
   gap: 3%;
 }
 
@@ -130,7 +134,7 @@ body {
 }
 
 label {
-  color: #a0a0a07a;
+  color: #a0a0a099;
   font-weight: 200;
   font-size: .8rem;
 
@@ -139,7 +143,7 @@ label {
   margin: 0 0 .2rem .8rem;
 
   cursor: text;
-  transition: .5s ease;
+  transition: .3s ease;
 }
 
 input:focus~label,
@@ -174,15 +178,28 @@ input:valid~label {
 }
 
 input,
+select,
 button {
-  background-color: rgb(63, 63, 63, .2);
+  background-color: rgb(63, 63, 63, .4);
   color: var(--light);
   font-weight: 200;
 
-  outline: 1px solid #a0a0a07a;
+  outline: 1px solid #a0a0a099;
   border-radius: 5px;
   padding: .8rem .8rem .3rem .8rem;
   transition: .5s ease;
+}
+
+select{
+  padding: .5rem;
+}
+
+option{
+  background-color: #0d0d0d;
+}
+
+.office-icon{
+  margin-right: 1rem;
 }
 
 input:focus {
@@ -196,12 +213,12 @@ button {
   backdrop-filter: blur(10px);
   color: var(--light);
   outline: 0;
-  opacity: .4;
+  opacity: .7;
   transition: .2s ease;
 }
 
 button:hover {
-  opacity: .8;
+  opacity: 1;
   font-weight: 400;
 }
 

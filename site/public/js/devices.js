@@ -11,6 +11,7 @@ const devices = [
 ];
 
 function buildModal(device) {
+
   const modal = ` <div class="card">
   <div class="img-device">
       <img src="${device.img}" alt="">
@@ -70,9 +71,7 @@ function buildModal(device) {
 }
 
 function buildCardDevice(device, index) {
-  const imgDevice = device.type === "LINUX" ? "assets/device-linux.png" : "assets/device-windows.png";
-  device.img = imgDevice
-
+  device.img = device.type === "LINUX" ? "assets/device-linux.png" : "assets/device-windows.png";
 
   const statusColors = {
     ok: "#3ad13a",
@@ -80,7 +79,7 @@ function buildCardDevice(device, index) {
     danger: "#d13a47",
   };
 
-  const colorStatus = statusColors[device.status];
+  const colorStagitus = statusColors[device.status];
 
   const cardDevice = `
   <div class="card" onclick="openDeviceModal(${index})">
@@ -164,7 +163,7 @@ function openDeviceModal(index) {
 
   // Adiciona o event listener para o clique fora do modal
   if (modal.style.opacity == 1) {
-    setTimeout(() =>{
+    setTimeout(() => {
       document.addEventListener("click", onClickOutsideModal);
     }, 500)
   }

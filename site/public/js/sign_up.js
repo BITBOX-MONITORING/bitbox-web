@@ -108,7 +108,7 @@ function signUp() {
         alert("Cadastro realizado com sucesso!")
 
         sessionStorage.setItem('EMAIL', User.emailServer)
-        sessionStorage.setItem('SENHA',User.passServer)
+        sessionStorage.setItem('SENHA', User.passServer)
 
         console.log(sessionStorage.getItem("EMAIL"));
 
@@ -187,6 +187,64 @@ function togglePassVisibility() {
   }
 
 }
+
+function showCodeInput(select) {
+  const grid = document.querySelector('.grid-office');
+  const office = select.value;
+
+  console.log(grid);
+  console.log(office);
+
+  if (office === 'Suporte') {
+    grid.style.display = 'grid';
+    grid.style.gridTemplateColumns = '57% 40%';
+
+    const inputField = document.createElement('div');
+    inputField.classList.add('input-field');
+    inputField.id = 'id_codigo';
+
+    const input = document.createElement('input');
+    input.required = true;
+    input.type = 'text';
+    input.id = 'id_codigo_patrimonio';
+    input.maxlength = 6;
+
+    const label = document.createElement('label');
+    label.for = 'id_codigo_patrimonio';
+    label.textContent = 'Código';
+
+    const icon = document.createElement('div');
+    icon.classList.add('icon');
+
+    const i = document.createElement('i');
+    i.classList.add('ph', 'ph-barcode');
+
+    icon.appendChild(i);
+    inputField.appendChild(input);
+    inputField.appendChild(label);
+    inputField.appendChild(icon);
+    grid.appendChild(inputField);
+  } else if (office === 'Engenheiro NOC') {
+    grid.style.display = 'grid';
+    grid.style.gridTemplateColumns = '1fr';
+
+    if (document.getElementById('id_codigo')) {
+      const inputField = document.getElementById('id_codigo');
+      grid.removeChild(inputField);
+    }
+  } else {
+    grid.style.display = 'grid';
+    grid.style.gridTemplateColumns = '1fr';
+
+    if (document.getElementById('id_codigo')) {
+      const inputField = document.getElementById('id_codigo');
+      grid.removeChild(inputField);
+    }
+  }
+}
+
+
+
 
 
 
