@@ -79,7 +79,7 @@ function buildCardDevice(device, index) {
     danger: "#d13a47",
   };
 
-  const colorStagitus = statusColors[device.status];
+  const colorStatus = statusColors[device.status];
 
   const cardDevice = `
   <div class="card" onclick="openDeviceModal(${index})">
