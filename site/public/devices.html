@@ -16,9 +16,9 @@
 
     <script src="https://unpkg.com/phosphor-icons"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="js/devices.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script src="js/devices.js"></script>
 
     <title>Bitdash</title>
 </head>
@@ -82,10 +82,18 @@
 
                 <div class="device-info">
                     <div class="status-bar"></div>
-                    <div class="chart1"></div>
-                    <div class="chart2"></div>
-                    <div class="chart3"></div>
-                    <div class="chart4"></div>
+                    <div class="chart1">
+                        <canvas id="chart_cpu"></canvas>
+                    </div>
+                    <div class="chart2">
+                        <canvas id="chart_ram"></canvas>
+                    </div>
+                    <div class="chart3">
+                        <canvas id="chart_disco"></canvas>
+                    </div>
+                    <div class="chart4">
+                        <canvas id="chart_abas"></canvas>
+                    </div>
                 </div>
 
                 <div class="grid-devices" id="grid_devices"></div>
@@ -96,3 +104,97 @@
 </body>
 
 </html>
+
+<script>
+
+    const device = JSON.parse(localStorage.getItem('data'))
+
+    const chartCPU = document.getElementById('chart_cpu')
+    new Chart(chartCPU, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00',],
+            datasets: [{
+                label: "Uso da CPU",
+                data: device.cpu,
+                backgroundColor: ['#f5e65b'],
+                borderColor: ["#f5e65b"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const chartRAM = document.getElementById('chart_ram')
+    new Chart(chartRAM, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00',],
+            datasets: [{
+                label: "Uso da RAM",
+                data: device.ram,
+                backgroundColor: ['#f5e65b'],
+                borderColor: ["#f5e65b"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const chartDisco = document.getElementById('chart_disco')
+    new Chart(chartDisco, {
+        type: 'bar',
+        data: {
+            labels: ['S', 'T', 'Q' , 'Q' , 'S' , 'S' ],
+            datasets: [{
+                label: "Uso do Discos",
+                data: device.disco,
+                backgroundColor: ['#751BDB'],
+                borderColor: ["#751BDB"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const chartAbas = document.getElementById('chart_abas')
+    new Chart(chartAbas, {
+        type: 'bar',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00' ],
+            datasets: [{
+                label: "Quantidade de abas",
+                data: device.abas,
+                backgroundColor: ['#751BDB'],
+                borderColor: ["#751BDB"],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>

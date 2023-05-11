@@ -403,17 +403,20 @@ main {
 
 .kpi .status-info{
     display: flex;
-    width: 80%;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
     align-items: center;
+    gap: .5rem;
 }
 
 .kpi .status-info h1{
-    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-size: 1rem;
 }
 
 .status-info .status{
-    background-color: #3ad13a;
+    width: 15px;
+    height: 15px;
     align-self: center;
 }
 
