@@ -1,367 +1,408 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png" />
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
 
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png">
-  <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
 
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/index.css" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/index.js"></script>
 
-  <script src="https://unpkg.com/phosphor-icons"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="js/index.js"></script>
+    <title>Bitbox</title>
+  </head>
 
-  <title>Bitbox</title>
-</head>
-
-<body>
-
-  <main>
-
-    <!-- Efeitos coloridos de blur -->
-    <div class="blur-effects">
-      <div class="side left">
-        <div class="blur yellow"></div>
-        <div class="blur yellow"></div>
-        <div class="blur yellow"></div>
-      </div>
-      <div class="side right">
-        <div class="blur purple"></div>
-        <div class="blur purple"></div>
-        <div class="blur purple"></div>
-      </div>
-    </div>
-
-    <section id="hero">
-      <header>
-        <div class="container-logo">
-          <img src="./assets/logo.png" alt="" />
+  <body>
+    <main>
+      <!-- Efeitos coloridos de blur -->
+      <div class="blur-effects">
+        <div class="side left">
+          <div class="blur yellow"></div>
+          <div class="blur yellow"></div>
+          <div class="blur yellow"></div>
         </div>
-
-        <nav>
-          <ul>
-            <li><a href="#hero"> Home <div class="topic-bar"> </div></a></li>
-            <li><a href="#working"> Atuação <div class="topic-bar"> </div></a></li>
-            <li><a href="#service"> Serviços <div class="topic-bar"> </div></a></li>
-            <li><a href="#team"> Equipe <div class="topic-bar"> </div></a></li>
-          </ul>
-        </nav>
-
-        <div class="login-button" onclick="redirectToLogin()">
-          <button>
-            <i class="ph-sign-in"></i>
-            LOGIN
-          </button>
+        <div class="side right">
+          <div class="blur purple"></div>
+          <div class="blur purple"></div>
+          <div class="blur purple"></div>
         </div>
+      </div>
 
-        <i class="ph-sign-in" id="small-login"onclick="redirectToLogin()"> login</i>
-      </header>
+      <section id="hero">
+        <header>
+          <div class="container-logo">
+            <img src="./assets/logo.png" alt="" />
+          </div>
 
+          <nav>
+            <ul>
+              <li>
+                <a href="#hero">
+                  Home
+                  <div class="topic-bar"></div>
+                </a>
+              </li>
+              <li>
+                <a href="#working">
+                  Atuação
+                  <div class="topic-bar"></div>
+                </a>
+              </li>
+              <li>
+                <a href="#service">
+                  Serviços
+                  <div class="topic-bar"></div>
+                </a>
+              </li>
+              <li>
+                <a href="#team">
+                  Equipe
+                  <div class="topic-bar"></div>
+                </a>
+              </li>
+            </ul>
+          </nav>
 
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="revealGeneral">
-            Monitorar bem, para que você opere
-            <br>
-            <span> melhor ainda.</span>
-          </h1>
-
-          <a href="#working" class="revealGeneral">
-            <button class="btn ">
-              <i class="ph-rocket-launch"></i>
-              Saiba mais
-              <div class="fill"></div>
+          <div class="login-button" onclick="redirectToLogin()">
+            <button>
+              <i class="ph-sign-in"></i>
+              LOGIN
             </button>
-          </a>
-        </div>
-
-        <div class="hero-img revealGeneral">
-          <img src="./assets/cpu_hero.png" alt="" />
-        </div>
-      </div>
-
-      <div class="benefits-content">
-        <div class="title revealGeneral">Vantagens</div>
-
-        <div class="box-cards">
-          <div class="card-content revealCard">
-            <img src="./assets/benefits-eficiencia.png" alt="" />
-            <div class="card">
-              <h1>Eficiência</h1>
-              <p>
-                Identificamos problemas de desempenho ou falhas antes que se tornem graves,
-                permitindo que sejam tomadas medidas corretivas para melhorar a eficiência e
-                reduzir o tempo de inatividade.
-              </p>
-            </div>
           </div>
 
-          <div class="card-content revealCard">
-            <img src="./assets/benefits-custos.png" alt="" />
-            <div class="card">
-              <h1>Redução de custos</h1>
-              <p>
-                Monitorar máquinas pode ajudar a identificar áreas onde os custos podem
-                ser reduzidos, seja através da otimização da manutenção, redução do consumo
-                de energia ou melhorias de processos.
-            </div>
+          <i class="ph-sign-in" id="small-login" onclick="redirectToLogin()">login</i>
+        </header>
+
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="revealGeneral">
+              Monitorar bem, para que você opere
+              <br />
+              <span>melhor ainda.</span>
+            </h1>
+
+            <a href="#working" class="revealGeneral">
+              <button class="btn">
+                <i class="ph-rocket-launch"></i>
+                Saiba mais
+                <div class="fill"></div>
+              </button>
+            </a>
           </div>
 
-          <div class="card-content ">
-            <img src="./assets/benefits-acertividade.png" alt="" />
-            <div class="card">
-              <h1>Tomada de decisão</h1>
-              <p>
-                O monitoramento de máquinas fornece dados em tempo real, permitindo que
-                os gestores tomem decisões mais informadas e precisas sobre manutenção preditiva,
-                produção e investimentos.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="working">
-      <div class="bar"></div>
-
-      <div class="container-working">
-        <div class="container-img">
-          <img src="./assets/dev-in-computer.png" alt="desenvolvedor" />
-        </div>
-        <div class="info">
-          <div class="title revealGeneral">Atuação</div>
-          <p class="revealGeneral">
-            Agimos monitorando sua máquina para identificar problemas em potencial e evitar interrupções não planejadas,
-            além de oferecer serviços adicionais, como monitoramento remoto e tomadas de decisões mais rápidas para
-            facilitar a manutenção preditiva.
-          </p>
-        </div>
-      </div>
-
-      <div class="bar"></div>
-    </section>
-
-    <section id="service">
-      <div class="service-content">
-        <div class="services-info">
-          <img src="./assets/logo.png" alt="" />
-          <p>
-            Nossos serviços de monitoramento de máquinas maximizam a eficiência operacional. Através de tecnologias
-            de monitoramento, detectamos anomalias em tempo real e fornecemos insights para
-            otimizar a manutenção preventiva. O objetivo é reduzir custos e minimizar tempo de inatividade não
-            programado, mantendo as operações com máximo desempenho.
-          </p>
-          <button class="btn btn-services">
-            <i class="ph-cpu"></i>
-            Experimentar agora
-          </button>
-        </div>
-        <img src="./assets/Dashboard.png" alt="Dashboard" id="dash-img" />
-      </div>
-    </section>
-
-    <section id="team">
-      <div class="title revealHero">Equipe</div>
-      <div class="team-container">
-
-        <div class="member revealCard">
-          <img src="./assets/member_Livia.jpg" alt="">
-          <div class="member-info">
-            <h2>Livia <b>Loiola</b></h2>
-            <div class="social">
-              <a href="https://www.instagram.com/leal_livia/" target="_blank">
-                <i class="ph-instagram-logo"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/l%C3%ADvia-leal-2120741b6/" target="_blank">
-                <i class="ph-linkedin-logo"></i>
-              </a>
-              <a href="https://github.com/lealivia" target="_blank">
-                <i class="ph-github-logo"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-
-        <div class="member revealCard">
-          <img src="./assets/member_Ruan.jpg" alt="">
-          <div class="member-info">
-            <h2>Ruan <b>Rodrigues</b></h2>
-            <div class="social">
-              <a href="https://www.instagram.com/malasarts.png/" target="_blank">
-                <i class="ph-instagram-logo"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/ruan-c-rodrigues-9b3276236/" target="_blank">
-                <i class="ph-linkedin-logo"></i>
-              </a>
-              <a href="https://github.com/helloWorldRuan" target="_blank">
-                <i class="ph-github-logo"></i>
-              </a>
-            </div>
+          <div class="hero-img revealGeneral">
+            <img src="./assets/cpu_hero.png" alt="" />
           </div>
         </div>
 
-        <div class="member revealCard">
-          <img src="./assets/member_Matheus.png" alt="">
-          <div class="member-info">
-            <h2>Matheus <b>Lessa</b></h2>
-            <div class="social">
-              <a href="https://www.instagram.com/matheusssx_/" target="_blank">
-                <i class="ph-instagram-logo"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/matheuslessa22" target="_blank">
-                <i class="ph-linkedin-logo"></i>
-              </a>
-              <a href="https://github.com/lessamatheuss01" target="_blank">
-                <i class="ph-github-logo"></i>
-              </a>
+        <div class="benefits-content">
+          <div class="title revealGeneral">Vantagens</div>
+
+          <div class="box-cards">
+            <div class="card-content revealCard">
+              <img src="./assets/benefits-eficiencia.png" alt="" />
+              <div class="card">
+                <h1>Eficiência</h1>
+                <p>
+                  Identificamos problemas de desempenho ou falhas antes que se tornem graves,
+                  permitindo que sejam tomadas medidas corretivas para melhorar a eficiência e
+                  reduzir o tempo de inatividade.
+                </p>
+              </div>
+            </div>
+
+            <div class="card-content revealCard">
+              <img src="./assets/benefits-custos.png" alt="" />
+              <div class="card">
+                <h1>Redução de custos</h1>
+                <p>
+                  Monitorar máquinas pode ajudar a identificar áreas onde os custos podem ser
+                  reduzidos, seja através da otimização da manutenção, redução do consumo de energia
+                  ou melhorias de processos.
+                </p>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <img src="./assets/benefits-acertividade.png" alt="" />
+              <div class="card">
+                <h1>Tomada de decisão</h1>
+                <p>
+                  O monitoramento de máquinas fornece dados em tempo real, permitindo que os
+                  gestores tomem decisões mais informadas e precisas sobre manutenção preditiva,
+                  produção e investimentos.
+                </p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="member revealCard">
-          <img src="./assets/member_thiagopequeno.jpeg" alt="">
-          <div class="member-info">
-            <h2>Thiago <b>Pequeno</b></h2>
-            <div class="social">
-              <a href="https://www.instagram.com/malasarts.png/" target="_blank">
-                <i class="ph-instagram-logo"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/ruan-c-rodrigues-9b3276236/" target="_blank">
-                <i class="ph-linkedin-logo"></i>
-              </a>
-              <a href="https://github.com/helloWorldRuan" target="_blank">
-                <i class="ph-github-logo"></i>
-              </a>
-            </div>
+      <section id="working">
+        <div class="bar"></div>
+
+        <div class="container-working">
+          <div class="container-img">
+            <img src="./assets/dev-in-computer.png" alt="desenvolvedor" />
+          </div>
+          <div class="info">
+            <div class="title revealGeneral">Atuação</div>
+            <p class="revealGeneral">
+              Agimos monitorando sua máquina para identificar problemas em potencial e evitar
+              interrupções não planejadas, além de oferecer serviços adicionais, como monitoramento
+              remoto e tomadas de decisões mais rápidas para facilitar a manutenção preditiva.
+            </p>
           </div>
         </div>
 
-        <div class="member revealCard">
-          <img src="./assets/member_Samuel.png" alt="">
-          <div class="member-info">
-            <h2>Samuel <b>Mariano</b></h2>
-            <div class="social">
-              <a href="https://www.instagram.com/smksamuel/" target="_blank">
-                <i class="ph-instagram-logo"></i>
-              </a>
-              <a href="#" target="_blank">
-                <i class="ph-linkedin-logo"></i>
-              </a>
-              <a href="https://github.com/Samuel-smk" target="_blank">
-                <i class="ph-github-logo"></i>
-              </a>
+        <div class="bar"></div>
+      </section>
+
+      <section id="service">
+        <div class="service-content">
+          <div class="services-info">
+            <img src="./assets/logo.png" alt="" />
+            <p>
+              Nossos serviços de monitoramento de máquinas maximizam a eficiência operacional.
+              Através de tecnologias de monitoramento, detectamos anomalias em tempo real e
+              fornecemos insights para otimizar a manutenção preventiva. O objetivo é reduzir custos
+              e minimizar tempo de inatividade não programado, mantendo as operações com máximo
+              desempenho.
+            </p>
+            <button class="btn btn-services">
+              <i class="ph-cpu"></i>
+              Experimentar agora
+            </button>
+          </div>
+          <img src="./assets/Dashboard.png" alt="Dashboard" id="dash-img" />
+        </div>
+      </section>
+
+      <section id="team">
+        <div class="title revealHero">Equipe</div>
+        <div class="team-container">
+          <div class="member revealCard">
+            <img src="./assets/member_Livia.jpg" alt="" />
+            <div class="member-info">
+              <h2>
+                Livia
+                <b>Loiola</b>
+              </h2>
+              <div class="social">
+                <a href="https://www.instagram.com/leal_livia/" target="_blank">
+                  <i class="ph-instagram-logo"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/l%C3%ADvia-leal-2120741b6/" target="_blank">
+                  <i class="ph-linkedin-logo"></i>
+                </a>
+                <a href="https://github.com/lealivia" target="_blank">
+                  <i class="ph-github-logo"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="member revealCard">
+            <img src="./assets/member_Ruan.jpg" alt="" />
+            <div class="member-info">
+              <h2>
+                Ruan
+                <b>Rodrigues</b>
+              </h2>
+              <div class="social">
+                <a href="https://www.instagram.com/malasarts.png/" target="_blank">
+                  <i class="ph-instagram-logo"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ruan-c-rodrigues-9b3276236/" target="_blank">
+                  <i class="ph-linkedin-logo"></i>
+                </a>
+                <a href="https://github.com/helloWorldRuan" target="_blank">
+                  <i class="ph-github-logo"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="member revealCard">
+            <img src="./assets/member_Matheus.png" alt="" />
+            <div class="member-info">
+              <h2>
+                Matheus
+                <b>Lessa</b>
+              </h2>
+              <div class="social">
+                <a href="https://www.instagram.com/matheusssx_/" target="_blank">
+                  <i class="ph-instagram-logo"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/matheuslessa22" target="_blank">
+                  <i class="ph-linkedin-logo"></i>
+                </a>
+                <a href="https://github.com/lessamatheuss01" target="_blank">
+                  <i class="ph-github-logo"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="member revealCard">
+            <img src="./assets/member_thiagopequeno.jpeg" alt="" />
+            <div class="member-info">
+              <h2>
+                Thiago
+                <b>Pequeno</b>
+              </h2>
+              <div class="social">
+                <a href="https://www.instagram.com/malasarts.png/" target="_blank">
+                  <i class="ph-instagram-logo"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ruan-c-rodrigues-9b3276236/" target="_blank">
+                  <i class="ph-linkedin-logo"></i>
+                </a>
+                <a href="https://github.com/helloWorldRuan" target="_blank">
+                  <i class="ph-github-logo"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="member revealCard">
+            <img src="./assets/member_Samuel.png" alt="" />
+            <div class="member-info">
+              <h2>
+                Samuel
+                <b>Mariano</b>
+              </h2>
+              <div class="social">
+                <a href="https://www.instagram.com/smksamuel/" target="_blank">
+                  <i class="ph-instagram-logo"></i>
+                </a>
+                <a href="#" target="_blank">
+                  <i class="ph-linkedin-logo"></i>
+                </a>
+                <a href="https://github.com/Samuel-smk" target="_blank">
+                  <i class="ph-github-logo"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="member revealCard">
+            <img src="./assets/member_Victor.jpg" alt="" />
+            <div class="member-info">
+              <h2>
+                Victor
+                <b>Augusto</b>
+              </h2>
+              <div class="social">
+                <a href="https://www.instagram.com/eii_viitin/" target="_blank">
+                  <i class="ph-instagram-logo"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/victor-augusto-moraes-pereira-46a1a0205/"
+                  target="_blank"
+                >
+                  <i class="ph-linkedin-logo"></i>
+                </a>
+                <a href="https://github.com/VictorXdAugusto" target="_blank">
+                  <i class="ph-github-logo"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="member revealCard">
-          <img src="./assets/member_Victor.jpg" alt="">
-          <div class="member-info">
-            <h2>Victor <b>Augusto</b></h2>
-            <div class="social">
-              <a href="https://www.instagram.com/eii_viitin/" target="_blank">
-                <i class="ph-instagram-logo"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/victor-augusto-moraes-pereira-46a1a0205/" target="_blank">
-                <i class="ph-linkedin-logo"></i>
-              </a>
-              <a href="https://github.com/VictorXdAugusto" target="_blank">
-                <i class="ph-github-logo"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- <div class="empresas">
+        <!-- <div class="empresas">
         <img src="https://i.ytimg.com/an/7UCzD37DA_7ygQ23qh49ew/featured_channel.jpg?v=619d0a23" alt="">
         <img src="https://boxdelivery.com.br/wp-content/uploads/2022/09/cropped-favicon-box-180x180.png" alt="">
         <img src="https://www.matrixenergia.com/wp-content/uploads/2021/04/logo-matrix-high.png" alt="">
         <img src="https://digitalwork.com.br/wp-content/uploads/2018/07/logo_dw_site3.png" alt="">
 
       </div> -->
-      
-      <div class="topics">
-        <div class="empresa">
-          <img src="https://i.ytimg.com/an/7UCzD37DA_7ygQ23qh49ew/featured_channel.jpg?v=619d0a23" alt="ícone instagram">
-          <img src="https://boxdelivery.com.br/wp-content/uploads/2022/09/cropped-favicon-box-180x180.png" alt="ícone facebook">
-          <img src="https://www.matrixenergia.com/wp-content/uploads/2021/04/logo-matrix-high.png" alt="ícone email">
-          <img src="https://digitalwork.com.br/wp-content/uploads/2018/07/logo_dw_site3.png" alt="ícone github">
-        </div>          
-      </div>
-    </section>
-    
 
-    <footer>
-      <div class="content">
-        <img id="logo" src="./assets/logo.png" alt="logo bitbox">
-
-        <div class="topics-content">
-          <div class="topics">
-            <h2>recursos</h2>
-            <div class="topic">
-              <li><a href="#">Documentação</a></li>
-              <li><a href="#">Termo de uso</a></li>
-              <li><a href="#">Dashboard</a></li>
-            </div>
-          </div>
-
-          <div class="topics">
-            <h2>contatos</h2>
-            <div class="topic">
-              <li><a href="#">Email</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">Facebook</a></li>
-            </div>
-          </div>
-
-          <div class="topics">
-            <h2>empresarial</h2>
-            <div class="topic">
-              <li><a href="#">Seja parceiro</a></li>
-              <li><a href="#">Empresas</a></li>
-              <li><a href="#">Serviços</a></li>
-            </div>
-          </div>
-
-          <div class="topics">
-            <div class="social">
-              <img src="./assets/icon_insta.png" alt="ícone instagram">
-              <img src="./assets/icon_facebook.png" alt="ícone facebook">
-              <img src="./assets/icon_email.png" alt="ícone email">
-              <img src="./assets/icon_git.png" alt="ícone github">
-            </div>          
+        <div class="topics">
+          <div class="empresa">
+            <img
+              src="https://i.ytimg.com/an/7UCzD37DA_7ygQ23qh49ew/featured_channel.jpg?v=619d0a23"
+              alt="ícone instagram"
+            />
+            <img
+              src="https://boxdelivery.com.br/wp-content/uploads/2022/09/cropped-favicon-box-180x180.png"
+              alt="ícone facebook"
+            />
+            <img
+              src="https://www.matrixenergia.com/wp-content/uploads/2021/04/logo-matrix-high.png"
+              alt="ícone email"
+            />
+            <img
+              src="https://digitalwork.com.br/wp-content/uploads/2018/07/logo_dw_site3.png"
+              alt="ícone github"
+            />
           </div>
         </div>
+      </section>
 
-      </div>
-
-      <div class="copyright">
+      <footer>
         <div class="content">
-          developed by Grupo4 © Todos os direitos reservados.
+          <img id="logo" src="./assets/logo.png" alt="logo bitbox" />
+
+          <div class="topics-content">
+            <div class="topics">
+              <h2>recursos</h2>
+              <div class="topic">
+                <li><a href="#">Documentação</a></li>
+                <li><a href="#">Termo de uso</a></li>
+                <li><a href="#">Dashboard</a></li>
+              </div>
+            </div>
+
+            <div class="topics">
+              <h2>contatos</h2>
+              <div class="topic">
+                <li><a href="#">Email</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">Facebook</a></li>
+              </div>
+            </div>
+
+            <div class="topics">
+              <h2>empresarial</h2>
+              <div class="topic">
+                <li><a href="#">Seja parceiro</a></li>
+                <li><a href="#">Empresas</a></li>
+                <li><a href="#">Serviços</a></li>
+              </div>
+            </div>
+
+            <div class="topics">
+              <div class="social">
+                <img src="./assets/icon_insta.png" alt="ícone instagram" />
+                <img src="./assets/icon_facebook.png" alt="ícone facebook" />
+                <img src="./assets/icon_email.png" alt="ícone email" />
+                <img src="./assets/icon_git.png" alt="ícone github" />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </footer>
-  </main>
 
-</body>
-
+        <div class="copyright">
+          <div class="content">developed by Grupo4 © Todos os direitos reservados.</div>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
 
 <script>
-
   // Guardando todos os elementos dentro de um vetor
-  const revealGeneral = document.querySelectorAll('.revealGeneral')
-  const revealCard = document.querySelectorAll('.revealCard')
+  const revealGeneral = document.querySelectorAll('.revealGeneral');
+  const revealCard = document.querySelectorAll('.revealCard');
 
   console.log(revealGeneral);
 
@@ -370,8 +411,8 @@
     duration: 1000,
     distance: '5rem',
     opacity: 0,
-    delay: 500
-  })
+    delay: 500,
+  });
 
   // Animação dos cards (Vantagens e equipe)
   ScrollReveal().reveal(revealCard, {
@@ -379,12 +420,11 @@
     distance: '10rem',
     opacity: 0,
     interval: 200,
-    delay: 500
-  })
+    delay: 500,
+  });
 
-  var n1 = 15
-  var n2 = 10
-  var resultado = n1 + n2
+  var n1 = 15;
+  var n2 = 10;
+  var resultado = n1 + n2;
   console.log(resultado);
-
 </script>

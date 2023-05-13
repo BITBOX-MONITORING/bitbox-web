@@ -35,8 +35,6 @@ function signEnterprise() {
   } else {
     alert('⚠️ Preencha os campos corretamente!s');
   }
-
-
 }
 
 function maskCNPJ() {
