@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png" />
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
+
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/sign.css" />
+
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <script src="js/sign_enterprise.js"></script>
+
+    <title>Acesso</title>
+  </head>
+
+  <body>
+    <main>
+      <div class="blur-effects">
+        <div class="side left">
+          <div class="blur yellow"></div>
+        </div>
+        <div class="side right">
+          <div class="blur purple"></div>
+        </div>
+      </div>
+
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="./assets/logo.png" alt="" />
+        </a>
+      </div>
+
+      <div class="form-container">
+        <div class="form-content enterprise">
+          <div class="text-container">
+            <h5>TRABALHE CONOSCO</h5>
+            <h1>Crie uma conta</h1>
+          </div>
+
+          <div class="form">
+            <!-- Nome input -->
+            <div class="input-field">
+              <input required type="text" id="in_name" />
+              <label for="in_name">nome</label>
+              <div class="icon">
+                <i class="ph ph-buildings"></i>
+              </div>
+            </div>
+
+            <div class="input-field">
+              <input required type="text" id="in_cnpj" maxlength="18" onkeyup="maskCNPJ()"/>
+              <label for="in_cnpj">cnpj</label>
+              <div class="icon">
+                <i class="ph ph-identification-card"></i>
+              </div>
+            </div>
+
+            <button onclick="signEnterprise()">CADASTRAR</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png">
-    <link rel="manifest" href="assets/favicon_io/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png" />
+    <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
 
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
@@ -21,180 +20,182 @@
     <script src="js/devices.js"></script>
 
     <title>Bitdash</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <main>
-        <div class="blur-effects">
-            <div class="side left">
-                <div class="blur yellow"></div>
-            </div>
-            <div class="side right">
-                <div class="blur purple"></div>
-            </div>
+      <div class="blur-effects">
+        <div class="side left">
+          <div class="blur yellow"></div>
         </div>
-
-        <div class="sidebar">
-            <div class="box theme-mode">
-                <div class="item">
-                    <i class="ph-fill ph-sun"></i>
-                </div>
-            </div>
-            <div class="box items">
-                <div class="item">
-                    <a href="dashboard.html">
-                        <i class="ph-fill ph-chart-line"></i>
-                    </a>
-                    <h5>DASHBOARD</h5>
-
-                </div>
-                <div class="item">
-                    <a href="devices.html">
-                        <i class="ph-fill ph-laptop"></i>
-                    </a>
-                    <h5>MÁQUINAS</h5>
-                </div>
-            </div>
-            <div class="box logout">
-                <div class="item">
-                    <i class="ph ph-sign-out"></i>
-                </div>
-            </div>
+        <div class="side right">
+          <div class="blur purple"></div>
         </div>
+      </div>
 
-        <div class="content-chart">
-            <div class="container">
-                <div class="container-profile">
-                    <div class="item">
-                        <div class="notification-span"></div>
-                        <i class="ph ph-bell-ringing"></i>
-                    </div>
-
-                    <div class="profile">
-                        <img src="" alt="">
-                        <div class="info-profile">
-                            <h2>Cassandra Silva</h2>
-                            <span>ENGENHEIRO NOC</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="device-info">
-                    <div class="status-bar"></div>
-                    <div class="chart1">
-                        <canvas id="chart_cpu"></canvas>
-                    </div>
-                    <div class="chart2">
-                        <canvas id="chart_ram"></canvas>
-                    </div>
-                    <div class="chart3">
-                        <canvas id="chart_disco"></canvas>
-                    </div>
-                    <div class="chart4">
-                        <canvas id="chart_abas"></canvas>
-                    </div>
-                </div>
-
-                <div class="grid-devices" id="grid_devices"></div>
-            </div>
+      <div class="sidebar">
+        <div class="box theme-mode">
+          <div class="item">
+            <i class="ph-fill ph-sun"></i>
+          </div>
         </div>
+        <div class="box items">
+          <div class="item">
+            <a href="dashboard.html">
+              <i class="ph-fill ph-chart-line"></i>
+            </a>
+            <h5>DASHBOARD</h5>
+          </div>
+          <div class="item">
+            <a href="devices.html">
+              <i class="ph-fill ph-laptop"></i>
+            </a>
+            <h5>MÁQUINAS</h5>
+          </div>
+        </div>
+        <div class="box logout">
+          <div class="item">
+            <i class="ph ph-sign-out"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-chart">
+        <div class="container">
+          <div class="container-profile">
+            <div class="item">
+              <div class="notification-span"></div>
+              <i class="ph ph-bell-ringing"></i>
+            </div>
+
+            <div class="profile">
+              <img src="" alt="" />
+              <div class="info-profile">
+                <h2>Cassandra Silva</h2>
+                <span>ENGENHEIRO NOC</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="device-info">
+            <div class="status-bar"></div>
+            <div class="chart1">
+              <canvas id="chart_cpu"></canvas>
+            </div>
+            <div class="chart2">
+              <canvas id="chart_ram"></canvas>
+            </div>
+            <div class="chart3">
+              <canvas id="chart_disco"></canvas>
+            </div>
+            <div class="chart4">
+              <canvas id="chart_abas"></canvas>
+            </div>
+          </div>
+
+          <div class="grid-devices" id="grid_devices"></div>
+        </div>
+      </div>
     </main>
-
-</body>
-
+  </body>
 </html>
 
 <script>
+  const device = JSON.parse(localStorage.getItem('data'));
 
-    const device = JSON.parse(localStorage.getItem('data'))
-
-    const chartCPU = document.getElementById('chart_cpu')
-    new Chart(chartCPU, {
-        type: 'line',
-        data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00',],
-            datasets: [{
-                label: "Uso da CPU",
-                data: device.cpu,
-                backgroundColor: ['#f5e65b'],
-                borderColor: ["#f5e65b"],
-                borderWidth: 1
-            }]
+  const chartCPU = document.getElementById('chart_cpu');
+  new Chart(chartCPU, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [
+        {
+          label: 'Uso da CPU',
+          data: device.cpu,
+          backgroundColor: ['#f5e65b'],
+          borderColor: ['#f5e65b'],
+          borderWidth: 1,
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const chartRAM = document.getElementById('chart_ram')
-    new Chart(chartRAM, {
-        type: 'line',
-        data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00',],
-            datasets: [{
-                label: "Uso da RAM",
-                data: device.ram,
-                backgroundColor: ['#f5e65b'],
-                borderColor: ["#f5e65b"],
-                borderWidth: 1
-            }]
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+      },
+    },
+  });
 
-    const chartDisco = document.getElementById('chart_disco')
-    new Chart(chartDisco, {
-        type: 'bar',
-        data: {
-            labels: ['S', 'T', 'Q' , 'Q' , 'S' , 'S' ],
-            datasets: [{
-                label: "Uso do Discos",
-                data: device.disco,
-                backgroundColor: ['#751BDB'],
-                borderColor: ["#751BDB"],
-                borderWidth: 1
-            }]
+  const chartRAM = document.getElementById('chart_ram');
+  new Chart(chartRAM, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [
+        {
+          label: 'Uso da RAM',
+          data: device.ram,
+          backgroundColor: ['#f5e65b'],
+          borderColor: ['#f5e65b'],
+          borderWidth: 1,
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    const chartAbas = document.getElementById('chart_abas')
-    new Chart(chartAbas, {
-        type: 'bar',
-        data: {
-            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00' ],
-            datasets: [{
-                label: "Quantidade de abas",
-                data: device.abas,
-                backgroundColor: ['#751BDB'],
-                borderColor: ["#751BDB"],
-                borderWidth: 1
-            }]
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+      },
+    },
+  });
 
+  const chartDisco = document.getElementById('chart_disco');
+  new Chart(chartDisco, {
+    type: 'bar',
+    data: {
+      labels: ['S', 'T', 'Q', 'Q', 'S', 'S'],
+      datasets: [
+        {
+          label: 'Uso do Discos',
+          data: device.disco,
+          backgroundColor: ['#751BDB'],
+          borderColor: ['#751BDB'],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  const chartAbas = document.getElementById('chart_abas');
+  new Chart(chartAbas, {
+    type: 'bar',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [
+        {
+          label: 'Quantidade de abas',
+          data: device.abas,
+          backgroundColor: ['#751BDB'],
+          borderColor: ['#751BDB'],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 </script>

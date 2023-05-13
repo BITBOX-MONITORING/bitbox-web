@@ -4,15 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const sessionEmail = sessionStorage.getItem("EMAIL")
   in_email_login.value = sessionEmail ? sessionEmail : '';
 })
-document.addEventListener('DOMContentLoaded', () => {
-  const sessionSenha = sessionStorage.getItem("SENHA")
-  in_password_login.value = sessionSenha ? sessionSenha: '';
-})
 
 function signIn() {
 
   const email = in_email_login.value
-  const senha = in_password_login.value
 
   if (!email || !senha) {
     alert("😡 Usuário ou senha incorretos!")

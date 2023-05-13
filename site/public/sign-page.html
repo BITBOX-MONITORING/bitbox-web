@@ -79,6 +79,22 @@
         </div>
 
         <div class="form">
+
+          <div class="input-field sel">
+            <select required type="text" id="sl_enterprise" maxlength="25">
+              <option value="">Selecione sua empresa</option>
+            </select>
+            <div class="icon office-icon">
+              <i class="ph ph-buildings"></i>
+            </div>
+
+            <p>Cadastre a sua empresa
+              <a href="sign-enterprise.html">
+                <span>aqui</span>
+              </a>
+            </p>
+          </div>
+
           <!-- Nome input -->
           <div class="input-field">
             <input required type="text" id="in_name" maxlength="25">
@@ -88,10 +104,11 @@
             </div>
           </div>
 
+
           <div class="input-line grid-office">
             <!-- Cargo input -->
             <div class="input-field">
-              
+
               <select id="sl_office" onchange="showCodeInput(this)">
                 <option value="">Cargo</option>
                 <option value="Engenheiro NOC">Engenheiro NOC</option>
