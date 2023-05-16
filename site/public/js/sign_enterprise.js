@@ -1,21 +1,21 @@
 function signEnterprise() {
-  const Enterpise = {
+  const Enterprise = {
     nomeServer: in_name.value,
     cnpjServer: in_cnpj.value.replace(/\D+/g, ''),
   };
 
-  console.log("Nome:", Enterpise.nomeServer);
-  console.log("CNPJ:", Enterpise.cnpjServer);
+  console.log("Nome:", Enterprise.nomeServer);
+  console.log("CNPJ:", Enterprise.cnpjServer);
 
-  const validInput = Enterpise.nomeServer && Enterpise.cnpjServer;
+  const validInput = Enterprise.nomeServer && Enterprise.cnpjServer;
 
   if (validInput) {
       fetch('/empresa/cadastrar', {
           method: 'POST',
           headers: {
-              'Content-type': 'application-json'
+              'Content-type': 'application/json'
           },
-          body: JSON.stringify(Enterpise)
+          body: JSON.stringify(Enterprise)
       }).then((res) => {
           console.log("Resposta:", res);
 

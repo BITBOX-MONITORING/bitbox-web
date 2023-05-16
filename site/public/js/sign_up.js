@@ -72,14 +72,23 @@ function signUp() {
   //JSON para guardar dados do usuário
   const User = {
     nameServer: in_name.value,
-    officeServer: in_office.value,
+    officeServer: sl_office.value,
     emailServer: in_email.value,
     passServer: in_password.value,
-    codigoPatrimonioServer: in_codigo_patrimonio ? in_codigo_patrimonio : null,
+    codigoPatrimonioServer: in_codigo_patrimonio.value ? in_codigo_patrimonio.value : null,
+    fkEmpresa: sl_enterprise.value !== '' ? sl_enterprise.value : null,
   };
 
+  console.log(User);
+
   // Ao negar o atributo do JSON, conferimos se ele está vazio ou não
-  let isInvalid = !User.nameServer || !User.officeServer || !User.emailServer || !User.passServer;
+  let isInvalid =
+    !User.nameServer ||
+    !User.officeServer ||
+    !User.emailServer ||
+    !User.passServer ||
+    !User.codigoPatrimonioServer ||
+    !User.fkEmpresa;
 
   if (isInvalid) {
     alert('⚠ Campos não preenchidos corretamente!');
@@ -223,15 +232,28 @@ function showCodeInput(select) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const enterprises = [
-    { id: 1, nome: 'Piriquitos Corp' },
-    { id: 2, nome: 'Box Delivery' },
-    { id: 3, nome: 'Google' },
-    { id: 4, nome: 'José Coxinhas' },
-  ];
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch('/empresa/selectEmpresas', {
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
 
-  enterprises.forEach((e) => {
-    sl_enterprise.innerHTML += `<option value="${e.id}">${e.nome}</option>`;
-  });
+    if (!response.ok) {
+      console.log('Erro na requisição');
+    }
+
+    const empresasResponse = await response.json();
+    console.log(empresasResponse);
+
+    localStorage.setItem('optionsEmpresas', JSON.stringify(empresasResponse));
+    const empresas = JSON.parse(localStorage.getItem('optionsEmpresas'));
+
+    empresas.forEach((empresa) => {
+      sl_enterprise.innerHTML += `<option value="${empresa.id}">${empresa.nome}</option>`;
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });

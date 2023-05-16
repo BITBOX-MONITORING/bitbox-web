@@ -1,6 +1,20 @@
 var empresaModel = require('../models/empresaModel');
 
+console.log(empresaModel);
+
+function selectEmpresas(req, res) {
+  empresaModel.selectEmpresas()
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json(error.sqlMessage);
+    });
+}
+
 function cadastrar(req, res) {
+  console.log('CHEGAMOS NA CONTROLLER PORA!');
   var nome = req.body.nomeServer;
   var cnpj = req.body.cnpjServer;
 
@@ -25,4 +39,5 @@ function cadastrar(req, res) {
 
 module.exports = {
   cadastrar,
+  selectEmpresas
 };

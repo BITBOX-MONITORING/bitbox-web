@@ -8,12 +8,21 @@ function cadastrar(nome, cnpj) {
   );
 
   var instrucao = `
-        INSERT INTO usuario (nome, cargo, email, senha) VALUES ('${nome}', '${cnpj}');
+        INSERT INTO empresa (nome, cnpj) VALUES ('${nome}', '${cnpj}');
     `;
+  console.log('Executando a instrução SQL: \n' + instrucao);
+  return database.executar(instrucao);
+}
+
+function selectEmpresas() {
+  console.log("ACESSEI O MODEL, VAMOS SELECIONAR AS EMPRESAS!")
+
+  var instrucao = `SELECT * FROM Empresa;`;
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
 }
 
 module.exports = {
   cadastrar,
+  selectEmpresas
 };
