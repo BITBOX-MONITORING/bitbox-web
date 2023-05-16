@@ -13,8 +13,6 @@ function validateEmail() {
     if (email.length == 0 || !validEmail) {
       inputEmail.style = 'outline: 1px solid #a0a0a07a';
     }
-
-    console.log(email.length);
   }
 }
 
@@ -69,26 +67,23 @@ function updateBarProgress(isValid, index) {
 
 // Função de cadastro
 function signUp() {
+  const codigoPatrimonio = document.getElementById('in_codigo_patrimonio');
+  const fkEmpresa = document.getElementById('sl_enterprise');
+
   //JSON para guardar dados do usuário
   const User = {
     nameServer: in_name.value,
     officeServer: sl_office.value,
     emailServer: in_email.value,
     passServer: in_password.value,
-    codigoPatrimonioServer: in_codigo_patrimonio.value ? in_codigo_patrimonio.value : null,
-    fkEmpresa: sl_enterprise.value !== '' ? sl_enterprise.value : null,
+    codigoPatrimonioServer: codigoPatrimonio ? codigoPatrimonio.value : null,
+    fkEmpresaServer: fkEmpresa.value != '' ? fkEmpresa.value : null,
   };
 
   console.log(User);
 
   // Ao negar o atributo do JSON, conferimos se ele está vazio ou não
-  let isInvalid =
-    !User.nameServer ||
-    !User.officeServer ||
-    !User.emailServer ||
-    !User.passServer ||
-    !User.codigoPatrimonioServer ||
-    !User.fkEmpresa;
+  let isInvalid = !User.nameServer;
 
   if (isInvalid) {
     alert('⚠ Campos não preenchidos corretamente!');
@@ -179,56 +174,24 @@ function togglePassVisibility() {
 
 function showCodeInput(select) {
   const grid = document.querySelector('.grid-office');
+  const codeInput = document.querySelector('.code');
   const office = select.value;
+  const supportStyle = 'grid-template-columns: 57% 40%';
+  const defaultStyle = 'grid-template-columns: 1fr';
 
-  console.log(grid);
-  console.log(office);
+  grid.style = office == 'Suporte' ? supportStyle : defaultStyle;
 
   if (office === 'Suporte') {
-    grid.style.display = 'grid';
-    grid.style.gridTemplateColumns = '57% 40%';
-
-    const inputField = document.createElement('div');
-    inputField.classList.add('input-field');
-    inputField.id = 'id_codigo';
-
-    const input = document.createElement('input');
-    input.required = true;
-    input.type = 'text';
-    input.id = 'id_codigo_patrimonio';
-    input.maxlength = 6;
-
-    const label = document.createElement('label');
-    label.for = 'id_codigo_patrimonio';
-    label.textContent = 'código';
-
-    const icon = document.createElement('div');
-    icon.classList.add('icon');
-
-    const i = document.createElement('i');
-    i.classList.add('ph', 'ph-barcode');
-
-    icon.appendChild(i);
-    inputField.appendChild(input);
-    inputField.appendChild(label);
-    inputField.appendChild(icon);
-    grid.appendChild(inputField);
-  } else if (office === 'Engenheiro NOC') {
-    grid.style.display = 'grid';
-    grid.style.gridTemplateColumns = '1fr';
-
-    if (document.getElementById('id_codigo')) {
-      const inputField = document.getElementById('id_codigo');
-      grid.removeChild(inputField);
-    }
+    codeInput.innerHTML += `
+      <div class="input-field">
+        <input required type="text" id="in_codigo_patrimonio" maxlength="6">
+        <label for="in_codigo_patrimonio">código</label>
+        <div class="icon">
+          <i class="ph ph-laptop"></i>
+        </div>
+      </div>`;
   } else {
-    grid.style.display = 'grid';
-    grid.style.gridTemplateColumns = '1fr';
-
-    if (document.getElementById('id_codigo')) {
-      const inputField = document.getElementById('id_codigo');
-      grid.removeChild(inputField);
-    }
+    codeInput.innerHTML = '';
   }
 }
 
@@ -248,12 +211,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log(empresasResponse);
 
     localStorage.setItem('optionsEmpresas', JSON.stringify(empresasResponse));
-    const empresas = JSON.parse(localStorage.getItem('optionsEmpresas'));
-
-    empresas.forEach((empresa) => {
-      sl_enterprise.innerHTML += `<option value="${empresa.id}">${empresa.nome}</option>`;
-    });
   } catch (error) {
     console.log(error);
   }
+
+  const empresas = JSON.parse(localStorage.getItem('optionsEmpresas'));
+
+  empresas.forEach((empresa) => {
+    sl_enterprise.innerHTML += `<option value="${empresa.id_empresa}">${empresa.nome}</option>`;
+  });
 });

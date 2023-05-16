@@ -17,7 +17,7 @@ function cadastrar(nome, cnpj) {
 function selectEmpresas() {
   console.log("ACESSEI O MODEL, VAMOS SELECIONAR AS EMPRESAS!")
 
-  var instrucao = `SELECT * FROM Empresa;`;
+  var instrucao = `SELECT * FROM Empresa ORDER BY nome ASC;`;
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
 }

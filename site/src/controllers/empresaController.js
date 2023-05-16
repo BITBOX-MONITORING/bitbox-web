@@ -1,7 +1,5 @@
 var empresaModel = require('../models/empresaModel');
 
-console.log(empresaModel);
-
 function selectEmpresas(req, res) {
   empresaModel.selectEmpresas()
     .then((response) => {

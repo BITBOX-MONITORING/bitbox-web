@@ -81,7 +81,7 @@
         <div class="form">
 
           <div class="input-field sel">
-            <select required type="text" id="sl_enterprise" maxlength="25">
+            <select required type="text" id="sl_enterprise" >
               <option value="">Selecione sua empresa</option>
             </select>
             <div class="icon office-icon">
@@ -97,7 +97,7 @@
 
           <!-- Nome input -->
           <div class="input-field">
-            <input required type="text" id="in_name" maxlength="25">
+            <input required type="text" id="in_name" maxlength="45">
             <label for="in_name">nome</label>
             <div class="icon">
               <i class="ph-user"></i>
@@ -108,7 +108,6 @@
           <div class="input-line grid-office">
             <!-- Cargo input -->
             <div class="input-field">
-
               <select id="sl_office" onchange="showCodeInput(this)">
                 <option value="">Cargo</option>
                 <option value="Engenheiro NOC">Engenheiro NOC</option>
@@ -119,6 +118,8 @@
                 <i class="ph-briefcase"></i>
               </div>
             </div>
+
+            <div class="input-field code"></div>
           </div>
 
           <!-- Email input -->
