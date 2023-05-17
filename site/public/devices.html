@@ -5,9 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon_io/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon_io/favicon-32x32.png"
+    />
     <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
 
     <link rel="stylesheet" href="css/global.css" />
@@ -23,6 +37,12 @@
   </head>
 
   <body>
+    <!-- Start of bitbox3963 Zendesk Widget script -->
+    <script
+      id="ze-snippet"
+      src="https://static.zdassets.com/ekr/snippet.js?key=21aff6f0-9776-424b-947a-acf41d235602"
+    ></script>
+    <!-- End of bitbox3963 Zendesk Widget script -->
     <main>
       <div class="blur-effects">
         <div class="side left">
@@ -101,19 +121,19 @@
 </html>
 
 <script>
-  const device = JSON.parse(localStorage.getItem('data'));
+  const device = JSON.parse(localStorage.getItem("data"));
 
-  const chartCPU = document.getElementById('chart_cpu');
+  const chartCPU = document.getElementById("chart_cpu");
   new Chart(chartCPU, {
-    type: 'line',
+    type: "line",
     data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
       datasets: [
         {
-          label: 'Uso da CPU',
+          label: "Uso da CPU",
           data: device.cpu,
-          backgroundColor: ['#f5e65b'],
-          borderColor: ['#f5e65b'],
+          backgroundColor: ["#f5e65b"],
+          borderColor: ["#f5e65b"],
           borderWidth: 1,
         },
       ],
@@ -127,17 +147,17 @@
     },
   });
 
-  const chartRAM = document.getElementById('chart_ram');
+  const chartRAM = document.getElementById("chart_ram");
   new Chart(chartRAM, {
-    type: 'line',
+    type: "line",
     data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
       datasets: [
         {
-          label: 'Uso da RAM',
+          label: "Uso da RAM",
           data: device.ram,
-          backgroundColor: ['#f5e65b'],
-          borderColor: ['#f5e65b'],
+          backgroundColor: ["#f5e65b"],
+          borderColor: ["#f5e65b"],
           borderWidth: 1,
         },
       ],
@@ -151,17 +171,17 @@
     },
   });
 
-  const chartDisco = document.getElementById('chart_disco');
+  const chartDisco = document.getElementById("chart_disco");
   new Chart(chartDisco, {
-    type: 'bar',
+    type: "bar",
     data: {
-      labels: ['S', 'T', 'Q', 'Q', 'S', 'S'],
+      labels: ["S", "T", "Q", "Q", "S", "S"],
       datasets: [
         {
-          label: 'Uso do Discos',
+          label: "Uso do Discos",
           data: device.disco,
-          backgroundColor: ['#751BDB'],
-          borderColor: ['#751BDB'],
+          backgroundColor: ["#751BDB"],
+          borderColor: ["#751BDB"],
           borderWidth: 1,
         },
       ],
@@ -175,17 +195,17 @@
     },
   });
 
-  const chartAbas = document.getElementById('chart_abas');
+  const chartAbas = document.getElementById("chart_abas");
   new Chart(chartAbas, {
-    type: 'bar',
+    type: "bar",
     data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
       datasets: [
         {
-          label: 'Quantidade de abas',
+          label: "Quantidade de abas",
           data: device.abas,
-          backgroundColor: ['#751BDB'],
-          borderColor: ['#751BDB'],
+          backgroundColor: ["#751BDB"],
+          borderColor: ["#751BDB"],
           borderWidth: 1,
         },
       ],

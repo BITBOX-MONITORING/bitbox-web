@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function signIn() {
   const email = in_email_login.value;
+  const senha = in_password_login.value;
 
   if (!email || !senha) {
     alert('⚠️ Usuário ou senha incorretos!');
