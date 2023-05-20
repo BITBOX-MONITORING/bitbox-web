@@ -83,7 +83,13 @@ function signUp() {
   console.log(User);
 
   // Ao negar o atributo do JSON, conferimos se ele está vazio ou não
-  let isInvalid = !User.nameServer;
+  let isInvalid =
+    !User.nameServer |
+    !User.officeServer |
+    !User.emailServer |
+    !User.passServer |
+    !User.codigoPatrimonioServerServer |
+    !User.fkEmpresaServerServer;
 
   if (isInvalid) {
     alert('⚠ Campos não preenchidos corretamente!');

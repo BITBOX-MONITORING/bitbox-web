@@ -24,19 +24,7 @@ function cadastrar(nome, cargo, email, senha, codigoPatrimonio, fkEmpresa) {
     fkEmpresa
   );
 
-  //   var fkNOC =
-  //     cargo != 'Suporte'
-  //       ? `SELECT id_usuario FROM Usuario WHERE fk_noc IS NULL AND fk_empresa = ${fkEmpresa}`
-  //       : 'null';
-
-  var instrucao = `
-        INSERT INTO usuario (nome, email, senha, fk_noc, fk_empresa) VALUES
-        ('${nome}', '${email}', '${senha}', null, ${fkEmpresa});
-    `;
-
-  //   var fkFuncionario = `SELECT id_usuario FROM Usuario WHERE email = '${email}'`;
-
-  //   var insertMaquina = `INSERT INTO Maquina (fk_funcionario) VALUES (${fkFuncionario}) `;
+  var instrucao = `EXEC cadastrar_usuario '${nome}', '${email}', '${senha}', '${cargo}', ${fkEmpresa});`;
 
   console.log('Executando a instrução SQL: \n' + instrucao);
 
