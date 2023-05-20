@@ -1,11 +1,12 @@
 var database = require('../database/config');
 
-function selectEmpresas() {
+function selectMaquinas() {
   console.log('ACESSEI O MODEL, VAMOS SELECIONAR AS MÁQUINAS!');
 
   var instrucao = `
   SELECT
   employee.id_usuario,
+  employee.nome,
   (
       SELECT 
           device.id_maquina,
@@ -33,12 +34,13 @@ FROM
   JOIN Registro AS data ON data.fk_maquina = device.id_maquina
 GROUP BY
   employee.id_usuario,
-  device.id_maquina
-FOR JSON PATH;`;
+  employee.nome,
+  device.id_maquina`;
+  
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
 }
 
 module.exports = {
-  selectMaquina,
+  selectMaquinas,
 };

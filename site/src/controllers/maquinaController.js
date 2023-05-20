@@ -1,7 +1,7 @@
 var maquinaModel = require('../models/maquinaModel');
 
-function selectmaquinas(req, res) {
-  maquinaModel.selectmaquinas()
+function selectMaquinas(req, res) {
+  maquinaModel.selectMaquinas()
     .then((response) => {
       res.json(response);
     })
@@ -12,5 +12,5 @@ function selectmaquinas(req, res) {
 }
 
 module.exports = {
-  selectmaquinas
+  selectMaquinas
 };

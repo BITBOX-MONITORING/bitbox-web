@@ -1,14 +1,36 @@
-const devices = [
-  { id: 'BD0987', img: '', type: 'LINUX', name: 'UBUNTU 22.2', user: 'Elma Maria', status: 'alerta' },
-  { id: 'BD0987', img: '', type: 'WINDOWS', name: 'WINDOWS 10', user: 'Josimar Mar', status: 'ok' },
-  { id: 'BD0987', img: '', type: 'LINUX', name: 'UBUNTU 22.2', user: 'Epaminondas Lúcio', status: 'crítico' },
-  { id: 'BD0987', img: '', type: 'LINUX', name: 'UBUNTU 22.2', user: 'Catarina Marica', status: 'crítico' },
-  { id: 'BD0987', img: '', type: 'LINUX', name: 'UBUNTU 22.2', user: 'Thiago Gomes', status: 'crítico' },
-  { id: 'BD0987', img: '', type: 'WINDOWS', name: 'WINDOWS 10', user: 'Fernananda Caramico', status: 'ok' },
-  { id: 'BD0987', img: '', type: 'WINDOWS', name: 'WINDOWS 10', user: 'Paulo Mimoso', status: 'alerta' },
-  { id: 'BD0987', img: '', type: 'LINUX', name: 'UBUNTU 22.2', user: 'Giuseppe Casseca', status: 'crítico' },
-  { id: 'BD0987', img: '', type: 'LINUX', name: 'UBUNTU 22.2', user: 'Simas Turbo', status: 'crítico' },
-];
+let employee = [];
+
+document.addEventListener('DOMContentLoaded', async () => {
+  let response = await fetch('/maquinas/selectMaquinas', {
+    headers: { 'Content-type': 'application/json' },
+  });
+
+  response = await response.json();
+
+  employee = response;
+
+  modal = document.querySelector('.device-info');
+
+  // devices.sort(function (a, b) {
+  //   if (a.status === 'crítico' && b.status !== 'crítico') {
+  //     return -1;
+  //   }
+  //   if (b.status === 'crítico' && a.status !== 'crítico') {
+  //     return 1;
+  //   }
+  //   if (a.status === 'alerta' && b.status !== 'alerta' && b.status !== 'crítico') {
+  //     return -1;
+  //   }
+  //   if (b.status === 'alerta' && a.status !== 'alerta' && a.status !== 'crítico') {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
+
+  for (const [index, deviceInfo] of employee.entries()) {
+    grid_devices.innerHTML += buildCardDevice(deviceInfo, index);
+  }
+});
 
 const statusColors = {
   ok: '#3ad13a',
@@ -16,19 +38,22 @@ const statusColors = {
   crítico: '#d13a47',
 };
 
-function buildModal(device) {
-  const colorStatus = statusColors[device.status];
+function buildModal(deviceInfo) {
+  const colorStatus = 'red';
+
+  const device = JSON.parse(deviceInfo.device);
+  const data = JSON.parse(deviceInfo.data)
 
   const modal = ` 
     <div class="card">
       <div class="img-device">
-          <img src="${device.img}" alt="">
+          <img src="${deviceInfo.img}" alt="">
       </div>
 
       <div class="info">
-          <span>${device.id}</span>
-          <h1>${device.name}</h1>
-          <h3>${device.user}</h3>
+          <span>${device[0].codigo_patrimonio}</span>
+          <h1>${device[0].sistema_operacional}</h1>
+          <h3>${deviceInfo.nome}</h3>
       </div>
       </div>
 
@@ -38,7 +63,7 @@ function buildModal(device) {
               <i class="ph ph-cpu"></i>
               <span> CPU </span>
           </div>
-          <h1>15%</h1>
+          <h1>${(data[0].cpu_uso).toFixed(2)}%</h1>
       </div>
 
       <div class="wall"></div>
@@ -70,7 +95,7 @@ function buildModal(device) {
           </div>
           <div class="status-info">
               <div style="background-color: ${colorStatus}" class="status"></div>
-              <h1 style="color: ${colorStatus}">${device.status}</h1>
+              <h1 style="color: ${colorStatus}"></h1>
           </div>
       </div>
     </div>`;
@@ -78,7 +103,9 @@ function buildModal(device) {
   return modal;
 }
 
-function buildCardDevice(device, index) {
+function buildCardDevice(deviceInfo, index) {
+  const device = JSON.parse(deviceInfo.device);
+
   device.img = device.type === 'LINUX' ? 'assets/device-linux.png' : 'assets/device-windows.png';
 
   const colorStatus = statusColors[device.status];
@@ -90,9 +117,9 @@ function buildCardDevice(device, index) {
       </div>
 
       <div class="info">
-      <span>${device.id}</span>
-      <h1>${device.name}</h1>
-      <h3>${device.user}</h3>
+      <span>${device[0].codigo_patrimonio}</span>
+      <h1>${device[0].sistema_operacional}</h1>
+      <h3>${deviceInfo.nome}</h3>
       </div>
 
       <div class="status" style="background-color:${colorStatus}"></div>
@@ -106,30 +133,6 @@ const modalStyle = {
   opened: 'opacity: 1; width: 1000px; height: 600px; z-index: 10',
   closed: 'opacity: 0; width: 0; height: 0; z-index: -10',
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-  modal = document.querySelector('.device-info');
-
-  devices.sort(function (a, b) {
-    if (a.status === 'crítico' && b.status !== 'crítico') {
-      return -1;
-    }
-    if (b.status === 'crítico' && a.status !== 'crítico') {
-      return 1;
-    }
-    if (a.status === 'alerta' && b.status !== 'alerta' && b.status !== 'crítico') {
-      return -1;
-    }
-    if (b.status === 'alerta' && a.status !== 'alerta' && a.status !== 'crítico') {
-      return 1;
-    }
-    return 0;
-  });
-
-  for (const [index, device] of devices.entries()) {
-    grid_devices.innerHTML += buildCardDevice(device, index);
-  }
-});
 
 function closeDeviceModal() {
   modal.style = modalStyle.closed;
@@ -155,23 +158,9 @@ function onClickOutsideModal(event) {
 
 function openDeviceModal(index) {
   const statusBar = document.querySelector('.status-bar');
-  const device = devices[index];
+  const device = employee[index];
 
-  let device_data = {
-    cpu: [],
-    ram: [],
-    disco: [],
-    abas: [],
-  };
-
-  for (let i = 0; i < 6; i++) {
-    device_data.cpu.push(parseInt(Math.random() * 100));
-    device_data.ram.push(parseInt(Math.random() * 8));
-    device_data.disco.push(parseInt(Math.random() * 500));
-    device_data.abas.push(parseInt(Math.random() * 20));
-  }
-
-  localStorage.setItem('data', JSON.stringify(device_data));
+  console.log(device);
 
   modal.style = modalStyle.opened;
   statusBar.innerHTML = buildModal(device);

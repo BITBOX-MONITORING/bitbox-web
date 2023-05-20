@@ -325,6 +325,7 @@ main {
 
 .card .info h1{
     line-height: 25px;
+    text-transform: uppercase;
     color: var(--yellow);
     letter-spacing: 2px;
     font-size: 1.2rem;

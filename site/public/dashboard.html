@@ -5,23 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="assets/favicon_io/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/favicon_io/favicon-16x16.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="assets/favicon_io/favicon-32x32.png"
-    />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon_io/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon_io/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon_io/favicon-32x32.png" />
     <link rel="manifest" href="assets/favicon_io/site.webmanifest" />
 
     <link rel="stylesheet" href="css/global.css" />
@@ -32,16 +18,15 @@
     <script src="js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <title>Bitdash</title>
-  </head>
-
-  <body>
-    <!-- Start of bitbox3963 Zendesk Widget script -->
     <script
       id="ze-snippet"
       src="https://static.zdassets.com/ekr/snippet.js?key=21aff6f0-9776-424b-947a-acf41d235602"
     ></script>
-    <!-- End of bitbox3963 Zendesk Widget script -->
+
+    <title>Bitdash</title>
+  </head>
+
+  <body>
     <main>
       <div class="blur-effects">
         <div class="side left">
@@ -146,16 +131,16 @@
 </html>
 
 <script>
-  const ctx2 = document.getElementById("myChart-2").getContext("2d");
+  const ctx2 = document.getElementById('myChart-2').getContext('2d');
   new Chart(ctx2, {
-    type: "pie",
+    type: 'pie',
     data: {
-      labels: ["Ok", "Alerta", "Crítico"],
+      labels: ['Ok', 'Alerta', 'Crítico'],
       datasets: [
         {
-          label: "memoria utilizada",
+          label: 'memoria utilizada',
           data: [12, 19, 3],
-          backgroundColor: ["#42BB42", "#DACC51", "#B8424C"],
+          backgroundColor: ['#42BB42', '#DACC51', '#B8424C'],
           borderWidth: 1,
         },
       ],
@@ -163,25 +148,25 @@
     options: {},
   });
 
-  const ctx3 = document.getElementById("myChart-3").getContext("2d");
+  const ctx3 = document.getElementById('myChart-3').getContext('2d');
 
   new Chart(ctx3, {
-    type: "line",
+    type: 'line',
     data: {
-      labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
       datasets: [
         {
-          label: "Download",
+          label: 'Download',
           data: [555, 457, 522, 268, 420, 589],
-          backgroundColor: ["#751BDB"],
-          borderColor: ["#751BDB"],
+          backgroundColor: ['#751BDB'],
+          borderColor: ['#751BDB'],
           borderWidth: 1,
         },
         {
-          label: "Upload",
+          label: 'Upload',
           data: [268, 400, 265, 212, 320, 326],
-          backgroundColor: ["#DACC51"],
-          borderColor: ["#DACC51"],
+          backgroundColor: ['#DACC51'],
+          borderColor: ['#DACC51'],
           borderWidth: 1,
         },
       ],
