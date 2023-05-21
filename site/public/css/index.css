@@ -641,6 +641,10 @@ a:hover {
   gap: 1rem;
 }
 
+.services-info a{
+  width: 100%;
+}
+
 .services-info p {
   color: var(--light);
   font-size: 1.2rem;
@@ -845,6 +849,27 @@ a:hover {
     font-size: .8rem;
   }
 }
+
+/* Partners */
+
+#partners{
+  width: 70%;
+  margin: 10rem auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#partners a img{
+  height: 50px;
+  filter: saturate(0);
+  transition: .5s ease;
+}
+
+#partners a img:hover{
+  filter: saturate(1);
+}
+
 
 /* --- Footer --- */
 footer {

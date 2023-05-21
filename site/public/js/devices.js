@@ -73,7 +73,7 @@ function buildModal(deviceInfo) {
               <i class="ph-rocket-launch"></i>
               <span>RAM</span>
           </div>
-          <h1>4.8 <em>GB</em></h1>
+          <h1>${Number(data[0].ram_uso).toFixed(1)} <em>GB</em></h1>
       </div>
 
       <div class="wall"></div>
@@ -106,7 +106,7 @@ function buildModal(deviceInfo) {
 function buildCardDevice(deviceInfo, index) {
   const device = JSON.parse(deviceInfo.device);
 
-  device.img = device.type === 'LINUX' ? 'assets/device-linux.png' : 'assets/device-windows.png';
+  device.img = device.sistema_operacional === 'LINUX' ? 'assets/device-linux.png' : 'assets/device-windows.png';
 
   const colorStatus = statusColors[device.status];
 

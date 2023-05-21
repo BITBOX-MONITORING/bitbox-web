@@ -177,10 +177,14 @@
               e minimizar tempo de inatividade não programado, mantendo as operações com máximo
               desempenho.
             </p>
-            <button class="btn btn-services">
-              <i class="ph-cpu"></i>
-              Experimentar agora
-            </button>
+            <a
+              href="https://github.com/BITBOX-MONITORING/bitbox-backend-java/raw/main/bitbox-jar/target/login.jar"
+            >
+              <button class="btn btn-services">
+                <i class="ph-cpu"></i>
+                Experimentar agora
+              </button>
+            </a>
           </div>
           <img src="./assets/Dashboard.png" alt="Dashboard" id="dash-img" />
         </div>
@@ -318,34 +322,9 @@
             </div>
           </div>
         </div>
-        <!-- <div class="empresas">
-        <img src="https://i.ytimg.com/an/7UCzD37DA_7ygQ23qh49ew/featured_channel.jpg?v=619d0a23" alt="">
-        <img src="https://boxdelivery.com.br/wp-content/uploads/2022/09/cropped-favicon-box-180x180.png" alt="">
-        <img src="https://www.matrixenergia.com/wp-content/uploads/2021/04/logo-matrix-high.png" alt="">
-        <img src="https://digitalwork.com.br/wp-content/uploads/2018/07/logo_dw_site3.png" alt="">
+      </section>
 
-      </div> -->
-
-        <div class="topics">
-          <div class="empresa">
-            <img
-              src="https://i.ytimg.com/an/7UCzD37DA_7ygQ23qh49ew/featured_channel.jpg?v=619d0a23"
-              alt="ícone instagram"
-            />
-            <img
-              src="https://boxdelivery.com.br/wp-content/uploads/2022/09/cropped-favicon-box-180x180.png"
-              alt="ícone facebook"
-            />
-            <img
-              src="https://www.matrixenergia.com/wp-content/uploads/2021/04/logo-matrix-high.png"
-              alt="ícone email"
-            />
-            <img
-              src="https://digitalwork.com.br/wp-content/uploads/2018/07/logo_dw_site3.png"
-              alt="ícone github"
-            />
-          </div>
-        </div>
+      <section id="partners">
       </section>
 
       <footer>
@@ -404,8 +383,6 @@
   const revealGeneral = document.querySelectorAll('.revealGeneral');
   const revealCard = document.querySelectorAll('.revealCard');
 
-  console.log(revealGeneral);
-
   // Animação geral
   ScrollReveal().reveal(revealGeneral, {
     duration: 1000,
@@ -422,9 +399,4 @@
     interval: 200,
     delay: 500,
   });
-
-  var n1 = 15;
-  var n2 = 10;
-  var resultado = n1 + n2;
-  console.log(resultado);
 </script>
