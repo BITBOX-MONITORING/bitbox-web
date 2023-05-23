@@ -24,7 +24,7 @@ function cadastrar(nome, cargo, email, senha, codigoPatrimonio, fkEmpresa) {
     fkEmpresa
   );
 
-  var instrucao = `EXEC cadastrar_usuario '${nome}', '${email}', '${senha}', '${cargo}', ${fkEmpresa});`;
+  var instrucao = `EXEC cadastrar_usuario '${nome}', '${email}', '${senha}', '${cargo}', ${codigoPatrimonio}, ${fkEmpresa};`;
 
   console.log('Executando a instrução SQL: \n' + instrucao);
 

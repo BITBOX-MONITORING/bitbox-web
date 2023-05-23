@@ -88,8 +88,9 @@ function signUp() {
     !User.officeServer |
     !User.emailServer |
     !User.passServer |
-    !User.codigoPatrimonioServerServer |
-    !User.fkEmpresaServerServer;
+    !User.codigoPatrimonioServer |
+    !User.fkEmpresaServer;
+  
 
   if (isInvalid) {
     alert('⚠ Campos não preenchidos corretamente!');
