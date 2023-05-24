@@ -20,7 +20,13 @@ router.post("/entrar", function (req, res) {
     usuarioController.entrar(req, res)
 });
 
+router.delete("/excluirFuncionario:id_funcionario", function (req, res) {
+    usuarioController.excluirFuncionario(req, res)
+});
 
+router.delete("/excluirMaquina:id_maquina", function (req, res) {
+    usuarioController.excluirMaquina(req, res)
+});
 
 
 module.exports = router;
