@@ -40,18 +40,8 @@ function excluirFuncionario(id_funcionario) {
   return database.executar(instrucao);
 }
 
-function excluirMaquina(id_maquina) {
-  console.log("ACESSEI O avaliacao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idEndereco);
-  var instrucao = `
-      DELETE FROM Maquina WHERE id_maquina = ${id_maquina};
-  `;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
-}
-
 module.exports = {
   entrar,
   cadastrar,
   excluirFuncionario,
-  excluirMaquina
 };
