@@ -73,42 +73,32 @@ function cadastrar(req, res) {
 function excluirFuncionario(req, res) {
   var id_funcionario = req.params.id_funcionario;
 
-  usuarioModel.excluirFuncionario(id_funcionario)
-      .then(
-          function (resultado) {
-              res.json(resultado);
-          }
-      )
-      .catch(
-          function (erro) {
-              console.log(erro);
-              console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
-              res.status(500).json(erro.sqlMessage);
-          }
-      );
+  usuarioModel
+    .excluirFuncionario(id_funcionario)
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log('Houve um erro ao deletar o post: ', erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
 }
 
-function carregarFuncionario(req, res) {
-  var id_funcionario = req.params.id_funcionario
+function selectFuncionarios(req, res) {
+  fk_funcionario = req.params.fk_funcionario
 
-  if (id_funcionario == undefined) {
-      res.status(400).send("Seu idCadastroCliente está undefined!");
-  } else {
-      usuarioModel.carregarFuncionario(id_funcionario)
-          .then(function (resultado) {
-              if (resultado.length > 0) {
-                  res.status(200).json(resultado);
-              } else {
-                  res.status(204).send("Nenhum resultado encontrado!")
-              }
-          }).catch(
-              function (erro) {
-                  console.log(erro);
-                  console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                  res.status(500).json(erro.sqlMessage);
-              }
-          );
-  }
+  usuarioModel
+    .selectFuncionarios(fk_funcionario)
+    .then(function (resultado) {
+      console.log(resultado);
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log('\nHouve um erro ao realizar o cadastro! Erro: ', erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
 }
 
 function atualizarFuncionario(req, res) {
@@ -133,7 +123,7 @@ function atualizarFuncionario(req, res) {
     res.status(400).send('Sua cargo está indefinida!');
   } else {
     usuarioModel
-      .atualizarFuncionario(nome ,email, senha, fk_noc, fk_empresa, cargo)
+      .atualizarFuncionario(nome, email, senha, fk_noc, fk_empresa, cargo)
       .then(function (resultado) {
         console.log(`\nResultados encontrados: ${resultado.length}`);
         console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
@@ -155,12 +145,10 @@ function atualizarFuncionario(req, res) {
   }
 }
 
-
-
 module.exports = {
   entrar,
   cadastrar,
   excluirFuncionario,
-  carregarFuncionario,
-  atualizarFuncionario
+  selectFuncionarios,
+  atualizarFuncionario,
 };
