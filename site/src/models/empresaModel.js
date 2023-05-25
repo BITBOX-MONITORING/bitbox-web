@@ -22,7 +22,17 @@ function selectEmpresas() {
   return database.executar(instrucao);
 }
 
+function excluirEmpresa(id_empresa) {
+  console.log("ACESSEI O avaliacao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idEndereco);
+  var instrucao = `
+      DELETE FROM Empresa WHERE id_empresa = ${id_empresa};
+  `;
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 module.exports = {
   cadastrar,
-  selectEmpresas
+  selectEmpresas,
+  excluirEmpresa
 };

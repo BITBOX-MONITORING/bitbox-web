@@ -35,7 +35,26 @@ function cadastrar(req, res) {
   }
 }
 
+function excluirEmpresa(req, res) {
+  var id_empresa = req.params.id_empresa;
+
+  empresaModel.excluirEmpresa(id_empresa)
+      .then(
+          function (resultado) {
+              res.json(resultado);
+          }
+      )
+      .catch(
+          function (erro) {
+              console.log(erro);
+              console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+              res.status(500).json(erro.sqlMessage);
+          }
+      );
+}
+
 module.exports = {
   cadastrar,
-  selectEmpresas
+  selectEmpresas,
+  excluirEmpresa
 };

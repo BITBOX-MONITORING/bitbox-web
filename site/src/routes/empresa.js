@@ -11,4 +11,8 @@ router.get('/selectEmpresas', (req, res) => {
     empresaController.selectEmpresas(req, res)
 })
 
+router.delete("/excluirEmpresa:id_empresa", function (req, res) {
+    empresaController.excluirEmpresa(req, res)
+});
+
 module.exports = router;
