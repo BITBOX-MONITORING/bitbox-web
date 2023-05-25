@@ -24,5 +24,8 @@ router.delete("/excluirFuncionario:id_funcionario", function (req, res) {
     usuarioController.excluirFuncionario(req, res)
 });
 
+router.get("/carregarFuncionario/:id_funcionario", function (req, res) {
+    usuarioController.carregarFuncionario(req, res);
+});
 
 module.exports = router;
