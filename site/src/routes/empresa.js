@@ -15,4 +15,8 @@ router.delete("/excluirEmpresa:id_empresa", function (req, res) {
     empresaController.excluirEmpresa(req, res)
 });
 
+router.post("/atualizarEmpresa:id_empresa", function (req, res) {
+    empresaController.atualizarEmpresa(req, res)
+});
+
 module.exports = router;

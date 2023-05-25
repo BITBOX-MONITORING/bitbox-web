@@ -53,8 +53,41 @@ function excluirEmpresa(req, res) {
       );
 }
 
+function atualizarEmpresa(req, res) {
+  var nome = req.body.nomeServer;
+  var cnpj = req.body.cnpjServer;
+
+  if (nome == undefined) {
+    res.status(400).send('Seu nome está undefined!');
+  } else if (cnpj == undefined) {
+    res.status(400).send('Sua cnpj está indefinida!');
+  } else {
+    empresaModel
+      .atualizarEmpresa(nome, cnpj)
+      .then(function (resultado) {
+        console.log(`\nResultados encontrados: ${resultado.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+        if (resultado.length == 1) {
+          console.log(resultado);
+          res.json(resultado[0]);
+        } else if (resultado.length == 0) {
+          res.status(403).send('Nome ou cnpj inválido(s)');
+        } else {
+          res.status(403).send('Duplicata!');
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log('\nHouve um erro ao atualizar a empresa! Erro: ', erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
 module.exports = {
   cadastrar,
   selectEmpresas,
-  excluirEmpresa
+  excluirEmpresa,
+  atualizarEmpresa
 };
