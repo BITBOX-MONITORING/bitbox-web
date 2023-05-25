@@ -28,4 +28,8 @@ router.get("/carregarFuncionario/:id_funcionario", function (req, res) {
     usuarioController.carregarFuncionario(req, res);
 });
 
+router.post("/atualizarFuncionario:id_funcionario", function (req, res) {
+    usuarioController.atualizarFuncionario(req, res)
+});
+
 module.exports = router;
