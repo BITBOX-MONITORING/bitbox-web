@@ -29,7 +29,37 @@ function excluirMaquina(req, res) {
       );
 }
 
+function atualizarMaquina(req, res) {
+  var fk_funcionario = req.body.fk_funcionarioServer;
+
+  if (fk_funcionario == undefined) {
+    res.status(400).send('Seu fk_funcionario está undefined!');
+  } else {
+    maquinaModel
+      .atualizarMaquina(fk_funcionario)
+      .then(function (resultado) {
+        console.log(`\nResultados encontrados: ${resultado.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+        if (resultado.length == 1) {
+          console.log(resultado);
+          res.json(resultado[0]);
+        } else if (resultado.length == 0) {
+          res.status(403).send('fk_funcionario inválido(s)');
+        } else {
+          res.status(403).send('Duplicata!');
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log('\nHouve um erro ao atualizar a fk_funcionario! Erro: ', erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
 module.exports = {
   selectMaquinas,
-  excluirMaquina
+  excluirMaquina,
+  atualizarMaquina,
 };

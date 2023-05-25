@@ -11,4 +11,8 @@ router.delete("/excluirMaquina:id_maquina", function (req, res) {
     maquinaController.excluirMaquina(req, res)
 });
 
+router.post("/atualizarMaquina:id_maquina", function (req, res) {
+    maquinaController.atualizarMaquina(req, res)
+});
+
 module.exports = router;

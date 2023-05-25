@@ -52,8 +52,7 @@ function carregarFuncionario(id_funcionario) {
 function atualizarFuncionario(nome ,email, senha, fk_noc, fk_empresa, cargo) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
-    email,
-    senha
+    nome ,email, senha, fk_noc, fk_empresa, cargo
   );
   var instrucao = `
   UPDATE Funcionario SET nome = '${nome}', email = '${email}', senha = '${senha}', fk_noc = '${fk_noc}', fk_empresa = '${fk_empresa}', cargo = '${cargo}';
