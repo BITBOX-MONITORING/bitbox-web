@@ -32,7 +32,7 @@ function cadastrar(nome, cargo, email, senha, codigoPatrimonio, fkEmpresa) {
 }
 
 function excluirFuncionario(id_funcionario) {
-  console.log("ACESSEI O avaliacao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idEndereco);
+  console.log("ACESSEI O avaliacao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", id_funcionario);
   var instrucao = `
       UPDATE Maquina SET fk_funcionario = NULL WHERE fk_funcionario = ${id_funcionario};
       DELETE FROM Funcionario WHERE id_funcionario = ${id_funcionario};

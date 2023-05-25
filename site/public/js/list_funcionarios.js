@@ -1,7 +1,8 @@
 let funcionarios;
 
 (async function () {
-  funcionarios = await (await fetch('/usuarios/selectFuncionarios/1', {})).json();
+  const response = await fetch('/usuarios/selectFuncionarios/1', {});
+  funcionarios = await response.json()
   console.log(funcionarios);
 
   if (funcionarios) {
@@ -26,6 +27,12 @@ function buildListFuncionarios() {
 }
 
 function deleteFuncionario(id) {
+  const confim = window.confirm("Realmente deseja excluir?")
+  if(confirm) {
+    fetch (`/usuarios/excluirFuncionario/${id}`, {
+      method: 'DELETE'
+    }).then((res)=>{console.log(res)})
+  }
   console.log(id);
 }
 

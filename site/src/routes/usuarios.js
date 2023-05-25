@@ -21,7 +21,7 @@ router.post("/entrar", function (req, res) {
     usuarioController.entrar(req, res)
 });
 // DELETE
-router.delete("/excluirFuncionario:id_funcionario", function (req, res) {
+router.delete("/excluirFuncionario/:id_funcionario", function (req, res) {
     usuarioController.excluirFuncionario(req, res)
 });
 // READ
@@ -30,7 +30,7 @@ router.get("/selectFuncionarios/:fkEmpresa", (req, res) => {
 })
 
 // UPDATE
-router.post("/atualizarFuncionario:id_funcionario", function (req, res) {
+router.post("/atualizarFuncionario/:id_funcionario", function (req, res) {
     usuarioController.atualizarFuncionario(req, res)
 });
 
