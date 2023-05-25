@@ -204,15 +204,7 @@ function showCodeInput(select) {
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const response = await fetch('/empresa/selectEmpresas', {
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      console.log('Erro na requisição');
-    }
+    const response = await fetch('/empresa/selectEmpresas');
 
     const empresasResponse = await response.json();
     console.log(empresasResponse);
