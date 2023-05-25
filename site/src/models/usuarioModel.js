@@ -31,7 +31,20 @@ function cadastrar(nome, cargo, email, senha, codigoPatrimonio, fkEmpresa) {
   return database.executar(instrucao);
 }
 
+function selectFuncionarios(fk_funcionario) {
+  console.log("ACESSEI A MODEL SELECT FUNCIONARIOS" + fk_funcionario);
+
+  instrucao = `SELECT func.*, maq.codigo_patrimonio FROM Funcionario as func
+  JOIN Maquina as maq ON fk_funcionario = id_funcionario
+  WHERE fk_empresa = 1;`
+
+  console.log('Executando a instrução SQL: \n' + instrucao);
+
+  return database.executar(instrucao);
+}
+
 module.exports = {
   entrar,
   cadastrar,
+  selectFuncionarios
 };

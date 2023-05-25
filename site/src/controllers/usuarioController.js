@@ -70,7 +70,24 @@ function cadastrar(req, res) {
   }
 }
 
+function selectFuncionarios(req, res) {
+  fk_funcionario = req.params.fk_funcionario
+
+  usuarioModel
+    .selectFuncionarios(fk_funcionario)
+    .then(function (resultado) {
+      console.log(resultado);
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log('\nHouve um erro ao realizar o cadastro! Erro: ', erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
   entrar,
   cadastrar,
+  selectFuncionarios
 };
