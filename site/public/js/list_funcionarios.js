@@ -1,7 +1,8 @@
 let funcionarios;
 
 (async function () {
-  funcionarios = await (await fetch('/usuarios/selectFuncionarios/1', {})).json();
+  const response = await fetch('/usuarios/selectFuncionarios/1', {});
+  funcionarios = await response.json()
   console.log(funcionarios);
 
   if (funcionarios) {

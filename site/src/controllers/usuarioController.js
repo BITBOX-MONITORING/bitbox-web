@@ -72,6 +72,7 @@ function cadastrar(req, res) {
 
 function excluirFuncionario(req, res) {
   var id_funcionario = req.params.id_funcionario;
+  console.log(id_funcionario);
 
   usuarioModel
     .excluirFuncionario(id_funcionario)
