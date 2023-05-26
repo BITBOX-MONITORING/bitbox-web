@@ -6,9 +6,7 @@ function entrar(email, senha) {
     email,
     senha
   );
-  var instrucao = `
-        SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}';
-    `;
+  var instrucao = ` SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}'; `;
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
 }
@@ -32,35 +30,35 @@ function cadastrar(nome, cargo, email, senha, codigoPatrimonio, fkEmpresa) {
 }
 
 function excluirFuncionario(id_funcionario) {
-  console.log("ACESSEI O avaliacao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idEndereco);
-  var instrucao = `
-      UPDATE Maquina SET fk_funcionario = NULL WHERE fk_funcionario = ${id_funcionario};
-      DELETE FROM Funcionario WHERE id_funcionario = ${id_funcionario};
-  `;
-  console.log("Executando a instrução SQL: \n" + instrucao);
+  console.log("ACESSEI O excluirFuncionario");
+
+  var instrucao = `EXEC excluir_funcionario ${id_funcionario}`;
+  console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
 }
 
-function selectFuncionarios(fk_funcionario) {
-  console.log("ACESSEI A MODEL SELECT FUNCIONARIOS" + fk_funcionario);
+function selectFuncionarios(fkEmpresa) {
+  console.log('ACESSEI A MODEL SELECT FUNCIONARIOS ' + fkEmpresa);
 
   instrucao = `SELECT func.*, maq.codigo_patrimonio FROM Funcionario as func
   JOIN Maquina as maq ON fk_funcionario = id_funcionario
-  WHERE fk_empresa = 1;`
+  WHERE fk_empresa = ${fkEmpresa};`;
 
   console.log('Executando a instrução SQL: \n' + instrucao);
 
   return database.executar(instrucao);
 }
 
-
-function atualizarFuncionario(nome ,email, senha, fk_noc, fk_empresa, cargo) {
+function atualizarFuncionario(nome, email, id) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
-    nome ,email, senha, fk_noc, fk_empresa, cargo
+    nome,
+    email,
+    id
   );
   var instrucao = `
-  UPDATE Funcionario SET nome = '${nome}', email = '${email}', senha = '${senha}', fk_noc = '${fk_noc}', fk_empresa = '${fk_empresa}', cargo = '${cargo}';
+    UPDATE Funcionario SET nome = '${nome}', email = '${email}'
+    WHERE id_funcionario = ${id};
     `;
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
@@ -71,5 +69,5 @@ module.exports = {
   cadastrar,
   excluirFuncionario,
   selectFuncionarios,
-  atualizarFuncionario
+  atualizarFuncionario,
 };

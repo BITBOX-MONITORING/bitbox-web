@@ -86,10 +86,10 @@ function excluirFuncionario(req, res) {
 }
 
 function selectFuncionarios(req, res) {
-  fk_funcionario = req.params.fk_funcionario
+  const fkEmpresa = req.params.fkEmpresa;
 
   usuarioModel
-    .selectFuncionarios(fk_funcionario)
+    .selectFuncionarios(fkEmpresa)
     .then(function (resultado) {
       console.log(resultado);
       res.json(resultado);
@@ -102,42 +102,23 @@ function selectFuncionarios(req, res) {
 }
 
 function atualizarFuncionario(req, res) {
-  var nome = req.body.nomeServer;
-  var email = req.body.emailServer;
-  var senha = req.body.senhaServer;
-  var fk_noc = req.body.fk_nocServer;
-  var fk_empresa = req.body.fk_empresaServer;
-  var cargo = req.body.cargoServer;
+  var id = req.params.id_funcionario;
+  var nome = req.body.nome;
+  var email = req.body.email;
 
   if (nome == undefined) {
     res.status(400).send('Seu nome está undefined!');
   } else if (email == undefined) {
-    res.status(400).send('Sua senha está indefinida!');
-  } else if (senha == undefined) {
-    res.status(400).send('Sua senha está indefinida!');
-  } else if (fk_noc == undefined) {
-    res.status(400).send('Sua fk_noc está indefinida!');
-  } else if (fk_empresa == undefined) {
-    res.status(400).send('Sua fk_empresa está indefinida!');
-  } else if (cargo == undefined) {
-    res.status(400).send('Sua cargo está indefinida!');
+    res.status(400).send('Seu email está indefinida!');
+  } else if (id == undefined) {
+    res.status(400).send('Seu id está indefinida!');
   } else {
     usuarioModel
-      .atualizarFuncionario(nome, email, senha, fk_noc, fk_empresa, cargo)
+      .atualizarFuncionario(nome, email, id)
       .then(function (resultado) {
-        console.log(`\nResultados encontrados: ${resultado.length}`);
-        console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-        if (resultado.length == 1) {
-          console.log(resultado);
-          res.json(resultado[0]);
-        } else if (resultado.length == 0) {
-          res.status(403).send('Nome, email, senha, fk_noc, fk_empresa e cargo inválido(s)');
-        } else {
-          res.status(403).send('Duplicata!');
-        }
+        res.json(resultado);
       })
-      .catch(function (erro) {
+      .catch((erro) => {
         console.log(erro);
         console.log('\nHouve um erro ao atualizar o funcionario! Erro: ', erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
