@@ -27,7 +27,7 @@ function buildListFuncionarios() {
 }
 
 function deleteFuncionario(id) {
-  const confirm = window.confirm('❓ Deseja realmente excluir ese funcionário?');
+  const confirm = window.confirm('❓ Deseja realmente excluir esse funcionário?');
 
   if (confirm) {
     fetch(`/usuarios/excluirFuncionario/${id}`, {

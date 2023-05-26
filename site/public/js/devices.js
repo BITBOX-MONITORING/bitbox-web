@@ -1,14 +1,18 @@
 let employee = [];
 
-document.addEventListener('DOMContentLoaded', async () => {
-  let response = await fetch('/maquinas/selectMaquinas', {
-    headers: { 'Content-type': 'application/json' },
-  });
+(async function () {
+  const response = await fetch('/maquinas/selectMaquinas');
+  employee = await response.json();
+  console.log(employee);
 
-  response = await response.json();
+  if (employee) {
+    for (const [index, deviceInfo] of employee.entries()) {
+      grid_devices.innerHTML += buildCardDevice(deviceInfo, index);
+    }
+  }
+})();
 
-  employee = response;
-
+document.addEventListener('DOMContentLoaded', () => {
   modal = document.querySelector('.device-info');
 
   // devices.sort(function (a, b) {
@@ -26,10 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   //   }
   //   return 0;
   // });
-
-  for (const [index, deviceInfo] of employee.entries()) {
-    grid_devices.innerHTML += buildCardDevice(deviceInfo, index);
-  }
 });
 
 const statusColors = {
@@ -42,10 +42,11 @@ function buildModal(deviceInfo) {
   const colorStatus = 'red';
 
   const device = JSON.parse(deviceInfo.device);
-  const data = JSON.parse(deviceInfo.data)
+  const data = JSON.parse(deviceInfo.data);
 
   const modal = ` 
     <div class="card">
+    <button onclick="deleteDevice(${device[0].id_maquina})">Deletar</button>
       <div class="img-device">
           <img src="${deviceInfo.img}" alt="">
       </div>
@@ -63,7 +64,7 @@ function buildModal(deviceInfo) {
               <i class="ph ph-cpu"></i>
               <span> CPU </span>
           </div>
-          <h1>${(data[0].cpu_uso).toFixed(2)}%</h1>
+          <h1>${data[0].cpu_uso.toFixed(2)}%</h1>
       </div>
 
       <div class="wall"></div>
@@ -103,10 +104,30 @@ function buildModal(deviceInfo) {
   return modal;
 }
 
+function deleteDevice(id) {
+  const confirm = window.confirm('❓ Deseja realmente excluir essa máquina?');
+
+  if (confirm) {
+    fetch(`/maquinas/excluirMaquina/${id}`, {
+      method: 'DELETE',
+    }).then(async (res) => {
+      if (res.ok) {
+        alert('Máquina deletada com sucesso!');
+        location.reload();
+      } else {
+        console.log('Erro ao excluir a máquina:', res.status);
+      }
+    });
+  }
+}
+
 function buildCardDevice(deviceInfo, index) {
   const device = JSON.parse(deviceInfo.device);
 
-  device.img = device.sistema_operacional === 'LINUX' ? 'assets/device-linux.png' : 'assets/device-windows.png';
+  device.img =
+    device.sistema_operacional === 'LINUX'
+      ? 'assets/device-linux.png'
+      : 'assets/device-windows.png';
 
   const colorStatus = statusColors[device.status];
 
