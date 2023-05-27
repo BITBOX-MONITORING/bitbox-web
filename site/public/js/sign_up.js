@@ -88,7 +88,6 @@ function signUp() {
     !User.officeServer |
     !User.emailServer |
     !User.passServer |
-    !User.codigoPatrimonioServer |
     !User.fkEmpresaServer;
   
 

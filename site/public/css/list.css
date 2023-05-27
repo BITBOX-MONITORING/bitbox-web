@@ -34,11 +34,11 @@ button {
   transition: 0.2s ease;
 }
 
-button{
+button {
   width: 100px;
   color: var(--bg-color);
   background-color: var(--yellow);
-  
+
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -46,15 +46,14 @@ button{
   outline: 0;
 }
 
-button:hover{
+button:hover {
   width: 120px;
   background-color: #fae73c;
 }
 
-button:hover i{
+button:hover i {
   transform: rotate(360deg);
 }
-
 
 .modal-content {
   align-self: flex-start;
@@ -85,20 +84,19 @@ button:hover i{
   }
 }
 
-.info-func{
-  min-width: 20%;
-  width: max-content;
+.info-func {
+  width: 50%;
   color: var(--light);
   font-size: 2rem;
   font-weight: 200;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 1;
+  gap: 1rem;
 }
 
-.bar{
+.bar {
   background-color: var(--light);
   height: 20px;
   width: 1px;

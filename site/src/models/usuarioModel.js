@@ -6,7 +6,7 @@ function entrar(email, senha) {
     email,
     senha
   );
-  var instrucao = ` SELECT * FROM usuario WHERE email = '${email}' AND senha = '${senha}'; `;
+  var instrucao = ` SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}' AND cargo = 'engenheiro noc'; `;
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
 }
@@ -22,7 +22,7 @@ function cadastrar(nome, cargo, email, senha, codigoPatrimonio, fkEmpresa) {
     fkEmpresa
   );
 
-  var instrucao = `EXEC cadastrar_usuario '${nome}', '${email}', '${senha}', '${cargo}', ${codigoPatrimonio}, ${fkEmpresa};`;
+  var instrucao = `EXEC cadastrar_funcionario '${nome}', '${email}', '${senha}', '${cargo}', ${codigoPatrimonio}, ${fkEmpresa};`;
 
   console.log('Executando a instrução SQL: \n' + instrucao);
 
