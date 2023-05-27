@@ -151,8 +151,6 @@ function deleteDevice(id) {
   }
 }
 
-
-
 let modal;
 const modalStyle = {
   opened: 'opacity: 1; width: 1000px; height: 600px; z-index: 10',
