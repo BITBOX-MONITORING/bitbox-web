@@ -27,7 +27,7 @@ router.delete('/excluirFuncionario/:id_funcionario', function (req, res) {
   usuarioController.excluirFuncionario(req, res);
 });
 
-router.put('/atualizarFuncionario//:id_funcionario', function (req, res) {
+router.put('/atualizarFuncionario/:id_funcionario', function (req, res) {
   usuarioController.atualizarFuncionario(req, res);
 });
 

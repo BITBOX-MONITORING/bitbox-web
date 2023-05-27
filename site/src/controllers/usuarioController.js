@@ -107,6 +107,8 @@ function atualizarFuncionario(req, res) {
   var nome = req.body.nome;
   var email = req.body.email;
 
+  console.log("VAI PORRA!! " ,id, nome, email);
+
   if (nome == undefined) {
     res.status(400).send('Seu nome está undefined!');
   } else if (email == undefined) {

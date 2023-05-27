@@ -2,7 +2,7 @@ let funcionarios;
 
 (async function () {
   const response = await fetch('/usuarios/selectFuncionarios/1', {});
-  funcionarios = await response.json()
+  funcionarios = await response.json();
   console.log(funcionarios);
 
   if (funcionarios) {
@@ -18,9 +18,9 @@ function buildListFuncionarios() {
     <td class="funcionario-nome">${funcionario.nome}</td>
     <td class="funcionario-email">${funcionario.email}</td>
     <td>${funcionario.codigo_patrimonio}</td>
-    <td>
-      <i class="ph ph-pencil-simple" onclick="editFuncionario(${funcionario.id_funcionario})"></i>
-      <i class="ph ph-trash" onclick="deleteFuncionario(${funcionario.id_funcionario})"></i>
+    <td class="edit">
+      <i class="ph-duotone ph-pencil-simple" onclick="editFuncionario(${funcionario.id_funcionario})"></i>
+      <i class="ph-duotone ph-x-circle" onclick="deleteFuncionario(${funcionario.id_funcionario})"></i>
     </td>
   </tr>`;
   });

@@ -104,28 +104,13 @@ function buildModal(deviceInfo) {
   return modal;
 }
 
-function deleteDevice(id) {
-  const confirm = window.confirm('❓ Deseja realmente excluir essa máquina?');
-
-  if (confirm) {
-    fetch(`/maquinas/excluirMaquina/${id}`, {
-      method: 'DELETE',
-    }).then(async (res) => {
-      if (res.ok) {
-        alert('Máquina deletada com sucesso!');
-        location.reload();
-      } else {
-        console.log('Erro ao excluir a máquina:', res.status);
-      }
-    });
-  }
-}
-
 function buildCardDevice(deviceInfo, index) {
   const device = JSON.parse(deviceInfo.device);
 
+  console.log(device[0].sistema_operacional);
+
   device.img =
-    device.sistema_operacional === 'LINUX'
+    device[0].sistema_operacional === 'Linux'
       ? 'assets/device-linux.png'
       : 'assets/device-windows.png';
 
@@ -148,6 +133,25 @@ function buildCardDevice(deviceInfo, index) {
 
   return cardDevice;
 }
+
+function deleteDevice(id) {
+  const confirm = window.confirm('❓ Deseja realmente excluir essa máquina?');
+
+  if (confirm) {
+    fetch(`/maquinas/excluirMaquina/${id}`, {
+      method: 'DELETE',
+    }).then(async (res) => {
+      if (res.ok) {
+        alert('Máquina deletada com sucesso!');
+        location.reload();
+      } else {
+        console.log('Erro ao excluir a máquina:', res.status);
+      }
+    });
+  }
+}
+
+
 
 let modal;
 const modalStyle = {
