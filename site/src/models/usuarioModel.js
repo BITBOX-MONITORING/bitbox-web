@@ -6,8 +6,10 @@ function entrar(email, senha) {
     email,
     senha
   );
+
   var instrucao = ` SELECT * FROM funcionario WHERE email = '${email}' AND senha = '${senha}' AND cargo = 'engenheiro noc'; `;
   console.log('Executando a instrução SQL: \n' + instrucao);
+
   return database.executar(instrucao);
 }
 

@@ -1,10 +1,13 @@
+const fkEmpresa = sessionStorage.getItem("FK_EMPRESA")
+  
 let funcionarios;
 let modal;
 let inputNome;
 let inputEmail;
 
+
 (async function () {
-  const response = await fetch('/usuarios/selectFuncionarios/1', {});
+  const response = await fetch(`/usuarios/selectFuncionarios/${fkEmpresa}`, {});
   funcionarios = await response.json();
   console.log(funcionarios);
 

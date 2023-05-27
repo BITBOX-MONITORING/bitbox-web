@@ -110,6 +110,7 @@ function signUp() {
           alert('Cadastro realizado com sucesso!');
 
           sessionStorage.setItem('EMAIL', User.emailServer);
+          sessionStorage.setItem('FK_EMPRESA', User.fkEmpresaServer);
 
           setTimeout(() => {
             window.location = 'sign-page.html';

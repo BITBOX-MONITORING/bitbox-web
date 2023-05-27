@@ -1,7 +1,9 @@
 var maquinaModel = require('../models/maquinaModel');
 
 function selectMaquinas(req, res) {
-  maquinaModel.selectMaquinas()
+  const fkEmpresa = req.params.fkEmpresa
+
+  maquinaModel.selectMaquinas(fkEmpresa)
     .then((response) => {
       res.json(response);
     })

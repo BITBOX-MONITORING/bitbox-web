@@ -5,7 +5,7 @@ var router = express.Router();
 
 var maquinaController = require("../controllers/maquinaController");
 // READ
-router.get('/selectMaquinas', (req, res) => {
+router.get('/selectMaquinas/:fkEmpresa', (req, res) => {
     maquinaController.selectMaquinas(req, res)
 })
 // DELETE

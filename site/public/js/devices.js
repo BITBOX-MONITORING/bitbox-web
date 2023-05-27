@@ -1,7 +1,9 @@
 let employee = [];
+const fkEmpresa = sessionStorage.getItem('FK_EMPRESA');
+console.log(fkEmpresa);
 
 (async function () {
-  const response = await fetch('/maquinas/selectMaquinas');
+  const response = await fetch(`/maquinas/selectMaquinas/${fkEmpresa}`);
   employee = await response.json();
   console.log(employee);
 

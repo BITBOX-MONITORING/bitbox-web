@@ -97,9 +97,9 @@ button:hover i {
 }
 
 .bar {
-  background-color: var(--light);
+  background-color: #707070;
   height: 20px;
-  width: 1px;
+  width: 2px;
 }
 
 .modal {

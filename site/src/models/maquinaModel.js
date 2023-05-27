@@ -1,9 +1,9 @@
 var database = require('../database/config');
 
-function selectMaquinas() {
+function selectMaquinas(fkEmpresa) {
   console.log('ACESSEI O MODEL, VAMOS SELECIONAR AS MÁQUINAS!');
 
-  var instrucao = `SELECT id_funcionario, nome, device, data FROM vwMaquinasInfo;`;
+  var instrucao = `SELECT id_funcionario, nome, device, data FROM vwMaquinasInfo WHERE fk_empresa = ${fkEmpresa};`;
 
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
@@ -11,7 +11,7 @@ function selectMaquinas() {
 
 function excluirMaquina(id_maquina) {
   console.log(
-    "ACESSEI O avaliacao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():",
+    "ACESSEI O avaliacao MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():"
   );
   var instrucao = `EXEC excluir_maquina ${id_maquina}`;
   console.log('Executando a instrução SQL: \n' + instrucao);
