@@ -45,9 +45,9 @@
           <h1 id="emailTitle" Email</h1>
         </div>
         <div class="modal">
-          <input id="in_novo_nome" type="text" placeholder="Novo nome:">
-          <input id="in_novo_email" type="text" placeholder="Novo email:">
-          <button>
+          <input id="in_novo_nome" onkeyup="showNewName()" type="text" placeholder="Novo nome:">
+          <input id="in_novo_email" onkeyup="showNewEmail()" type="text" placeholder="Novo email:">
+          <button id="btn_editar">
             <i class="ph-duotone ph-pencil-simple"></i>
             Editar
           </button>

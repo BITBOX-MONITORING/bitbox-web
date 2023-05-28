@@ -1,10 +1,21 @@
-const fkEmpresa = sessionStorage.getItem("FK_EMPRESA")
-  
+const fkEmpresa = sessionStorage.getItem('FK_EMPRESA');
+
+const modalStyle = {
+  opened: 'opacity: 1; z-index: 10; width: 100vw, height: 100vh',
+  closed: 'opacity: 0; z-index: -10',
+};
+
 let funcionarios;
-let modal;
+let funcNome;
+let funcEmail;
+
 let inputNome;
 let inputEmail;
+let btnEditar;
 
+let modal;
+
+let funcionarioRow;
 
 (async function () {
   const response = await fetch(`/usuarios/selectFuncionarios/${fkEmpresa}`, {});
@@ -48,34 +59,48 @@ function deleteFuncionario(id) {
   }
 }
 
-function editFuncionario(id) {
-  // const data = {
-  //   nome: nome,
-  //   email: email,
-  // };
-  // fetch(`/usuarios/atualizarFuncionario/${id}`, {
-  //   method: 'PUT',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(data),
-  // })
-  //   .then((response) => {
-  //     if (response.ok) {
-  //       const funcionarioRow = document.querySelector(`tr[data-id="${id}"]`);
-  //       funcionarioRow.querySelector('.funcionario-nome').textContent = data.nome;
-  //       funcionarioRow.querySelector('.funcionario-email').textContent = data.email;
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error('Ocorreu um erro:', error);
-  //   });
+function editFuncionario(id, nome, email) {
+  const data = {
+    nome: nome,
+    email: email,
+  };
+
+  console.log(data);
+  console.log('ESTAMOS AQUI');
+
+  if (nome && email) {
+    closeDeviceModal();
+
+    fetch(`/usuarios/atualizarFuncionario/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          funcionarioRow.querySelector('.funcionario-nome').textContent = data.nome;
+          funcionarioRow.querySelector('.funcionario-email').textContent = data.email;
+        }
+      })
+      .catch((error) => {
+        console.error('Ocorreu um erro:', error);
+      });
+  }
 }
 
-const modalStyle = {
-  opened: 'opacity: 1; z-index: 10; width: 100vw, height: 100vh',
-  closed: 'opacity: 0; z-index: -10',
-};
+function showNewName() {
+  const nome = inputNome.value;
+
+  nomeTitle.innerHTML = nome ? nome : funcNome;
+}
+
+function showNewEmail() {
+  const email = inputEmail.value;
+
+  emailTitle.innerHTML = email ? email : funcEmail;
+}
 
 function closeDeviceModal() {
   modal.style = modalStyle.closed;
@@ -86,16 +111,25 @@ function closeDeviceModal() {
   document.removeEventListener('click', onClickInsideModal);
 }
 
-function openDeviceModal(id, nome, email) {
+function openDeviceModal(id) {
+  btnEditar = document.getElementById('btn_editar');
   inputNome = document.getElementById('in_novo_nome');
   inputEmail = document.getElementById('in_novo_email');
+  funcionarioRow = document.querySelector(`tr[data-id="${id}"]`);
+
   modal = document.querySelector('.modal-content');
 
-  nomeTitle.innerHTML = nome
-  emailTitle.innerHTML = email
+  funcNome = funcionarioRow.querySelector('.funcionario-nome').textContent;
+  funcEmail = funcionarioRow.querySelector('.funcionario-email').textContent;
 
+  nomeTitle.innerHTML = funcNome;
+  emailTitle.innerHTML = funcEmail;
 
   modal.style = modalStyle.opened;
+
+  btnEditar.addEventListener('click', () => {
+    editFuncionario(id, inputNome.value, inputEmail.value);
+  });
 
   // Adiciona o event listener para a tecla Esc
   document.addEventListener('keyup', onKeyUp);
@@ -115,7 +149,10 @@ function onKeyUp(event) {
 }
 
 function onClickInsideModal(event) {
-  canCloseModal = !inputNome.contains(event.target) && !inputEmail.contains(event.target);
+  canCloseModal =
+    !inputNome.contains(event.target) &&
+    !inputEmail.contains(event.target) &&
+    !btnEditar.contains(event.target);
 
   if (canCloseModal) {
     closeDeviceModal();

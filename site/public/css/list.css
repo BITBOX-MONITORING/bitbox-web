@@ -34,6 +34,10 @@ button {
   transition: 0.2s ease;
 }
 
+input:focus {
+  outline-color: #adadad;
+}
+
 button {
   width: 100px;
   color: var(--bg-color);
@@ -55,6 +59,13 @@ button:hover i {
   transform: rotate(360deg);
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
 .modal-content {
   align-self: flex-start;
   justify-self: center;
@@ -66,7 +77,7 @@ button:hover i {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 3rem;
   border-radius: 5px;
 
   width: 100vw;
@@ -85,7 +96,7 @@ button:hover i {
 }
 
 .info-func {
-  width: 50%;
+  width: 100%;
   color: var(--light);
   font-size: 2rem;
   font-weight: 200;
@@ -104,9 +115,8 @@ button:hover i {
 
 .modal {
   width: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
   gap: 1rem;
 }
 
@@ -134,6 +144,7 @@ table .row {
 
   animation: reveal 0.5s ease;
   transition: 0.2s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 table .row:hover {
