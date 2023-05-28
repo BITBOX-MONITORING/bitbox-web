@@ -89,7 +89,6 @@ function signUp() {
     !User.emailServer |
     !User.passServer |
     !User.fkEmpresaServer;
-  
 
   if (isInvalid) {
     alert('⚠ Campos não preenchidos corretamente!');
@@ -109,12 +108,18 @@ function signUp() {
         if (resposta.ok) {
           alert('Cadastro realizado com sucesso!');
 
-          sessionStorage.setItem('EMAIL', User.emailServer);
-          sessionStorage.setItem('FK_EMPRESA', User.fkEmpresaServer);
+          if (User.officeServer !== 'Suporte') {
+            sessionStorage.setItem('EMAIL', User.emailServer);
+            sessionStorage.setItem('FK_EMPRESA', User.fkEmpresaServer);
 
-          setTimeout(() => {
-            window.location = 'sign-page.html';
-          }, '2000');
+            setTimeout(() => {
+              window.location = 'sign-page.html';
+            }, '2000');
+          } else {
+            setTimeout(() => {
+              window.location = 'download.html';
+            }, '2000');
+          }
         } else {
           throw 'Houve um erro ao tentar realizar o cadastro!';
         }

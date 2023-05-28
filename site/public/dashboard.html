@@ -45,21 +45,21 @@
         </div>
         <div class="box items">
           <a href="dashboard.html">
-          <div class="item">
+            <div class="item">
               <i class="ph-fill ph-chart-line"></i>
               <h5>DASHBOARD</h5>
             </div>
           </a>
 
           <a href="devices.html">
-          <div class="item">
+            <div class="item">
               <i class="ph-fill ph-laptop"></i>
               <h5>MÁQUINAS</h5>
             </div>
           </a>
 
           <a href="list-funcionarios.html">
-          <div class="item">
+            <div class="item">
               <i class="ph-fill ph-user-list"></i>
               <h5>FUNCIONÁRIOS</h5>
             </div>
@@ -67,11 +67,11 @@
         </div>
 
         <a href="sign-page.html">
-        <div class="box logout">
-          <div class="item">
-            <i class="ph ph-sign-out"></i>
+          <div class="box logout">
+            <div class="item">
+              <i class="ph ph-sign-out"></i>
+            </div>
           </div>
-        </div>
         </a>
       </div>
 
@@ -142,6 +142,8 @@
 </html>
 
 <script>
+  manager_name.innerHTML = sessionStorage.getItem('NOME_USUARIO');
+
   const ctx2 = document.getElementById('myChart-2').getContext('2d');
   new Chart(ctx2, {
     type: 'pie',

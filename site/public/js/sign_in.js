@@ -37,6 +37,8 @@ function signIn() {
             }, 1000); // apenas para exibir o loading
           });
         } else {
+          alert('⛔ Acesso negado');
+
           console.log('Houve um erro ao tentar realizar o login!');
 
           resposta.text().then((texto) => {

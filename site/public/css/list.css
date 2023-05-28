@@ -199,7 +199,7 @@ i {
 }
 
 .edit i:first-child:hover {
-  color: #fff8b8;
+  color: #ffe81b;
 }
 
 .edit i:last-child {
@@ -207,5 +207,5 @@ i {
 }
 
 .edit i:last-child:hover {
-  color: #ff8282;
+  color: #ff1515;
 }
