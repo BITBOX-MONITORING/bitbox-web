@@ -12,11 +12,11 @@ router.get('/selectEmpresas', (req, res) => {
     empresaController.selectEmpresas(req, res)
 })
 // DELETE
-router.delete("/excluirEmpresa:id_empresa", function (req, res) {
+router.delete("/excluirEmpresa/:id_empresa", function (req, res) {
     empresaController.excluirEmpresa(req, res)
 });
 // UPDATE
-router.post("/atualizarEmpresa:id_empresa", function (req, res) {
+router.post("/atualizarEmpresa/:id_empresa", function (req, res) {
     empresaController.atualizarEmpresa(req, res)
 });
 
