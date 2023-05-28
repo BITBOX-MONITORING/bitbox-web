@@ -1,6 +1,5 @@
 let employee = [];
 const fkEmpresa = sessionStorage.getItem('FK_EMPRESA');
-console.log(fkEmpresa);
 
 (async function () {
   const response = await fetch(`/maquinas/selectMaquinas/${fkEmpresa}`);
@@ -34,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // });
 });
 
-const statusColors = {
+const statusColors = {  
   ok: '#3ad13a',
   alerta: '#f5e65b',
-  crítico: '#d13a47',
+  crítico: '#e72929',
 };
 
 function buildModal(deviceInfo) {
@@ -46,11 +45,21 @@ function buildModal(deviceInfo) {
   const device = JSON.parse(deviceInfo.device);
   const data = JSON.parse(deviceInfo.data);
 
+  device.img =
+  device[0].sistema_operacional === 'Linux'
+    ? 'assets/device-linux.png'
+      : 'assets/device-windows.png';
+  
+  console.log(device);
+
   const modal = ` 
     <div class="card">
-    <button onclick="deleteDevice(${device[0].id_maquina})">Deletar</button>
+    <button class="btn-delete" onclick="deleteDevice(${device[0].id_maquina})">
+      <i class="ph-duotone ph-x-circle"></i>
+      Deletar
+    </button>
       <div class="img-device">
-          <img src="${deviceInfo.img}" alt="">
+          <img src="${device.img}" alt="">
       </div>
 
       <div class="info">
@@ -108,8 +117,6 @@ function buildModal(deviceInfo) {
 
 function buildCardDevice(deviceInfo, index) {
   const device = JSON.parse(deviceInfo.device);
-
-  console.log(device[0].sistema_operacional);
 
   device.img =
     device[0].sistema_operacional === 'Linux'

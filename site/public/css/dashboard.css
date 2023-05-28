@@ -467,3 +467,27 @@ main {
 .chart4 {
   grid-area: 3 / 3 / 4 / 5;
 }
+
+.btn-delete{
+  width: 100px;
+  color: #e72929;
+  background-color: #131313;
+
+  font-weight: 300;
+  font-size: .9rem;
+
+  border-radius: 5px;
+  border: 1px solid #e72929;
+  padding: .2rem .5rem;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  transition: .2s ease;
+}
+
+.btn-delete:hover{
+  background-color: #e72929;
+  color: var(--light);
+}
