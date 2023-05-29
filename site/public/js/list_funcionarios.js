@@ -21,13 +21,25 @@ let funcionarioRow;
 (async function () {
   const response = await fetch(`/usuarios/selectFuncionarios/${fkEmpresa}`);
   const responseEmpresa = await fetch(`/empresa/selectEmpresa/${fkEmpresa}`);
+
   funcionarios = await response.json();
   empresa = await responseEmpresa.json();
+
   console.log(funcionarios);
   console.log(empresa);
 
   if (funcionarios) {
     buildListFuncionarios();
+
+    txt_cnpj.innerHTML = empresa[0].cnpj.replace(
+      /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+      '$1.$2.$3/$4.$5'
+    );
+    txt_name.innerHTML = empresa[0].nome;
+    qnt_funcionarios.innerHTML = empresa[0].funcionarios;
+    qnt_maquinas.innerHTML = empresa[0].maquinas;
+
+    document.querySelector('.container-enterprise').style = 'opacity: 1; animation: fadeIn 1s ease';
   }
 })();
 
@@ -166,32 +178,30 @@ function onClickInsideModal(event) {
 // EMPRESA
 
 function deleteEmpresa() {
-  const confirm = window.confirm('❓ Deseja realmente excluir esse Empresa?');
+  window.confirm('❓ Deseja realmente excluir essa empresa?');
+  const confirm = window.confirm('🛑 Essa é uma ação irreversível. Deseja realmente excluir?');
 
   if (confirm) {
     fetch(`/empresa/excluirEmpresa/${fkEmpresa}`, {
       method: 'DELETE',
     }).then(async (res) => {
       console.log(await res.json());
+      alert('Empresa deletada com sucesso!');
+      // window.location = 'sign-page.html';
     });
-
-    alert('Empresa deletado com sucesso!');
-    window.location = "sign-page.html";
   }
 }
 
-function editEmpresa(nome, cnpj) {
+function editEmpresa() {
+  const nome = prompt('Digite o novo nome da empresa:');
+  const cnpj = prompt('Digite o novo cnpj da empresa:');
+
   const data = {
     nome: nome,
-    cnpj: cnpj,
+    cnpj: cnpj.replace(/\D+/g, ''),
   };
 
-  console.log(data);
-  console.log('ESTAMOS AQUI');
-
   if (nome && cnpj) {
-    closeDeviceModal();
-
     fetch(`/empresa/atualizarEmpresa/${fkEmpresa}`, {
       method: 'PUT',
       headers: {
@@ -201,12 +211,12 @@ function editEmpresa(nome, cnpj) {
     })
       .then((response) => {
         if (response.ok) {
-            qnt_funcionarios.innerHTML = empresa.funcionarios;
-            qnt_maquinas.innerHTML = empresa.maquinas;
         }
       })
       .catch((error) => {
         console.error('Ocorreu um erro:', error);
       });
+
+    location.reload();
   }
 }

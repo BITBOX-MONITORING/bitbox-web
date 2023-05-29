@@ -59,6 +59,62 @@ button:hover i {
   transform: rotate(360deg);
 }
 
+.container-enterprise {
+  background-color: var(--bar-gradient);
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  opacity: 0;
+
+}
+
+.container-enterprise .info {
+  line-height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container-enterprise .info span {
+  color: #949494;
+  letter-spacing: 2px;
+}
+
+.container-enterprise .info h1 {
+  color: var(--light);
+  font-size: 3rem;
+  font-weight: 100;
+}
+
+.container-enterprise .kpi {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-enterprise .kpi .insights {
+  all: unset;
+  color: var(--light);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-enterprise .kpi .insights span {
+  color: #949494;
+  letter-spacing: 2px;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

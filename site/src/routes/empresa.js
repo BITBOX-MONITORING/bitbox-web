@@ -11,12 +11,16 @@ router.post('/cadastrar', (req, res) => {
 router.get('/selectEmpresa/:id_empresa', (req, res) => {
     empresaController.selectEmpresa(req, res)
 })
+
+router.get('/selectEmpresas', (req, res) => {
+    empresaController.selectEmpresas(req, res)
+})
 // DELETE
 router.delete("/excluirEmpresa/:id_empresa", function (req, res) {
     empresaController.excluirEmpresa(req, res)
 });
 // UPDATE
-router.post("/atualizarEmpresa/:id_empresa", function (req, res) {
+router.put("/atualizarEmpresa/:id_empresa", function (req, res) {
     empresaController.atualizarEmpresa(req, res)
 });
 

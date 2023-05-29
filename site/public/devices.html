@@ -117,103 +117,84 @@
 </html>
 
 <script>
-  manager_name.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+  manager_name.innerHTML = sessionStorage.getItem('NOME_USUARIO');
 
-  const device = JSON.parse(localStorage.getItem('data'));
+  let device;
 
-  const chartCPU = document.getElementById('chart_cpu');
-  new Chart(chartCPU, {
-    type: 'line',
-    data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-      datasets: [
-        {
-          label: 'Uso da CPU',
-          data: device.cpu,
-          backgroundColor: ['#f5e65b'],
-          borderColor: ['#f5e65b'],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
+  document.addEventListener('click', () => {
+    device = JSON.parse(localStorage.getItem('DEVICE_DATA'));
+    console.log(device);
+
+    destroyChart('chart_cpu');
+    destroyChart('chart_ram');
+    destroyChart('chart_disco');
+    destroyChart('chart_abas');
+
+    createLineChart('chart_cpu', 'Uso da CPU', device.cpu, ['#f5e65b']);
+    createLineChart('chart_ram', 'Uso da RAM', device.ram, ['#f5e65b']);
+    createBarChart('chart_disco', 'Uso do Disco', device.disco, ['#751BDB']);
+    createBarChart('chart_abas', 'Quantidade de Abas', device.abas, ['#751BDB']);
   });
 
-  const chartRAM = document.getElementById('chart_ram');
-  new Chart(chartRAM, {
-    type: 'line',
-    data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-      datasets: [
-        {
-          label: 'Uso da RAM',
-          data: device.ram,
-          backgroundColor: ['#f5e65b'],
-          borderColor: ['#f5e65b'],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
-  });
+  function destroyChart(chartId) {
+    const chartElement = document.getElementById(chartId);
+    if (chartElement) {
+      const chartInstance = Chart.getChart(chartElement);
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+    }
+  }
 
-  const chartDisco = document.getElementById('chart_disco');
-  new Chart(chartDisco, {
-    type: 'bar',
-    data: {
-      labels: ['S', 'T', 'Q', 'Q', 'S', 'S'],
-      datasets: [
-        {
-          label: 'Uso do Discos',
-          data: device.disco,
-          backgroundColor: ['#751BDB'],
-          borderColor: ['#751BDB'],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
+  function createLineChart(chartId, label, data, backgroundColor) {
+    const chartElement = document.getElementById(chartId);
+    new Chart(chartElement, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+          {
+            label: label,
+            data: data,
+            backgroundColor: backgroundColor,
+            borderColor: backgroundColor,
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
         },
       },
-    },
-  });
+    });
+  }
 
-  const chartAbas = document.getElementById('chart_abas');
-  new Chart(chartAbas, {
-    type: 'bar',
-    data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-      datasets: [
-        {
-          label: 'Quantidade de abas',
-          data: device.abas,
-          backgroundColor: ['#751BDB'],
-          borderColor: ['#751BDB'],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
+  function createBarChart(chartId, label, data, backgroundColor) {
+    const chartElement = document.getElementById(chartId);
+    new Chart(chartElement, {
+      type: 'bar',
+      data: {
+        labels: ['S', 'T', 'Q', 'Q', 'S', 'S'],
+        datasets: [
+          {
+            label: label,
+            data: data,
+            backgroundColor: backgroundColor,
+            borderColor: backgroundColor,
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
         },
       },
-    },
-  });
+    });
+  }
 </script>

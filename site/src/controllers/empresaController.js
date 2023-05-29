@@ -1,8 +1,21 @@
 var empresaModel = require('../models/empresaModel');
 
 function selectEmpresa(req, res) {
-  const id_empresa = req.params.id_empresa
-  empresaModel.selectEmpresa(id_empresa)
+  const id_empresa = req.params.id_empresa;
+  empresaModel
+    .selectEmpresa(id_empresa)
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json(error.sqlMessage);
+    });
+}
+
+function selectEmpresas(req, res) {
+  empresaModel
+    .selectEmpresas()
     .then((response) => {
       res.json(response);
     })
@@ -39,25 +52,22 @@ function cadastrar(req, res) {
 function excluirEmpresa(req, res) {
   var id_empresa = req.params.id_empresa;
 
-  empresaModel.excluirEmpresa(id_empresa)
-      .then(
-          function (resultado) {
-              res.json(resultado);
-          }
-      )
-      .catch(
-          function (erro) {
-              console.log(erro);
-              console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
-              res.status(500).json(erro.sqlMessage);
-          }
-      );
+  empresaModel
+    .excluirEmpresa(id_empresa)
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log('Houve um erro ao deletar o post: ', erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
 }
 
 function atualizarEmpresa(req, res) {
   var fk_empresa = req.params.id_empresa;
-  var nome = req.body.nomeServer;
-  var cnpj = req.body.cnpjServer;
+  var nome = req.body.nome;
+  var cnpj = req.body.cnpj;
 
   if (nome == undefined) {
     res.status(400).send('Seu nome está undefined!');
@@ -82,6 +92,7 @@ function atualizarEmpresa(req, res) {
 module.exports = {
   cadastrar,
   selectEmpresa,
+  selectEmpresas,
   excluirEmpresa,
-  atualizarEmpresa
+  atualizarEmpresa,
 };

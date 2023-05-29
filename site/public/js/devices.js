@@ -1,5 +1,27 @@
 let employee = [];
+let modal;
+
 const fkEmpresa = sessionStorage.getItem('FK_EMPRESA');
+
+const modalStyle = {
+  opened: 'opacity: 1; width: 1000px; height: 600px; z-index: 10',
+  closed: 'opacity: 0; width: 0; height: 0; z-index: -10',
+};
+
+const statusInfo = {
+  ok: {
+    color: '#3ad13a',
+    text: 'ok',
+  },
+  alerta: {
+    color: '#f5e65b',
+    text: 'alerta',
+  },
+  critico: {
+    color: '#e72929',
+    text: 'crítico',
+  },
+};
 
 (async function () {
   const response = await fetch(`/maquinas/selectMaquinas/${fkEmpresa}`);
@@ -33,24 +55,43 @@ document.addEventListener('DOMContentLoaded', () => {
   // });
 });
 
-const statusColors = {  
-  ok: '#3ad13a',
-  alerta: '#f5e65b',
-  crítico: '#e72929',
-};
+function defineStatus(cpu, ram) {
+  let status = '';
+
+  if (cpu > 80 && ram > 50) {
+    status = 'critico';
+  } else if (cpu > 50 && ram > 40) {
+    status = 'alerta';
+  } else {
+    status = 'ok';
+  }
+
+  return status;
+}
 
 function buildModal(deviceInfo) {
-  const colorStatus = 'red';
-
   const device = JSON.parse(deviceInfo.device);
   const data = JSON.parse(deviceInfo.data);
+  const lastData = data[data.length - 1];
+
+  const cpu_data = data.slice(-6).map((cpu) => cpu.cpu_uso);
+  const ram_data = data.slice(-6).map((ram) => ram.ram_uso);
+
+  const deviceData = {
+    cpu: cpu_data,
+    ram: ram_data,
+  }
+
+  localStorage.setItem("DEVICE_DATA", JSON.stringify(deviceData))
+  console.log(localStorage.DEVICE_DATA);
+
+  lastData.status = defineStatus(lastData.cpu_uso, lastData.ram_uso);
+  const status = statusInfo[lastData.status];
 
   device.img =
-  device[0].sistema_operacional === 'Linux'
-    ? 'assets/device-linux.png'
+    device[0].sistema_operacional === 'Linux'
+      ? 'assets/device-linux.png'
       : 'assets/device-windows.png';
-  
-  console.log(device);
 
   const modal = ` 
     <div class="card">
@@ -75,7 +116,7 @@ function buildModal(deviceInfo) {
               <i class="ph ph-cpu"></i>
               <span> CPU </span>
           </div>
-          <h1>${data[0].cpu_uso.toFixed(2)}%</h1>
+          <h1>${lastData.cpu_uso.toFixed(2)}%</h1>
       </div>
 
       <div class="wall"></div>
@@ -85,7 +126,7 @@ function buildModal(deviceInfo) {
               <i class="ph-rocket-launch"></i>
               <span>RAM</span>
           </div>
-          <h1>${Number(data[0].ram_uso).toFixed(1)} <em>GB</em></h1>
+          <h1>${Number(lastData.ram_uso).toFixed(1)} <em>GB</em></h1>
       </div>
 
       <div class="wall"></div>
@@ -95,7 +136,7 @@ function buildModal(deviceInfo) {
               <i class="ph ph-disc"></i>
               <span>DISCO</span>
           </div>
-          <h1>49%</h1>
+          <h1>${parseInt(lastData.disco_capacidade_disponivel)}%</h1>
       </div>
 
       <div class="wall"></div>
@@ -106,8 +147,8 @@ function buildModal(deviceInfo) {
               <span>STATUS</span>
           </div>
           <div class="status-info">
-              <div style="background-color: ${colorStatus}" class="status"></div>
-              <h1 style="color: ${colorStatus}"></h1>
+              <div style="background-color: ${status.color}" class="status"></div>
+              <h1 style="color: ${status.color}">${status.text}</h1>
           </div>
       </div>
     </div>`;
@@ -117,13 +158,16 @@ function buildModal(deviceInfo) {
 
 function buildCardDevice(deviceInfo, index) {
   const device = JSON.parse(deviceInfo.device);
+  const data = JSON.parse(deviceInfo.data);
+  const lastData = data[data.length - 1];
+
+  lastData.status = defineStatus(lastData.cpu_uso, lastData.ram_uso);
+  const status = statusInfo[lastData.status];
 
   device.img =
     device[0].sistema_operacional === 'Linux'
       ? 'assets/device-linux.png'
       : 'assets/device-windows.png';
-
-  const colorStatus = statusColors[device.status];
 
   const cardDevice = `
     <div class="card" onclick="openDeviceModal(${index})">
@@ -137,7 +181,7 @@ function buildCardDevice(deviceInfo, index) {
       <h3>${deviceInfo.nome}</h3>
       </div>
 
-      <div class="status" style="background-color:${colorStatus}"></div>
+      <div class="status" style="background-color:${status.color}"></div>
     </div>`;
 
   return cardDevice;
@@ -159,12 +203,6 @@ function deleteDevice(id) {
     });
   }
 }
-
-let modal;
-const modalStyle = {
-  opened: 'opacity: 1; width: 1000px; height: 600px; z-index: 10',
-  closed: 'opacity: 0; width: 0; height: 0; z-index: -10',
-};
 
 function closeDeviceModal() {
   modal.style = modalStyle.closed;
