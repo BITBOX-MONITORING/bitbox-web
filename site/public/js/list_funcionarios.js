@@ -165,7 +165,7 @@ function onClickInsideModal(event) {
 
 // EMPRESA
 
-function deleteEmpresa(fkEmpresa) {
+function deleteEmpresa() {
   const confirm = window.confirm('❓ Deseja realmente excluir esse Empresa?');
 
   if (confirm) {
@@ -180,19 +180,19 @@ function deleteEmpresa(fkEmpresa) {
   }
 }
 
-function editEmpresa(id, nome, email) {
+function editEmpresa(nome, cnpj) {
   const data = {
     nome: nome,
-    email: email,
+    cnpj: cnpj,
   };
 
   console.log(data);
   console.log('ESTAMOS AQUI');
 
-  if (nome && email) {
+  if (nome && cnpj) {
     closeDeviceModal();
 
-    fetch(`/usuarios/atualizarFuncionario/${id}`, {
+    fetch(`/empresa/atualizarEmpresa/${fkEmpresa}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -201,8 +201,8 @@ function editEmpresa(id, nome, email) {
     })
       .then((response) => {
         if (response.ok) {
-          funcionarioRow.querySelector('.funcionario-nome').textContent = data.nome;
-          funcionarioRow.querySelector('.funcionario-email').textContent = data.email;
+            qnt_funcionarios.innerHTML = empresa.funcionarios;
+            qnt_maquinas.innerHTML = empresa.maquinas;
         }
       })
       .catch((error) => {
