@@ -1,7 +1,8 @@
 var empresaModel = require('../models/empresaModel');
 
-function selectEmpresas(req, res) {
-  empresaModel.selectEmpresas()
+function selectEmpresa(req, res) {
+  const id_empresa = req.params.id_empresa
+  empresaModel.selectEmpresa(id_empresa)
     .then((response) => {
       res.json(response);
     })
@@ -54,6 +55,7 @@ function excluirEmpresa(req, res) {
 }
 
 function atualizarEmpresa(req, res) {
+  var fk_empresa = req.params.id_empresa;
   var nome = req.body.nomeServer;
   var cnpj = req.body.cnpjServer;
 
@@ -61,21 +63,13 @@ function atualizarEmpresa(req, res) {
     res.status(400).send('Seu nome está undefined!');
   } else if (cnpj == undefined) {
     res.status(400).send('Sua cnpj está indefinida!');
+  } else if (fk_empresa == undefined) {
+    res.status(400).send('Sua fk_empresa está indefinida!');
   } else {
     empresaModel
-      .atualizarEmpresa(nome, cnpj)
+      .atualizarEmpresa(nome, cnpj, fk_empresa)
       .then(function (resultado) {
-        console.log(`\nResultados encontrados: ${resultado.length}`);
-        console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
-
-        if (resultado.length == 1) {
-          console.log(resultado);
-          res.json(resultado[0]);
-        } else if (resultado.length == 0) {
-          res.status(403).send('Nome ou cnpj inválido(s)');
-        } else {
-          res.status(403).send('Duplicata!');
-        }
+        console.log(resultado);
       })
       .catch(function (erro) {
         console.log(erro);
@@ -87,7 +81,7 @@ function atualizarEmpresa(req, res) {
 
 module.exports = {
   cadastrar,
-  selectEmpresas,
+  selectEmpresa,
   excluirEmpresa,
   atualizarEmpresa
 };

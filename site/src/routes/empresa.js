@@ -8,8 +8,8 @@ router.post('/cadastrar', (req, res) => {
     empresaController.cadastrar(req, res)
 })
 // READ
-router.get('/selectEmpresas', (req, res) => {
-    empresaController.selectEmpresas(req, res)
+router.get('/selectEmpresa/:id_empresa', (req, res) => {
+    empresaController.selectEmpresa(req, res)
 })
 // DELETE
 router.delete("/excluirEmpresa/:id_empresa", function (req, res) {

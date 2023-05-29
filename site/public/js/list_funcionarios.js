@@ -6,6 +6,7 @@ const modalStyle = {
 };
 
 let funcionarios;
+let empresa;
 let funcNome;
 let funcEmail;
 
@@ -18,9 +19,12 @@ let modal;
 let funcionarioRow;
 
 (async function () {
-  const response = await fetch(`/usuarios/selectFuncionarios/${fkEmpresa}`, {});
+  const response = await fetch(`/usuarios/selectFuncionarios/${fkEmpresa}`);
+  const responseEmpresa = await fetch(`/empresa/selectEmpresa/${fkEmpresa}`);
   funcionarios = await response.json();
+  empresa = await responseEmpresa.json();
   console.log(funcionarios);
+  console.log(empresa);
 
   if (funcionarios) {
     buildListFuncionarios();
@@ -156,5 +160,53 @@ function onClickInsideModal(event) {
 
   if (canCloseModal) {
     closeDeviceModal();
+  }
+}
+
+// EMPRESA
+
+function deleteEmpresa(fkEmpresa) {
+  const confirm = window.confirm('❓ Deseja realmente excluir esse Empresa?');
+
+  if (confirm) {
+    fetch(`/empresa/excluirEmpresa/${fkEmpresa}`, {
+      method: 'DELETE',
+    }).then(async (res) => {
+      console.log(await res.json());
+    });
+
+    alert('Empresa deletado com sucesso!');
+    window.location = "sign-page.html";
+  }
+}
+
+function editEmpresa(id, nome, email) {
+  const data = {
+    nome: nome,
+    email: email,
+  };
+
+  console.log(data);
+  console.log('ESTAMOS AQUI');
+
+  if (nome && email) {
+    closeDeviceModal();
+
+    fetch(`/usuarios/atualizarFuncionario/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          funcionarioRow.querySelector('.funcionario-nome').textContent = data.nome;
+          funcionarioRow.querySelector('.funcionario-email').textContent = data.email;
+        }
+      })
+      .catch((error) => {
+        console.error('Ocorreu um erro:', error);
+      });
   }
 }
