@@ -1,4 +1,5 @@
 let employee = [];
+let tabs = [];
 let modal;
 
 const fkEmpresa = sessionStorage.getItem('FK_EMPRESA');
@@ -23,17 +24,32 @@ const statusInfo = {
   },
 };
 
-(async function () {
+async function getDeviceInfo() {
   const response = await fetch(`/maquinas/selectMaquinas/${fkEmpresa}`);
   employee = await response.json();
   console.log(employee);
 
   if (employee) {
+    grid_devices.innerHTML = '';
+
     for (const [index, deviceInfo] of employee.entries()) {
       grid_devices.innerHTML += buildCardDevice(deviceInfo, index);
     }
   }
-})();
+}
+
+async function getTabs() {
+  const response = await fetch(`/maquinas/selectTabs`);
+  tabs = await response.json();
+  console.log(tabs);
+}
+
+getDeviceInfo();
+getTabs();
+
+setInterval(() => {
+  // getDeviceInfo();
+}, 5000);
 
 document.addEventListener('DOMContentLoaded', () => {
   modal = document.querySelector('.device-info');
@@ -58,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function defineStatus(cpu, ram) {
   let status = '';
 
-  if (cpu > 80 && ram > 50) {
+  if (cpu > 80 && ram > 4) {
     status = 'critico';
-  } else if (cpu > 50 && ram > 40) {
+  } else if (cpu > 50 && ram > 4) {
     status = 'alerta';
   } else {
     status = 'ok';
@@ -73,17 +89,28 @@ function buildModal(deviceInfo) {
   const device = JSON.parse(deviceInfo.device);
   const data = JSON.parse(deviceInfo.data);
   const lastData = data[data.length - 1];
+  let critical;
 
-  const cpu_data = data.slice(-6).map((cpu) => cpu.cpu_uso);
-  const ram_data = data.slice(-6).map((ram) => ram.ram_uso);
+  // Dados de cada máquina
+  const tabs_data = tabs.filter((tab) => tab.codigo_patrimonio === device[0].codigo_patrimonio);
+
+  const cpu_data = data.slice(-6).map((d) => d.cpu_uso);
+  const ram_data = data.slice(-6).map((d) => d.ram_uso);
+  const disco_data = data.slice(-6).map((d) => d.disco_uso);
+  const moment_data = data.slice(-6).map((d) => {
+    const dataRegistro = new Date(d.data_registro);
+    return dataRegistro.toLocaleTimeString();
+  });
 
   const deviceData = {
     cpu: cpu_data,
     ram: ram_data,
-  }
+    disco: disco_data,
+    moment: moment_data,
+    tabs: tabs_data,
+  };
 
-  localStorage.setItem("DEVICE_DATA", JSON.stringify(deviceData))
-  console.log(localStorage.DEVICE_DATA);
+  localStorage.setItem('DEVICE_DATA', JSON.stringify(deviceData));
 
   lastData.status = defineStatus(lastData.cpu_uso, lastData.ram_uso);
   const status = statusInfo[lastData.status];
@@ -93,8 +120,12 @@ function buildModal(deviceInfo) {
       ? 'assets/device-linux.png'
       : 'assets/device-windows.png';
 
+  if (lastData.cpu_uso > 80) {
+    critical = 'animation: critical 1s ease infinite;';
+  }
+
   const modal = ` 
-    <div class="card">
+    <div class="card" style="${critical}">
     <button class="btn-delete" onclick="deleteDevice(${device[0].id_maquina})">
       <i class="ph-duotone ph-x-circle"></i>
       Deletar
@@ -136,7 +167,7 @@ function buildModal(deviceInfo) {
               <i class="ph ph-disc"></i>
               <span>DISCO</span>
           </div>
-          <h1>${parseInt(lastData.disco_capacidade_disponivel)}%</h1>
+          <h1>${parseInt(lastData.disco_uso)}%</h1>
       </div>
 
       <div class="wall"></div>
@@ -160,9 +191,14 @@ function buildCardDevice(deviceInfo, index) {
   const device = JSON.parse(deviceInfo.device);
   const data = JSON.parse(deviceInfo.data);
   const lastData = data[data.length - 1];
+  let critical;
 
   lastData.status = defineStatus(lastData.cpu_uso, lastData.ram_uso);
   const status = statusInfo[lastData.status];
+
+  if (lastData.cpu_uso > 80) {
+    critical = 'animation: critical 1s ease infinite;';
+  }
 
   device.img =
     device[0].sistema_operacional === 'Linux'
@@ -170,7 +206,7 @@ function buildCardDevice(deviceInfo, index) {
       : 'assets/device-windows.png';
 
   const cardDevice = `
-    <div class="card" onclick="openDeviceModal(${index})">
+    <div class="card" style="${critical}" onclick="openDeviceModal(${index})">
       <div class="img-device">
       <img src="${device.img}" alt="">
       </div>
@@ -212,6 +248,8 @@ function closeDeviceModal() {
 
   // Remove o event listener para o clique fora do modal
   document.removeEventListener('click', onClickOutsideModal);
+
+  clearInterval(intervalID);
 }
 
 function onKeyUp(event) {
@@ -226,14 +264,25 @@ function onClickOutsideModal(event) {
   }
 }
 
+let intervalID;
+
 function openDeviceModal(index) {
   const statusBar = document.querySelector('.status-bar');
-  const device = employee[index];
 
+  let device = employee[index];
   console.log(device);
-
   modal.style = modalStyle.opened;
   statusBar.innerHTML = buildModal(device);
+
+  if (intervalID) {
+    clearInterval(intervalID);
+  }
+
+  intervalID = setInterval(() => {
+    device = employee[index];
+    console.log(device);
+    statusBar.innerHTML = buildModal(device);
+  }, 5000);
 
   // Adiciona o event listener para a tecla Esc
   document.addEventListener('keyup', onKeyUp);

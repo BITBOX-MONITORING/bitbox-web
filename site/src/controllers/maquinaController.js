@@ -13,6 +13,18 @@ function selectMaquinas(req, res) {
     });
 }
 
+function selectTabs(req, res) {
+
+  maquinaModel.selectTabs()
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json(error.sqlMessage);
+    });
+}
+
 function excluirMaquina(req, res) {
   var id_maquina = req.params.id_maquina;
 
@@ -62,6 +74,7 @@ function atualizarMaquina(req, res) {
 
 module.exports = {
   selectMaquinas,
+  selectTabs,
   excluirMaquina,
   atualizarMaquina,
 };

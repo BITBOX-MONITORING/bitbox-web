@@ -3,11 +3,21 @@ var database = require('../database/config');
 function selectMaquinas(fkEmpresa) {
   console.log('ACESSEI O MODEL, VAMOS SELECIONAR AS MÁQUINAS!');
 
-  var instrucao = `SELECT id_funcionario, nome, device, data FROM vwMaquinasInfo WHERE fk_empresa = ${fkEmpresa};`;
+  var instrucao = `SELECT id_funcionario, nome, device, data FROM vwMaquinaInfo WHERE fk_empresa = ${fkEmpresa};`;
 
   console.log('Executando a instrução SQL: \n' + instrucao);
   return database.executar(instrucao);
 }
+
+function selectTabs() {
+  console.log('ACESSEI O MODEL, VAMOS SELECIONAR AS ABAS!');
+
+  var instrucao = `SELECT * FROM AbasNavegador`;
+
+  console.log('Executando a instrução SQL: \n' + instrucao);
+  return database.executar(instrucao);
+}
+
 
 function excluirMaquina(id_maquina) {
   console.log(
@@ -32,6 +42,7 @@ function atualizarMaquina(fk_funcionario) {
 
 module.exports = {
   selectMaquinas,
+  selectTabs,
   excluirMaquina,
   atualizarMaquina,
 };

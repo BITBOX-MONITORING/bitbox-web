@@ -100,7 +100,7 @@
                     <i class="ph-duotone ph-lightning on"></i>
                     <span>MÁQUINAS ATIVAS</span>
                   </div>
-                  <h1 class="on">45</h1>
+                  <h1 class="on">5</h1>
                 </div>
 
                 <div class="wall"></div>
@@ -110,7 +110,7 @@
                     <i class="ph-duotone ph-x-circle off"></i>
                     <span>MÁQUINAS INATIVAS</span>
                   </div>
-                  <h1 class="off">11</h1>
+                  <h1 class="off">2</h1>
                 </div>
 
                 <div class="wall"></div>
@@ -120,7 +120,7 @@
                     <i class="ph-duotone ph-warning called"></i>
                     <span>MÁQUINAS EM ALERTA</span>
                   </div>
-                  <h1 class="called">5</h1>
+                  <h1 class="called">2</h1>
                 </div>
               </div>
             </div>
@@ -144,6 +144,91 @@
 <script>
   manager_name.innerHTML = sessionStorage.getItem('NOME_USUARIO');
 
+  let time;
+
+  const rede = {
+    download: [460, 470, 480, 455, 475, 465],
+    upload: [250, 300, 280, 270, 290, 295],
+    moment: ['20:40', '20:41', '20:42', '20:43', '20:44', '20:45'],
+  };
+
+  function getTime() {
+    time = new Date();
+    const formatter = new Intl.DateTimeFormat('pt-BR', {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    });
+
+    return formatter.format(time);
+  }
+
+  function createChart() {
+    let download = Math.random() * (500 - 450) + 450;
+    let upload = Math.random() * (400 - 200) + 200;
+
+    rede.download.push(download);
+    rede.upload.push(upload);
+    rede.moment.push(getTime());
+
+    if (rede.download.length > 6) {
+      rede.download.shift();
+      rede.upload.shift();
+      rede.moment.shift();
+    }
+
+    updateChart(rede.download, rede.upload);
+  }
+
+  createChart();
+
+  setInterval(() => {
+    createChart();
+    console.log(rede);
+  }, 5000);
+
+  function updateChart(download, upload) {
+    const ctx3 = document.getElementById('myChart-3').getContext('2d');
+    const chartInstance = Chart.getChart('myChart-3');
+
+    if (!chartInstance) {
+      new Chart(ctx3, {
+        type: 'line',
+        data: {
+          labels: rede.moment,
+          datasets: [
+            {
+              label: 'Download',
+              data: rede.download,
+              backgroundColor: ['#751BDB'],
+              borderColor: ['#751BDB'],
+              borderWidth: 1,
+            },
+            {
+              label: 'Upload',
+              data: rede.upload,
+              backgroundColor: ['#DACC51'],
+              borderColor: ['#DACC51'],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    } else {
+      chartInstance.data.labels = rede.moment;
+      chartInstance.data.datasets[0].data = rede.download;
+      chartInstance.data.datasets[1].data = rede.upload;
+      chartInstance.update();
+    }
+  }
+
   const ctx2 = document.getElementById('myChart-2').getContext('2d');
   new Chart(ctx2, {
     type: 'pie',
@@ -152,44 +237,12 @@
       datasets: [
         {
           label: 'memoria utilizada',
-          data: [12, 19, 3],
+          data: [5, 2, 2],
           backgroundColor: ['#42BB42', '#DACC51', '#B8424C'],
           borderWidth: 1,
         },
       ],
     },
     options: {},
-  });
-
-  const ctx3 = document.getElementById('myChart-3').getContext('2d');
-
-  new Chart(ctx3, {
-    type: 'line',
-    data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-      datasets: [
-        {
-          label: 'Download',
-          data: [555, 457, 522, 268, 420, 589],
-          backgroundColor: ['#751BDB'],
-          borderColor: ['#751BDB'],
-          borderWidth: 1,
-        },
-        {
-          label: 'Upload',
-          data: [268, 400, 265, 212, 320, 326],
-          backgroundColor: ['#DACC51'],
-          borderColor: ['#DACC51'],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-        },
-      },
-    },
   });
 </script>

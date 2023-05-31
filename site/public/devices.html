@@ -105,7 +105,14 @@
               <canvas id="chart_disco"></canvas>
             </div>
             <div class="chart4">
-              <canvas id="chart_abas"></canvas>
+              <div class="tabs-box">
+                <div class="tabs-info">
+                  <span>Abas abertas do navegador</span>
+                  <h1 id="countTabs">15</h1>
+                </div>
+
+                <div class="tabs-list"></div>
+              </div>
             </div>
           </div>
 
@@ -119,71 +126,58 @@
 <script>
   manager_name.innerHTML = sessionStorage.getItem('NOME_USUARIO');
 
-  let device;
+  let device = {};
+  let tabList;
 
-  document.addEventListener('click', () => {
-    device = JSON.parse(localStorage.getItem('DEVICE_DATA'));
-    console.log(device);
+  updateDeviceData(); // Chama a função para definir o valor inicial da variável `device`
 
-    destroyChart('chart_cpu');
-    destroyChart('chart_ram');
-    destroyChart('chart_disco');
-    destroyChart('chart_abas');
+  countTabs.innerHTML = device.tabs.length;
 
-    createLineChart('chart_cpu', 'Uso da CPU', device.cpu, ['#f5e65b']);
-    createLineChart('chart_ram', 'Uso da RAM', device.ram, ['#f5e65b']);
-    createBarChart('chart_disco', 'Uso do Disco', device.disco, ['#751BDB']);
-    createBarChart('chart_abas', 'Quantidade de Abas', device.abas, ['#751BDB']);
+  device.tabs.forEach((tab) => {
+    tabList.innerHTML += `<p>${tab.titulo}</p>`;
   });
 
-  function destroyChart(chartId) {
-    const chartElement = document.getElementById(chartId);
-    if (chartElement) {
-      const chartInstance = Chart.getChart(chartElement);
-      if (chartInstance) {
-        chartInstance.destroy();
-      }
+  setInterval(() => {
+    updateDeviceData();
+  }, 1000);
+
+  function updateDeviceData() {
+    device = JSON.parse(localStorage.getItem('DEVICE_DATA'));
+
+    if (device) {
+      updateChart('chart_cpu', 'Uso da CPU', device.cpu, device.moment);
+      updateChart('chart_ram', 'Uso da RAM', device.ram, device.moment);
+      updateChart('chart_disco', 'Uso do Disco', device.disco, device.moment);
+
+      tabList = document.querySelector('.tabs-list');
     }
   }
 
-  function createLineChart(chartId, label, data, backgroundColor) {
+  function updateChart(chartId, label, data, moments) {
+    let chartInstance = Chart.getChart(chartId);
+
+    if (!chartInstance) {
+      createChart(chartId, label, data, moments);
+    } else {
+      chartInstance.data.labels = moments;
+      chartInstance.data.datasets[0].data = data;
+      chartInstance.update();
+    }
+  }
+
+  function createChart(chartId, label, data, moments) {
     const chartElement = document.getElementById(chartId);
+
     new Chart(chartElement, {
       type: 'line',
       data: {
-        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        labels: moments,
         datasets: [
           {
             label: label,
             data: data,
-            backgroundColor: backgroundColor,
-            borderColor: backgroundColor,
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-  }
-
-  function createBarChart(chartId, label, data, backgroundColor) {
-    const chartElement = document.getElementById(chartId);
-    new Chart(chartElement, {
-      type: 'bar',
-      data: {
-        labels: ['S', 'T', 'Q', 'Q', 'S', 'S'],
-        datasets: [
-          {
-            label: label,
-            data: data,
-            backgroundColor: backgroundColor,
-            borderColor: backgroundColor,
+            backgroundColor: '#f5e65b',
+            borderColor: '#f5e65b',
             borderWidth: 1,
           },
         ],
