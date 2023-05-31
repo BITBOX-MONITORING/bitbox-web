@@ -1,0 +1,51 @@
+:root {
+  --bg-color: #0d0d0d;
+  --yellow: #f5e65b;
+  --purple: #3b1da8;
+  --light: #ffface;
+}
+
+#download-container {
+  color: var(--light);
+  font-weight: 200;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#download-container h1 {
+  color: var(--light);
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.container-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container-button a {
+  background-color: #fff48e;
+  color: var(--bg-color);
+  font-weight: 200;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: 2px solid #f5e65b;
+  transition: 0.2s ease;
+}
+
+.container-button:hover {
+  background-color: #f5e65b;
+}

@@ -117,7 +117,7 @@ function signUp() {
             }, '2000');
           } else {
             setTimeout(() => {
-              // window.location = 'download.html';
+              window.location = 'download.html';
             }, '2000');
           }
         } else {
