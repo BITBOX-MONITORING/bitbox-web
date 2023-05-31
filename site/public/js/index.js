@@ -10,6 +10,7 @@ function redirectToLogin() {
 }
 
 const EnterprisesPartners = [
+  { name: 'SPTECH', img: './assets/partners/sptech.jpg', url: 'https://www.sptech.school/' },
   { name: 'Digital Work', img: './assets/partners/digital_work.png', url: 'https://digitalwork.com.br/' },
   { name: 'Itau', img: './assets/partners/itau.png', url: 'https://www.itau.com.br/' },
   { name: 'Box Delviery', img: './assets/partners/box_delivery.png', url: 'https://boxdelivery.com.br/' },
