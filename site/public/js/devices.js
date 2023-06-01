@@ -48,7 +48,7 @@ getDeviceInfo();
 getTabs();
 
 setInterval(() => {
-  // getDeviceInfo();
+  getDeviceInfo();
 }, 5000);
 
 document.addEventListener('DOMContentLoaded', () => {
