@@ -116,7 +116,7 @@ function buildModal(deviceInfo) {
   const status = statusInfo[lastData.status];
 
   device.img =
-    device[0].sistema_operacional === 'Linux'
+    device[0].sistema_operacional === 'Ubuntu'
       ? 'assets/device-linux.png'
       : 'assets/device-windows.png';
 
@@ -201,7 +201,7 @@ function buildCardDevice(deviceInfo, index) {
   }
 
   device.img =
-    device[0].sistema_operacional === 'Linux'
+    device[0].sistema_operacional === 'Ubuntu'
       ? 'assets/device-linux.png'
       : 'assets/device-windows.png';
 

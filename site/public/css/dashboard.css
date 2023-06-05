@@ -482,6 +482,7 @@ main {
 .tabs-box {
   box-sizing: border-box;
   height: 150px;
+  width: 90%;
 
   display: flex;
   flex-direction: column;

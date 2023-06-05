@@ -46,6 +46,6 @@
   transition: 0.2s ease;
 }
 
-.container-button:hover {
+.container-button a:hover {
   background-color: #f5e65b;
 }
